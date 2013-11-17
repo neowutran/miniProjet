@@ -3,13 +3,10 @@
  */
 
 package demonstrateur;
+import com.google.gson.*;
+import lib.*;
 
-import com.google.gson.Gson;
-import lib.CopyFile;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 
 /**
  * The Class Frosh.
@@ -35,7 +32,6 @@ public class MiniProjet {
 
         new demonstrateur.MiniProjet();
 
-        new controllers.MiniProjetController();
     }
 
     /**
@@ -54,7 +50,8 @@ public class MiniProjet {
             lib.copyfile(demonstrateur.MiniProjet.FOLDER + demonstrateur.MiniProjet.CONFIG);
         }
         demonstrateur.MiniProjet.loadConfigFile(Paths.get(demonstrateur.MiniProjet.FOLDER, demonstrateur.MiniProjet.CONFIG));
-        // new FroshController( ).run( );
+        new controllers.MiniProjetController();
+
 
     }
 

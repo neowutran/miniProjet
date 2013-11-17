@@ -33,6 +33,7 @@ public class MiniProjetController {
         this.loggingConfig();
         this.view = new View();
 
+
     }
 
     /**

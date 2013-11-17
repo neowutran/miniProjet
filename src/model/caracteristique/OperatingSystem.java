@@ -1,5 +1,7 @@
 package model.caracteristique;
 
+import java.util.*;
+
 /**
  * Created by draragar on 17/11/13.
  */
@@ -8,12 +10,12 @@ public class OperatingSystem implements model.finder.IString, model.ICaracterist
     private String value;
 
     //Config
-    private java.util.List<String> accetableValue;
+    private List<String> accetableValue;
 
     @Override
     public boolean equals(model.finder.IString object) {
 
-        return object instanceof OperatingSystem && this.value.equals(((OperatingSystem) object).value);
+        return object.getClass().equals(this.getClass()) && this.value.equals(((OperatingSystem) object).value);
     }
 
     @Override
@@ -22,14 +24,15 @@ public class OperatingSystem implements model.finder.IString, model.ICaracterist
         return "Systeme d'exploitation";
     }
 
-    @Override
-    public String getName() {
+    public OperatingSystem(String os, String typeMateriel) throws Exception {
 
-        return "OS";
+        //Definition de accetableValue
+        this(os);
     }
 
     public OperatingSystem(String os) throws Exception {
 
+        //Definition de acceptableValue
         if (!accetableValue.contains(os)) {
             throw new Exception("TODO");
         } else {

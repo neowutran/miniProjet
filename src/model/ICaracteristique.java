@@ -7,6 +7,4 @@ public interface ICaracteristique {
 
     public String getInfos();
 
-    public String getName();
-
 }

@@ -3,9 +3,10 @@ package model;
 /**
  * Created by draragar on 17/11/13.
  */
-public abstract class Materiel {
+public class Materiel {
 
     private Integer quantity;
+    private String type;
 
     public Integer getQuantity() {
 
@@ -29,8 +30,9 @@ public abstract class Materiel {
 
     private java.util.HashMap<ICaracteristique, Object> attributs;
 
-    public Materiel(java.util.HashMap<ICaracteristique, Object> attributs, Integer quantity) {
+    public Materiel(String type, java.util.HashMap<ICaracteristique, Object> attributs, Integer quantity) {
 
+        this.type = type;
         this.quantity = quantity;
         this.attributs = attributs;
     }
