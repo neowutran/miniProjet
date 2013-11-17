@@ -1,0 +1,10 @@
+package model.finder;
+
+/**
+ * Created by draragar on 17/11/13.
+ */
+public interface IString {
+
+    public boolean equals(IString object);
+
+}
