@@ -1,5 +1,10 @@
 package model;
 
+import config.*;
+
+import java.security.*;
+import java.util.*;
+
 /**
  * Created by draragar on 17/11/13.
  */
@@ -13,33 +18,64 @@ public class Materiel {
         return quantity;
     }
 
-    public java.util.HashMap<model.ICaracteristique, Object> getAttributs() {
+    public List<model.ICaracteristique> getAttributs() {
 
         return attributs;
     }
 
-    public void setAttributs(final java.util.HashMap<model.ICaracteristique, Object> attributs) {
+    public void setAttributs(final List<model.ICaracteristique> attributs) throws InvalidParameterException {
 
-        this.attributs = attributs;
+        checkAttribut(attributs);
     }
 
     public void setQuantity(final Integer quantity) {
 
-        this.quantity = quantity;
+        checkQuantity(quantity);
+
     }
 
-    private java.util.HashMap<ICaracteristique, Object> attributs;
+    private List<ICaracteristique> attributs;
 
-    public Materiel(String type, java.util.HashMap<ICaracteristique, Object> attributs, Integer quantity) {
+    public Materiel(String type, List<ICaracteristique> attributs, Integer quantity) throws InvalidParameterException {
+
+        checkType(type);
+        checkAttribut(attributs);
+        checkQuantity(quantity);
+    }
+
+    private void checkType(String type) throws InvalidParameterException {
+
+        if (!((Map) Config.getConfiguration().get("materiel")).containsKey(type)) {
+
+            throw new InvalidParameterException(type + " does not exist");
+
+        }
 
         this.type = type;
-        this.quantity = quantity;
-        this.attributs = attributs;
+
     }
 
-    public void acceptableMateriel() {
-        //TODO
-        //Teste le hashmap de caracteristique pour verifier la coerrence en fonction du type de materiel
+    private void checkAttribut(List<ICaracteristique> attributs) throws InvalidParameterException {
+
+        if (attributs == null) return;
+        for (ICaracteristique caracteristique : attributs) {
+
+            if (!((Map) ((Map)Config.getConfiguration().get("materiel")).get(this.type)).containsKey(caracteristique.getName())) {
+                throw new InvalidParameterException(caracteristique.getName() + " does not exist on " + this.type);
+            }
+
+        }
+
+        this.attributs = attributs;
+
+    }
+
+    private void checkQuantity(Integer quantity) throws InvalidParameterException {
+
+        if (quantity == null || quantity < 1) throw new InvalidParameterException("Quantity cannot be null");
+
+        this.quantity = quantity;
+
     }
 
 }

@@ -52,7 +52,6 @@ public class MiniProjet {
         demonstrateur.MiniProjet.loadConfigFile(Paths.get(demonstrateur.MiniProjet.FOLDER, demonstrateur.MiniProjet.CONFIG));
         new controllers.MiniProjetController();
 
-
     }
 
     /**

@@ -1,21 +1,25 @@
 package model.caracteristique;
 
+import com.google.gson.internal.*;
+import config.*;
+import lib.*;
+import model.*;
+
+import java.security.*;
 import java.util.*;
+import java.util.Map.*;
 
 /**
  * Created by draragar on 17/11/13.
  */
-public class OperatingSystem implements model.finder.IString, model.ICaracteristique {
+public class OperatingSystem extends Caracteristique implements model.finder.IString, model.ICaracteristique {
 
-    private String value;
-
-    //Config
     private List<String> accetableValue;
 
     @Override
     public boolean equals(model.finder.IString object) {
 
-        return object.getClass().equals(this.getClass()) && this.value.equals(((OperatingSystem) object).value);
+        return object.getClass().equals(this.getClass()) && this.getValue().equals(((OperatingSystem) object).getValue());
     }
 
     @Override
@@ -24,19 +28,62 @@ public class OperatingSystem implements model.finder.IString, model.ICaracterist
         return "Systeme d'exploitation";
     }
 
-    public OperatingSystem(String os, String typeMateriel) throws Exception {
-
-        //Definition de accetableValue
-        this(os);
+    @Override
+    public String getName(){
+        return "OperatingSystem";
     }
 
-    public OperatingSystem(String os) throws Exception {
+    public OperatingSystem(String os, String typeMateriel) throws InvalidParameterException {
+
+        setAccetableValue(typeMateriel);
+        checkOS(os);
+
+    }
+
+    private void setAccetableValue(String typeMateriel) throws InvalidParameterException {
+
+        if (typeMateriel == null) {
+
+            Map fullmap = new LinkedTreeMap();
+            for (Entry entry : (Set<Entry>) ((Map) Config.getConfiguration().get("materiel")).entrySet()) {
+
+                if ((Map) ((Map) ((Map) Config.getConfiguration().get("materiel")).get(entry.getKey())).get(this.getName()) != null) {
+                    fullmap.putAll((Map) ((Map) ((Map) Config.getConfiguration().get("materiel")).get(entry.getKey())).get(this.getName()));
+                }
+
+            }
+
+            this.accetableValue = MapUtils.MapKeyToList(fullmap);
+
+        } else {
+
+            if (((LinkedTreeMap) Config.getConfiguration().get("materiel")).containsKey(typeMateriel)) {
+                this.accetableValue = MapUtils.MapKeyToList((LinkedTreeMap) ((LinkedTreeMap) ((LinkedTreeMap) Config.getConfiguration().get("materiel")).get(typeMateriel)).get(this.getName()));
+
+            } else {
+
+                throw new InvalidParameterException(typeMateriel + " do not exist");
+
+            }
+
+        }
+
+    }
+
+    private void checkOS(String os) throws InvalidParameterException {
+
+        if (!accetableValue.contains(os)) {
+            throw new InvalidParameterException("Your OS does not exist");
+        } else {
+            this.setValue(os);
+        }
+    }
+
+    public OperatingSystem(String os) throws InvalidParameterException {
 
         //Definition de acceptableValue
-        if (!accetableValue.contains(os)) {
-            throw new Exception("TODO");
-        } else {
-            this.value = os;
-        }
+        setAccetableValue(null);
+        checkOS(os);
+
     }
 }
