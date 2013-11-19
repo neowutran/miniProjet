@@ -1,7 +1,7 @@
 package model.personne.emprunteur;
 
 /**
- * Created by draragar on 17/11/13.
+ * The Class Enseignant.
  */
 public class Enseignant extends model.personne.Emprunteur {
 

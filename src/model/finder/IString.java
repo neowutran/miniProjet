@@ -1,10 +1,17 @@
 package model.finder;
 
+// TODO: Auto-generated Javadoc
 /**
- * Created by draragar on 17/11/13.
+ * The Interface IString.
  */
 public interface IString {
 
+    /**
+     * Equals.
+     *
+     * @param object the object
+     * @return true, if successful
+     */
     public boolean equals(IString object);
 
 }

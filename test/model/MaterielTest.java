@@ -64,7 +64,7 @@ public class MaterielTest {
 
         }
 
-        List<ICaracteristique> caracteristiques = new ArrayList<>();
+        List<Caracteristique> caracteristiques = new ArrayList<>();
         caracteristiques.add(new OperatingSystem("Windows", "tablette"));
 
         try{

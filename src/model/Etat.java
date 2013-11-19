@@ -1,8 +1,15 @@
 package model;
 
+// TODO: Auto-generated Javadoc
 /**
- * Created by draragar on 17/11/13.
+ * The Enum Etat.
  */
 public enum Etat {
-    DEMANDE_EMPRUNT, ACCEPTER, REFUSER
+    
+    /** The demande emprunt. */
+    DEMANDE_EMPRUNT, 
+ /** The accepter. */
+ ACCEPTER, 
+ /** The refuser. */
+ REFUSER
 }

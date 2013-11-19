@@ -20,6 +20,8 @@ public class MiniProjetController {
      */
     private final View view;
 
+    //TODO ajouter un attribut de classe pour le model
+
     /**
      * The Constant LOGGER.
      */
@@ -31,6 +33,8 @@ public class MiniProjetController {
     public MiniProjetController() {
 
         this.loggingConfig();
+
+        //TODO creer le model ici
 
         this.view = new View();
 
