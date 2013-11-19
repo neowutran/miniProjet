@@ -6,6 +6,6 @@
 		<testFolder url="file://$MODULE_DIR$/test"/>
 	</contentEntry>
 	<levels>
-		<level name="JUnit" value="project"/>
+		<level name="google-gson" value="project"/>
 	</levels>
 </component>

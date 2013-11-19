@@ -3,10 +3,13 @@
  */
 
 package demonstrateur;
-import com.google.gson.*;
-import lib.*;
 
-import java.nio.file.*;
+import com.google.gson.Gson;
+import lib.CopyFile;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The Class Frosh.
@@ -71,8 +74,7 @@ public class MiniProjet {
 
         // Read the file
         final java.nio.charset.Charset charset = java.nio.charset.Charset.forName("UTF-8");
-        try (java.io.BufferedReader reader = Files.newBufferedReader(configFile,
-                charset)) {
+        try (java.io.BufferedReader reader = Files.newBufferedReader(configFile, charset)) {
             String line;
             String text = "";
             while ((line = reader.readLine()) != null) {

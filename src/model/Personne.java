@@ -5,6 +5,8 @@ package model;
  */
 public abstract class Personne {
 
+    private String name;
+
     public String getName() {
 
         return name;
@@ -14,7 +16,5 @@ public abstract class Personne {
 
         this.name = name;
     }
-
-    private String name;
 
 }

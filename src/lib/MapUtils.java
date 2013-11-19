@@ -1,7 +1,10 @@
 package lib;
 
-import java.util.*;
-import java.util.Map.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Created by draragar on 18/11/13.
@@ -19,5 +22,7 @@ public final class MapUtils {
         return list;
     }
 
-    private MapUtils(){}
+    private MapUtils() {
+
+    }
 }

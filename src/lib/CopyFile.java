@@ -17,10 +17,7 @@ public class CopyFile {
     /**
      * The sources.
      */
-    private final java.io.InputStream sources = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream(
-                    "config.json");
+    private final java.io.InputStream sources = this.getClass().getClassLoader().getResourceAsStream("config.json");
 
     /**
      * The Constant TAILLEBUFFER.
@@ -46,12 +43,10 @@ public class CopyFile {
             this.sources.close();
             out.close();
         } catch (final java.io.FileNotFoundException ex) {
-            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(ex
-                    .getStackTrace()));
+            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(ex.getStackTrace()));
             System.exit(0);
         } catch (final java.io.IOException e) {
-            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(e
-                    .getStackTrace()));
+            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
         }
     }
 

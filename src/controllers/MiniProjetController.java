@@ -31,8 +31,8 @@ public class MiniProjetController {
     public MiniProjetController() {
 
         this.loggingConfig();
-        this.view = new View();
 
+        this.view = new View();
 
     }
 
@@ -48,8 +48,7 @@ public class MiniProjetController {
             logFile = new java.util.logging.FileHandler("log.xml");
         } catch (SecurityException | java.io.IOException e) {
 
-            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(e
-                    .getStackTrace()));
+            controllers.MiniProjetController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
         }
 
         if (logFile != null) {

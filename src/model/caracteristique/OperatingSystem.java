@@ -1,18 +1,20 @@
 package model.caracteristique;
 
-import com.google.gson.internal.*;
-import config.*;
-import lib.*;
-import model.*;
+import com.google.gson.internal.LinkedTreeMap;
+import config.Config;
+import lib.MapUtils;
+import model.Caracteristique;
 
-import java.security.*;
-import java.util.*;
-import java.util.Map.*;
+import java.security.InvalidParameterException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Created by draragar on 17/11/13.
  */
-public class OperatingSystem extends Caracteristique implements model.finder.IString, model.ICaracteristique {
+public class OperatingSystem extends Caracteristique implements model.finder.IString{
 
     private List<String> accetableValue;
 
@@ -29,7 +31,8 @@ public class OperatingSystem extends Caracteristique implements model.finder.ISt
     }
 
     @Override
-    public String getName(){
+    public String getName() {
+
         return "OperatingSystem";
     }
 

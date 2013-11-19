@@ -5,10 +5,11 @@ package model.personne;
  */
 public class Gestionnaire extends model.Personne {
 
-    public void setEtatEmprunt(model.Emprunt emprunt, model.Etat etat) {
+    public void setEtatEmprunt(Emprunteur.Emprunt emprunt, model.Etat etat) {
 
-        emprunt.setEtat(etat);
-        emprunt.setGestionnaire(this);
+        emprunt.setEtat(etat, this);
+
+
     }
 
 }

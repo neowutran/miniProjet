@@ -41,7 +41,7 @@ public class MaterielTest {
 
         Materiel materiel;
         try {
-            materiel = new Materiel("tablette", null, 1);
+            materiel = new Materiel("tablette", null, 1, 1);
             //BON
         } catch (Exception e) {
             //PAS BON
@@ -49,7 +49,7 @@ public class MaterielTest {
         }
 
         try {
-            materiel = new Materiel("tablette", null, null);
+            materiel = new Materiel("tablette", null, null, null);
             Assert.assertThat(true, CoreMatchers.equalTo(false));
             //PAS BON
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class MaterielTest {
         }
 
         try{
-        materiel = new Materiel("tablettte", null, 0);
+        materiel = new Materiel("tablettte", null, 0, 0);
             Assert.assertThat(true, CoreMatchers.equalTo(false));
             //PAS BON
         }catch (Exception e){
@@ -68,7 +68,7 @@ public class MaterielTest {
         caracteristiques.add(new OperatingSystem("Windows", "tablette"));
 
         try{
-            materiel = new Materiel("tablette", caracteristiques, 1);
+            materiel = new Materiel("tablette", caracteristiques, 1, 0);
         }catch (Exception e){
             Assert.assertThat(true, CoreMatchers.equalTo(false));
             //PAS BON

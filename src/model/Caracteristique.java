@@ -3,7 +3,9 @@ package model;
 /**
  * Created by draragar on 19/11/13.
  */
-public abstract class Caracteristique {
+public abstract class Caracteristique implements model.ICaracteristique {
+
+    private String value;
 
     protected String getValue() {
 
@@ -13,9 +15,7 @@ public abstract class Caracteristique {
     protected void setValue(final String value) {
 
         this.value = value;
+
     }
-
-    private String value;
-
 
 }
