@@ -1,12 +1,11 @@
 package model.personne;
 
-import model.Finder;
-import model.Inventaire;
-import model.Materiel;
+import model.*;
 
-import java.util.Calendar;
+import java.util.*;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Emprunteur.
  */
@@ -17,14 +16,21 @@ public abstract class Emprunteur extends model.Personne {
      *
      * @param materiel the materiel
      * @param quantity the quantity
-     * @param debut the debut
-     * @param fin the fin
+     * @param debut    the debut
+     * @param fin      the fin
+     *
      * @return true, if successful
      */
     public boolean emprunter(model.Materiel materiel, Integer quantity, Calendar debut, Calendar fin) {
 
         if (Finder.findExactlyAvaiable(materiel, debut, fin) < quantity)
             return false;
+
+        //TODO calcul de durée autorisé
+
+
+
+
         Inventaire.addEmprunt(new Emprunt(materiel, quantity, debut, fin));
         return true;
 
@@ -35,13 +41,19 @@ public abstract class Emprunteur extends model.Personne {
      */
     public class Emprunt {
 
-        /** The materiel. */
+        /**
+         * The materiel.
+         */
         private Materiel materiel;
-        
-        /** The quantity. */
+
+        /**
+         * The quantity.
+         */
         private Integer quantity;
-        
-        /** The emprunteur. */
+
+        /**
+         * The emprunteur.
+         */
         private model.personne.Emprunteur emprunteur;
 
         /**
@@ -117,13 +129,18 @@ public abstract class Emprunteur extends model.Personne {
         /**
          * Sets the etat.
          *
-         * @param etat the etat
+         * @param etat         the etat
          * @param gestionnaire the gestionnaire
          */
         public void setEtat(final model.Etat etat, final Gestionnaire gestionnaire) {
 
             this.etat = etat;
             this.gestionnaire = gestionnaire;
+
+            if (Etat.ACCEPTER == etat) {
+                Materiel materiel = Finder.findMateriel(this.getMateriel());
+                materiel.setQuantityAvaiable(materiel.getQuantityAvaiable() - this.getQuantity());
+            }
         }
 
         /**
@@ -136,27 +153,35 @@ public abstract class Emprunteur extends model.Personne {
             return debutEmprunt;
         }
 
-        /** The gestionnaire. */
+        /**
+         * The gestionnaire.
+         */
         private model.personne.Gestionnaire gestionnaire;
-        
-        /** The etat. */
+
+        /**
+         * The etat.
+         */
         private model.Etat etat = model.Etat.DEMANDE_EMPRUNT;
-        
-        /** The debut emprunt. */
+
+        /**
+         * The debut emprunt.
+         */
         private java.util.Calendar debutEmprunt;
-        
-        /** The fin emprunt. */
+
+        /**
+         * The fin emprunt.
+         */
         private java.util.Calendar finEmprunt;
 
         /**
          * Instantiates a new emprunt.
          *
-         * @param materiel the materiel
-         * @param quantity the quantity
+         * @param materiel     the materiel
+         * @param quantity     the quantity
          * @param debutEmprunt the debut emprunt
-         * @param finEmprunt the fin emprunt
+         * @param finEmprunt   the fin emprunt
          */
-        private Emprunt(Materiel materiel, Integer quantity,java.util.Calendar debutEmprunt, java.util.Calendar finEmprunt) {
+        private Emprunt(Materiel materiel, Integer quantity, java.util.Calendar debutEmprunt, java.util.Calendar finEmprunt) {
 
             this.materiel = materiel;
             this.quantity = quantity;

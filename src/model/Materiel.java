@@ -14,13 +14,13 @@ public class Materiel {
 
     /** The quantity. */
     private Integer quantity;
-    
+
     /** The quantity avaiable. */
     private Integer quantityAvaiable;
-    
+
     /** The type. */
     private String type;
-    
+
     /** The attributs. */
     private List<Caracteristique> attributs;
 
@@ -87,10 +87,10 @@ public class Materiel {
      */
     private void checkQuantityAvaiable(Integer quantity) throws InvalidParameterException {
 
-        if (quantity == null) {
+        if ( null == quantity) {
             throw new InvalidParameterException("Avaiable quantity cannot be null");
         }
-        if (quantity < 0) {
+        if (0 > quantity) {
             throw new InvalidParameterException("Avaiable quantity must be >= 0");
         }
         this.quantityAvaiable = quantity;
@@ -125,7 +125,7 @@ public class Materiel {
      */
     private void checkQuantity(Integer quantity) throws InvalidParameterException {
 
-        if (quantity == null || quantity < 1)
+        if (null == quantity || 1 > quantity)
             throw new InvalidParameterException("Quantity cannot be null");
 
         this.quantity = quantity;
@@ -161,7 +161,7 @@ public class Materiel {
      */
     private void checkAttribut(List<Caracteristique> attributs) throws InvalidParameterException {
 
-        if (attributs == null)
+        if (null == attributs)
             return;
         for (ICaracteristique caracteristique : attributs) {
 

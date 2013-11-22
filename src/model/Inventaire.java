@@ -57,6 +57,4 @@ public final class Inventaire {
 
     }
 
-    // Materiel materiel = Finder.findMateriel(emprunt.getMateriel());
-    //materiel.setQuantityAvaiable(materiel.getQuantityAvaiable() - emprunt.getQuantity());
 }

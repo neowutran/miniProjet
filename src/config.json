@@ -23,5 +23,13 @@
         "casque":{
 
         }
+    },
+    "emprunteur":{
+        "etudiant":{
+
+        },
+        "enseignant":{
+
+        }
     }
 }

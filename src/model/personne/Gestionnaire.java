@@ -16,7 +16,6 @@ public class Gestionnaire extends model.Personne {
 
         emprunt.setEtat(etat, this);
 
-
     }
 
 }
