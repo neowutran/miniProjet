@@ -56,5 +56,10 @@ public final class Inventaire {
         emprunts.add(emprunt);
 
     }
+    
+    public static void removeEmprunt(Emprunteur.Emprunt emprunt){
+        emprunts.remove(emprunt);
+    }
+    
 
 }

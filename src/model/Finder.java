@@ -37,18 +37,18 @@ public class Finder {
      * @return the integer
      */
     public static Integer findExactly(Materiel findMateriel) {
-
+    
         List<Materiel> materiels = Inventaire.getMateriel();
         for (Materiel materiel : materiels) {
-
+    
             if (materiel.equals(findMateriel)) {
                 return materiel.getQuantity();
             }
-
+    
         }
-
+    
         return 0;
-
+    
     }
 
     /**

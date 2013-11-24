@@ -11,13 +11,14 @@ import java.util.Map;
  * The Class Materiel.
  */
 public class Materiel {
-
+    
     /** The quantity. */
     private Integer quantity;
 
     /** The quantity avaiable. */
     private Integer quantityAvaiable;
-
+    
+    
     /** The type. */
     private String type;
 
