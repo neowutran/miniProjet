@@ -8,7 +8,6 @@ import java.util.List;
 import views.Command;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
@@ -23,18 +22,18 @@ public class Borrower extends User {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see views.IView#defineOptions()
+     *
+     * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
         final Command command1 = new Command( "borrow",
                 new LinkedList<String>( ), this, "borrow", "descriptionHere" );
         commands.add( command1 );
-        commands.addAll( super.defineOptions( ) );
+        commands.addAll( super.setCommands() );
 
         return commands;
 

@@ -1,12 +1,11 @@
 
 package model;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MiniProjectException.
  */
 public class MiniProjectException extends Exception {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 

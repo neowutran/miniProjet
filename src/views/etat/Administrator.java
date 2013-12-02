@@ -8,7 +8,6 @@ import java.util.List;
 import model.Finder;
 import views.Command;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Administrator.
  */
@@ -37,11 +36,11 @@ public class Administrator extends User {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see views.IView#defineOptions()
+     *
+     * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
@@ -79,7 +78,7 @@ public class Administrator extends User {
         commands.add( command5 );
         commands.add( command6 );
         commands.add( command7 );
-        commands.addAll( super.defineOptions( ) );
+        commands.addAll( super.setCommands() );
 
         return commands;
 

@@ -10,7 +10,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrow.
  */
@@ -46,10 +45,10 @@ public class Borrow extends State {
     /*
      * (non-Javadoc)
      *
-     * @see views.IView#defineOptions()
+     * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
@@ -86,7 +85,7 @@ public class Borrow extends State {
         commands.add( command5 );
         commands.add( command6 );
         commands.add( command7 );
-        commands.addAll( super.defineOptions( ) );
+        commands.addAll( super.setCommands() );
 
         return commands;
 
@@ -149,7 +148,7 @@ public class Borrow extends State {
                 Integer.valueOf( dayMonthYear[ 0 ] ),
                 Integer.valueOf( hourMinute[ 0 ] ),
                 Integer.valueOf( hourMinute[ 1 ] ), 0 );
-        System.out.println( "start date set" );
+        System.out.println("start date set");
 
     }
 

@@ -10,7 +10,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Main.
  */
@@ -18,11 +17,11 @@ public class Main extends State {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see views.IView#defineOptions()
+     *
+     * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
@@ -33,7 +32,7 @@ public class Main extends State {
                 "descriptionHere" );
 
         commands.add( command1 );
-        commands.addAll( super.defineOptions( ) );
+        commands.addAll( super.setCommands() );
 
         return commands;
 

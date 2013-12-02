@@ -12,17 +12,16 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
 public abstract class User extends State {
 
     /* (non-Javadoc)
-     * @see views.State#defineOptions()
+     * @see views.State#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
@@ -70,7 +69,7 @@ public abstract class User extends State {
         commands.add( command9 );
         commands.add( command10 );
 
-        commands.addAll( super.defineOptions( ) );
+        commands.addAll( super.setCommands() );
 
         return commands;
     }

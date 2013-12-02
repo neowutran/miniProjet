@@ -5,21 +5,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import controllers.*;
 import model.MiniProjectException;
 import model.SaveLoad;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class State.
  */
 public abstract class State implements IView {
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see views.IView#action(org.apache.commons.cli.CommandLine)
-     */
-    // @Override
     /**
      * Action.
      *
@@ -30,14 +24,14 @@ public abstract class State implements IView {
         if( line == null || line.length == 0 ) {
             return;
         }
-        for( final Command command : this.defineOptions( ) ) {
+        for( final Command command : this.setCommands() ) {
 
             if( command.getName( ).equals( line[ 0 ] ) ) {
 
                 try {
                     command.invoke( line );
                 } catch( final MiniProjectException e ) {
-                    e.printStackTrace( );
+                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
                 }
 
                 return;
@@ -45,7 +39,7 @@ public abstract class State implements IView {
 
         }
 
-        if( !line[ 0 ].equals( "" ) ) {
+        if(! "".equals(line[ 0 ]) ) {
             this.printHelp( );
         }
 
@@ -54,10 +48,10 @@ public abstract class State implements IView {
     /*
      * (non-Javadoc)
      *
-     * @see views.IView#defineOptions()
+     * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> defineOptions( ) {
+    public List<Command> setCommands() {
 
         final List<Command> commands = new ArrayList<>( );
 
@@ -99,7 +93,7 @@ public abstract class State implements IView {
     public void printHelp( ) {
 
         System.out.println( "===== HELP ======\n" );
-        for( final Command command : this.defineOptions( ) ) {
+        for( final Command command : this.setCommands() ) {
             System.out.println( command );
         }
         System.out.println( "=================\n" );

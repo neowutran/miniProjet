@@ -1,7 +1,6 @@
 
 package model;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum State.
  */

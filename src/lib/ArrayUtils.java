@@ -20,4 +20,6 @@ public class ArrayUtils {
 
         return C;
     }
+
+    private ArrayUtils(){}
 }

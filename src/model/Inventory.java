@@ -8,7 +8,6 @@ import model.person.Borrower;
 
 import com.google.gson.annotations.Expose;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Inventory.
  */

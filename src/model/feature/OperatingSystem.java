@@ -15,7 +15,7 @@ import com.google.gson.internal.LinkedTreeMap;
 
 import config.Config;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class OperatingSystem.
  */
@@ -75,7 +75,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -98,7 +98,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see model.IFeature#getName()
      */
     @Override
@@ -109,7 +109,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -122,7 +122,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see model.finder.IString#equals(model.finder.IString)
      */
     @Override
@@ -180,7 +180,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override

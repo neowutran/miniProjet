@@ -59,4 +59,5 @@ public class View {
         View.state = state;
     }
 
+    private View(){}
 }

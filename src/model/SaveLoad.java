@@ -25,7 +25,6 @@ import com.google.gson.GsonBuilder;
 
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SaveLoad.
  */

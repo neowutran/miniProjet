@@ -9,7 +9,6 @@ import java.util.List;
 import model.person.Borrower;
 import model.person.Borrower.Borrow;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Finder.
  */
