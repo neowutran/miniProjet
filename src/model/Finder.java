@@ -9,6 +9,7 @@ import java.util.List;
 import model.person.Borrower;
 import model.person.Borrower.Borrow;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Finder.
  */
@@ -16,15 +17,11 @@ public final class Finder {
 
     /**
      * Check size.
-     * 
-     * @param features
-     *            the features
-     * @param operator
-     *            the operator
-     * @param value
-     *            the value
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     *
+     * @param features the features
+     * @param operator the operator
+     * @param value the value
+     * @throws InvalidParameterException the invalid parameter exception
      */
     private static void checkSize( final List<Feature> features,
             final List<String> operator, final List<Object> value )
@@ -39,9 +36,8 @@ public final class Finder {
 
     /**
      * Find actual borrow by borrower.
-     * 
-     * @param borrowerId
-     *            the borrower id
+     *
+     * @param borrowerId the borrower id
      * @return the list
      */
     public static List<Borrow> findActualBorrowByBorrower(
@@ -60,11 +56,9 @@ public final class Finder {
 
     /**
      * Find available.
-     * 
-     * @param start
-     *            the start
-     * @param end
-     *            the end
+     *
+     * @param start the start
+     * @param end the end
      * @return the list
      */
     public static List<Equipment> findAvailable( final Calendar start,
@@ -101,9 +95,8 @@ public final class Finder {
 
     /**
      * Find borrow by borrower.
-     * 
-     * @param borrowerId
-     *            the borrower id
+     *
+     * @param borrowerId the borrower id
      * @return the list
      */
     public static List<Borrow> findBorrowByBorrower( final String borrowerId ) {
@@ -122,9 +115,8 @@ public final class Finder {
 
     /**
      * Find borrow by id.
-     * 
-     * @param id
-     *            the id
+     *
+     * @param id the id
      * @return the borrow
      */
     public static Borrow findBorrowById( final String id ) {
@@ -140,7 +132,7 @@ public final class Finder {
 
     /**
      * Find borrow waiting for administrator.
-     * 
+     *
      * @return the list
      */
     public static List<Borrow> findBorrowWaitingForAdministrator( ) {
@@ -155,9 +147,8 @@ public final class Finder {
 
     /**
      * Find equipment by id.
-     * 
-     * @param id
-     *            the id
+     *
+     * @param id the id
      * @return the equipment
      */
     public static Equipment findEquipmentById( final String id ) {
@@ -175,7 +166,7 @@ public final class Finder {
 
     /**
      * Find late borrow.
-     * 
+     *
      * @return the list
      */
     public static List<Borrow> findLateBorrow( ) {
@@ -193,9 +184,8 @@ public final class Finder {
 
     /**
      * Find person by id.
-     * 
-     * @param id
-     *            the id
+     *
+     * @param id the id
      * @return the person
      */
     public static Person findPersonById( final String id ) {
@@ -211,13 +201,10 @@ public final class Finder {
 
     /**
      * Checks if is borrowed.
-     * 
-     * @param equipmentsId
-     *            the equipments id
-     * @param start
-     *            the start
-     * @param end
-     *            the end
+     *
+     * @param equipmentsId the equipments id
+     * @param start the start
+     * @param end the end
      * @return true, if is borrowed
      */
     public static boolean isBorrowed( final List<String> equipmentsId,
@@ -242,12 +229,10 @@ public final class Finder {
 
     /**
      * Checks if is borrower.
-     * 
-     * @param id
-     *            the id
+     *
+     * @param id the id
      * @return true, if is borrower
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public static boolean isBorrower( final String id )
             throws InvalidParameterException {

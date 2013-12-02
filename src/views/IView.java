@@ -1,28 +1,25 @@
 
 package views;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Options;
+import java.util.List;
 
-import java.util.*;
-
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IView.
  */
 public interface IView {
 
     /**
-     * Action.
+     * Define options.
      *
-     * @param line
-     *            the line
+     * @return the list
      */
-  //  void action( String[] line );
+    // void action( String[] line );
 
     /**
      * Sets the options.
-     *
+     * 
      * @return the options
      */
-    List<Command> defineOptions();
+    List<Command> defineOptions( );
 }

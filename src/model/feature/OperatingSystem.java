@@ -15,31 +15,30 @@ import com.google.gson.internal.LinkedTreeMap;
 
 import config.Config;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class OperatingSystem.
  */
 public class OperatingSystem extends Feature implements model.finder.IString {
 
     // Cet attribut est chargé a l'aide d'un fichier de configuration JSON
-    /** The accetable value. */
+    /** The acceptable value. */
     private List<String> acceptableValue;
 
-    /** The Constant name. */
+    /** The name. */
     @Expose
     private final String name = "OperatingSystem";
 
     /**
      * Instantiates a new operating system.
      *
-     * @param os
-     *            the os
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @param os the os
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public OperatingSystem( final String os ) throws InvalidParameterException {
 
         // Definition de acceptableValue
-        this.setAcceptableValue(null);
+        this.setAcceptableValue( null );
         this.checkOS( os );
 
     }
@@ -47,17 +46,14 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     /**
      * Instantiates a new operating system.
      *
-     * @param os
-     *            the os
-     * @param typeMateriel
-     *            the type materiel
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @param os the os
+     * @param typeMateriel the type materiel
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public OperatingSystem( final String os, final String typeMateriel )
             throws InvalidParameterException {
 
-        this.setAcceptableValue(typeMateriel);
+        this.setAcceptableValue( typeMateriel );
         this.checkOS( os );
 
     }
@@ -65,10 +61,8 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     /**
      * Check os.
      *
-     * @param os
-     *            the os
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @param os the os
+     * @throws InvalidParameterException the invalid parameter exception
      */
     private void checkOS( final String os ) throws InvalidParameterException {
 
@@ -81,7 +75,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -92,15 +86,19 @@ public class OperatingSystem extends Feature implements model.finder.IString {
                         ( ( OperatingSystem ) obj ).getValue( ) );
     }
 
+    /* (non-Javadoc)
+     * @see model.IFeature#getInfo()
+     */
     @Override
     public String getInfo( ) {
 
-        return (String)((Map)Config.getConfiguration().get(Config.FEATURE)).get(this.name);
+        return ( String ) ( ( Map ) Config.getConfiguration( ).get(
+                Config.FEATURE ) ).get( this.name );
     }
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see model.IFeature#getName()
      */
     @Override
@@ -111,7 +109,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -124,7 +122,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see model.finder.IString#equals(model.finder.IString)
      */
     @Override
@@ -134,14 +132,12 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     }
 
     /**
-     * Sets the accetable value.
+     * Sets the acceptable value.
      *
-     * @param typeMateriel
-     *            the new accetable value
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @param typeMateriel the new acceptable value
+     * @throws InvalidParameterException the invalid parameter exception
      */
-    private void setAcceptableValue(final String typeMateriel)
+    private void setAcceptableValue( final String typeMateriel )
             throws InvalidParameterException {
 
         if( typeMateriel == null ) {
@@ -150,11 +146,13 @@ public class OperatingSystem extends Feature implements model.finder.IString {
             for( final Entry entry : ( Set<Entry> ) ( ( Map ) Config
                     .getConfiguration( ).get( Config.EQUIPMENT ) ).entrySet( ) ) {
 
-                if(  ( ( Map ) ( ( Map ) Config.getConfiguration( )
-                        .get( Config.EQUIPMENT ) ).get( entry.getKey( ) ) )
+                if( ( ( Map ) ( ( Map ) Config.getConfiguration( ).get(
+                        Config.EQUIPMENT ) ).get( entry.getKey( ) ) )
                         .get( this.name ) != null ) {
 
-                    fullList.addAll((List) ((Map) ((Map) Config.getConfiguration().get(Config.EQUIPMENT)).get(entry.getKey())).get(this.name));
+                    fullList.addAll( ( List ) ( ( Map ) ( ( Map ) Config
+                            .getConfiguration( ).get( Config.EQUIPMENT ) )
+                            .get( entry.getKey( ) ) ).get( this.name ) );
                 }
 
             }
@@ -182,14 +180,16 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
-        String template = (String)((Map)((Map)Config.getConfiguration().get("template")).get("features")).get(this.name);
-        template = template.replaceAll("\\{name\\}", this.name);
-        template = template.replaceAll("\\{value\\}", this.getValue());
+        String template = ( String ) ( ( Map ) ( ( Map ) Config
+                .getConfiguration( ).get( "template" ) ).get( "features" ) )
+                .get( this.name );
+        template = template.replaceAll( "\\{name\\}", this.name );
+        template = template.replaceAll( "\\{value\\}", this.getValue( ) );
 
         return template;
     }

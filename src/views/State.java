@@ -1,96 +1,108 @@
+
 package views;
 
-import model.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.util.*;
+import model.MiniProjectException;
+import model.SaveLoad;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class State.
  */
 public abstract class State implements IView {
 
-    /**
-     * Exit.
-     */
-    public void exit() {
-
-        SaveLoad.save();
-        System.exit(0);
-    }
-
     /*
-    * (non-Javadoc)
-    *
-    * @see views.IView#action(org.apache.commons.cli.CommandLine)
-    */
+     * (non-Javadoc)
+     *
+     * @see views.IView#action(org.apache.commons.cli.CommandLine)
+     */
     // @Override
-    public void action(final String[] line) {
+    /**
+     * Action.
+     *
+     * @param line the line
+     */
+    public void action( final String[ ] line ) {
 
-        if (line == null || line.length == 0) {
+        if( line == null || line.length == 0 ) {
             return;
         }
-        for (Command command : this.defineOptions()) {
+        for( final Command command : this.defineOptions( ) ) {
 
-            if (command.getName().equals(line[0])) {
+            if( command.getName( ).equals( line[ 0 ] ) ) {
 
                 try {
-                    command.invoke(line);
-                    return;
-                } catch (MiniProjectException e) {
-                    e.printStackTrace();
+                    command.invoke( line );
+                } catch( final MiniProjectException e ) {
+                    e.printStackTrace( );
                 }
 
+                return;
             }
 
         }
 
-        if (!line[0].equals("")) {
-            this.printHelp();
+        if( !line[ 0 ].equals( "" ) ) {
+            this.printHelp( );
         }
 
     }
 
     /*
- * (non-Javadoc)
- *
- * @see views.IView#defineOptions()
- */
+     * (non-Javadoc)
+     *
+     * @see views.IView#defineOptions()
+     */
     @Override
-    public List<Command> defineOptions() {
+    public List<Command> defineOptions( ) {
 
-        List<Command> commands = new ArrayList<>();
+        final List<Command> commands = new ArrayList<>( );
 
-        Command command1 = new Command("exit", new LinkedList<String>(), this, "exit", "descriptionHere");
-        Command command2 = new Command("help", new LinkedList<String>(), this, "printHelp", "descriptionHere");
+        final Command command1 = new Command( "exit",
+                new LinkedList<String>( ), this, "exit", "descriptionHere" );
+        final Command command2 = new Command( "help",
+                new LinkedList<String>( ), this, "printHelp", "descriptionHere" );
 
-        commands.add(command1);
-        commands.add(command2);
+        commands.add( command1 );
+        commands.add( command2 );
 
         return commands;
 
     }
 
     /**
-     * Intepreter.
+     * Exit.
+     */
+    public void exit( ) {
+
+        SaveLoad.save( );
+        System.exit( 0 );
+    }
+
+    /**
+     * Interpreter.
      *
      * @param line the line
      */
-    public void interpreter(final String line) {
+    public void interpreter( final String line ) {
 
-        this.action(line.split(" "));
+        this.action( line.split( " " ) );
 
     }
 
     /**
      * Prints the help.
      */
-    public void printHelp() {
+    public void printHelp( ) {
 
-        System.out.println("===== HELP ======\n");
-        for (Command command : this.defineOptions()) {
-            System.out.println(command);
+        System.out.println( "===== HELP ======\n" );
+        for( final Command command : this.defineOptions( ) ) {
+            System.out.println( command );
         }
-        System.out.println("=================\n");
+        System.out.println( "=================\n" );
     }
 
 }

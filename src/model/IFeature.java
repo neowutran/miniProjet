@@ -1,15 +1,16 @@
 
 package model;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IFeature.
  */
 public interface IFeature {
 
     /**
-     * Gets the infos.
+     * Gets the info.
      *
-     * @return the infos
+     * @return the info
      */
     String getInfo( );
 

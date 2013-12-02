@@ -1,6 +1,7 @@
 
 package model;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
@@ -44,10 +45,8 @@ public class User {
     /**
      * Login.
      *
-     * @param id
-     *            the id
-     * @param password
-     *            the password
+     * @param id the id
+     * @param password the password
      * @return true, if successful
      */
     public boolean login( final String id, final String password ) {
@@ -63,15 +62,17 @@ public class User {
         return false;
     }
 
-    public void logout(){
-        this.setPersonId(null);
+    /**
+     * Logout.
+     */
+    public void logout( ) {
+        this.setPersonId( null );
     }
 
     /**
      * Sets the person id.
      *
-     * @param personId
-     *            the new person id
+     * @param personId the new person id
      */
     private void setPersonId( final String personId ) {
 

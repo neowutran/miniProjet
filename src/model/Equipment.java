@@ -11,6 +11,7 @@ import com.google.gson.annotations.Expose;
 
 import config.Config;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Equipment.
  */
@@ -26,13 +27,10 @@ public class Equipment extends InventoryElement {
 
     /**
      * Instantiates a new equipment.
-     * 
-     * @param type
-     *            the type
-     * @param features
-     *            the features
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     *
+     * @param type the type
+     * @param features the features
+     * @throws MiniProjectException the mini project exception
      */
     public Equipment( final String type, final List<Feature> features )
             throws MiniProjectException {
@@ -48,6 +46,9 @@ public class Equipment extends InventoryElement {
 
     }
 
+    /* (non-Javadoc)
+     * @see model.person.InventoryElement#checkExistence(java.lang.String)
+     */
     @Override
     protected void checkExistence( final String id )
             throws MiniProjectException {
@@ -59,11 +60,9 @@ public class Equipment extends InventoryElement {
 
     /**
      * Check feature.
-     * 
-     * @param features
-     *            the features
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     *
+     * @param features the features
+     * @throws InvalidParameterException the invalid parameter exception
      */
     private void checkFeature( final List<Feature> features )
             throws InvalidParameterException {
@@ -88,11 +87,9 @@ public class Equipment extends InventoryElement {
 
     /**
      * Check type.
-     * 
-     * @param type
-     *            the type
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     *
+     * @param type the type
+     * @throws InvalidParameterException the invalid parameter exception
      */
     private void checkType( final String type )
             throws InvalidParameterException {
@@ -123,7 +120,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the features.
-     * 
+     *
      * @return the features
      */
     public List<model.Feature> getFeatures( ) {
@@ -148,11 +145,9 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the features.
-     * 
-     * @param features
-     *            the new features
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     *
+     * @param features the new features
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public void setFeatures( final List<model.Feature> features )
             throws InvalidParameterException {

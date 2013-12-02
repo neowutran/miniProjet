@@ -3,6 +3,7 @@ package model;
 
 import com.google.gson.annotations.Expose;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Feature.
  */
@@ -25,8 +26,7 @@ public abstract class Feature implements model.IFeature {
     /**
      * Sets the value.
      *
-     * @param value
-     *            the new value
+     * @param value the new value
      */
     protected void setValue( final String value ) {
 

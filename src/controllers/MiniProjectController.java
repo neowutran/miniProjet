@@ -22,7 +22,7 @@ public class MiniProjectController {
 
     /**
      * Gets the single instance of MiniProjectController.
-     *
+     * 
      * @return single instance of MiniProjectController
      */
     public static MiniProjectController getInstance( ) {
@@ -44,7 +44,7 @@ public class MiniProjectController {
             MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
                     .getStackTrace( ) ) );
         }
-        View.launch();
+        View.launch( );
 
     }
 

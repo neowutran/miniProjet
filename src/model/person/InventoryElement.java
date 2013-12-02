@@ -10,8 +10,9 @@ import com.google.gson.annotations.Expose;
 
 import config.Config;
 
+// TODO: Auto-generated Javadoc
 /**
- * Created by draragar on 30/11/13.
+ * The Class InventoryElement.
  */
 public abstract class InventoryElement {
 
@@ -19,6 +20,12 @@ public abstract class InventoryElement {
     @Expose
     private String id;
 
+    /**
+     * Check existence.
+     *
+     * @param id the id
+     * @throws MiniProjectException the mini project exception
+     */
     protected void checkExistence( final String id )
             throws MiniProjectException {
         throw new MiniProjectException( "Unimplemented" );
@@ -26,7 +33,7 @@ public abstract class InventoryElement {
 
     /**
      * Gets the id.
-     * 
+     *
      * @return the id
      */
     public String getId( ) {
@@ -36,9 +43,8 @@ public abstract class InventoryElement {
 
     /**
      * Sets the id.
-     * 
-     * @throws Exception
-     *             the exception
+     *
+     * @throws MiniProjectException the mini project exception
      */
     protected void setId( ) throws MiniProjectException {
 
@@ -59,9 +65,9 @@ public abstract class InventoryElement {
 
     /**
      * Sets the id.
-     * 
-     * @param id
-     *            the new id
+     *
+     * @param id the new id
+     * @throws MiniProjectException the mini project exception
      */
     public void setId( final String id ) throws MiniProjectException {
 

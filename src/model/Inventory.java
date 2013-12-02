@@ -8,6 +8,7 @@ import model.person.Borrower;
 
 import com.google.gson.annotations.Expose;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Inventory.
  */
@@ -18,7 +19,7 @@ public final class Inventory {
 
     /**
      * Gets the single instance of Inventory.
-     * 
+     *
      * @return single instance of Inventory
      */
     public static Inventory getInstance( ) {
@@ -45,9 +46,8 @@ public final class Inventory {
 
     /**
      * Adds the borrow.
-     * 
-     * @param borrow
-     *            the borrow
+     *
+     * @param borrow the borrow
      */
     public void addBorrow( final Borrower.Borrow borrow ) {
 
@@ -57,7 +57,7 @@ public final class Inventory {
 
     /**
      * Gets the borrows.
-     * 
+     *
      * @return the borrows
      */
     public List<Borrower.Borrow> getBorrows( ) {
@@ -67,7 +67,7 @@ public final class Inventory {
 
     /**
      * Gets the equipments.
-     * 
+     *
      * @return the equipments
      */
     public java.util.List<Equipment> getEquipments( ) {
@@ -77,9 +77,8 @@ public final class Inventory {
 
     /**
      * Sets the equipments.
-     * 
-     * @param equipments
-     *            the new equipments
+     *
+     * @param equipments the new equipments
      */
     public void setEquipments( final java.util.List<Equipment> equipments ) {
 

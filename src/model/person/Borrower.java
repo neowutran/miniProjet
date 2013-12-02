@@ -17,6 +17,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import config.Config;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
@@ -61,6 +62,14 @@ public abstract class Borrower extends model.Person {
 
         }
 
+        /**
+         * Instantiates a new borrow.
+         *
+         * @param equipments the equipments
+         * @param borrowStart the borrow start
+         * @param borrowEnd the borrow end
+         * @throws MiniProjectException the mini project exception
+         */
         private Borrow( final List<String> equipments,
                 final java.util.Calendar borrowStart,
                 final java.util.Calendar borrowEnd )
@@ -74,6 +83,9 @@ public abstract class Borrower extends model.Person {
 
         }
 
+        /* (non-Javadoc)
+         * @see model.person.InventoryElement#checkExistence(java.lang.String)
+         */
         @Override
         protected void checkExistence( final String id )
                 throws MiniProjectException {
@@ -146,10 +158,8 @@ public abstract class Borrower extends model.Person {
         /**
          * Sets the returned.
          *
-         * @param returned
-         *            the new returned
-         * @throws InvalidParameterException
-         *             the invalid parameter exception
+         * @param returned the new returned
+         * @throws InvalidParameterException the invalid parameter exception
          */
         public void setReturned( final Calendar returned )
                 throws InvalidParameterException {
@@ -162,6 +172,13 @@ public abstract class Borrower extends model.Person {
             this.state = State.RETURNED;
         }
 
+        /**
+         * Sets the state.
+         *
+         * @param state the state
+         * @param administrator the administrator
+         * @throws MiniProjectException the mini project exception
+         */
         public void setState( final model.State state,
                 final String administrator ) throws MiniProjectException {
 
@@ -215,14 +232,10 @@ public abstract class Borrower extends model.Person {
     /**
      * Instantiates a new borrower.
      *
-     * @param name
-     *            the name
-     * @param id
-     *            the id
-     * @param type
-     *            the type
-     * @param password
-     *            the password
+     * @param name the name
+     * @param id the id
+     * @param type the type
+     * @param password the password
      */
     public Borrower( final String name, final String id, final String type,
             final String password ) {
@@ -241,15 +254,11 @@ public abstract class Borrower extends model.Person {
     /**
      * Borrow.
      *
-     * @param equipment
-     *            the equipment
-     * @param start
-     *            the start
-     * @param end
-     *            the end
+     * @param equipment the equipment
+     * @param start the start
+     * @param end the end
      * @return the string
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
             final Calendar end ) throws InvalidParameterException {
@@ -266,6 +275,7 @@ public abstract class Borrower extends model.Person {
                 * this.maximumAdvanceDays;
         if( start.getTimeInMillis( ) - now.getTimeInMillis( ) > maximumAdvance
                 && this.maximumAdvanceDays != 0 ) {
+
             throw new InvalidParameterException(
                     "Vous ne pouvez pas borrow autant a l'avance, maximum: "
                             + this.maximumAdvanceDays + " jours" );

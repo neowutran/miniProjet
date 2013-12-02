@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Person.
  */
@@ -15,8 +16,7 @@ public abstract class Person {
     /**
      * Exist.
      *
-     * @param id
-     *            the id
+     * @param id the id
      * @return true, if successful
      */
     public static boolean exist( final String id ) {
@@ -65,14 +65,10 @@ public abstract class Person {
     /**
      * Instantiates a new person.
      *
-     * @param name
-     *            the name
-     * @param id
-     *            the id
-     * @param password
-     *            the password
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @param name the name
+     * @param id the id
+     * @param password the password
+     * @throws InvalidParameterException the invalid parameter exception
      */
     public Person( final String name, final String id, final String password )
             throws InvalidParameterException {
@@ -130,8 +126,7 @@ public abstract class Person {
     /**
      * Sets the id.
      *
-     * @param id
-     *            the new id
+     * @param id the new id
      */
     public void setId( final String id ) {
 
@@ -141,8 +136,7 @@ public abstract class Person {
     /**
      * Sets the name.
      *
-     * @param name
-     *            the new name
+     * @param name the new name
      */
     public void setName( final String name ) {
 
@@ -152,8 +146,7 @@ public abstract class Person {
     /**
      * Sets the password.
      *
-     * @param password
-     *            the new password
+     * @param password the new password
      */
     public void setPassword( final String password ) {
 
@@ -163,8 +156,7 @@ public abstract class Person {
     /**
      * Sets the type.
      *
-     * @param type
-     *            the new type
+     * @param type the new type
      */
     protected void setType( final String type ) {
 
@@ -173,16 +165,14 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
 
-        return "Person:\n"+
-                "\tname="+this.name+"\n"+
-                "\ttype="+this.type+"\n"+
-                "\tid="+this.id;
+        return "Person:\n" + "\tname=" + this.name + "\n" + "\ttype="
+                + this.type + "\n" + "\tid=" + this.id;
     }
 
 }

@@ -1,9 +1,11 @@
 
 package model.person;
 
-import controllers.*;
-import model.*;
+import model.MiniProjectException;
+import model.SaveLoad;
+import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Administrator.
  */
@@ -12,12 +14,9 @@ public class Administrator extends model.Person {
     /**
      * Instantiates a new administrator.
      *
-     * @param name
-     *            the name
-     * @param id
-     *            the id
-     * @param password
-     *            the password
+     * @param name the name
+     * @param id the id
+     * @param password the password
      */
     public Administrator( final String name, final String id,
             final String password ) {
@@ -28,10 +27,8 @@ public class Administrator extends model.Person {
     /**
      * Sets the borrow stat.
      *
-     * @param borrow
-     *            the borrow
-     * @param state
-     *            the state
+     * @param borrow the borrow
+     * @param state the state
      * @return true, if successful
      */
     public boolean setBorrowStat( final Borrower.Borrow borrow,

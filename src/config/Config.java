@@ -21,14 +21,14 @@ public final class Config {
     /** The Constant MAXIMUM_HOUR. */
     public static final String                   MAXIMUM_HOUR        = "maximum_hours";
 
-    public static final String                  FEATURE = "feature";
+    public static final String                   FEATURE             = "feature";
 
     /** The configuration. */
     private static java.util.Map<String, Object> configuration;
 
     /**
      * Gets the configuration.
-     *
+     * 
      * @return the configuration
      */
     public static java.util.Map<String, Object> getConfiguration( ) {
@@ -38,7 +38,7 @@ public final class Config {
 
     /**
      * Sets the configuration.
-     *
+     * 
      * @param configuration
      *            the configuration
      */
