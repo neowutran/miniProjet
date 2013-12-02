@@ -1,7 +1,6 @@
 
 package model;
 
-
 /**
  * The Enum State.
  */

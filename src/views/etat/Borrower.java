@@ -1,57 +1,40 @@
 
 package views.etat;
 
-import java.util.Collection;
+import java.util.*;
 
+import model.*;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 
-import views.State;
-import views.View;
+import views.*;
 
 /**
  * The Class Borrower.
  */
-public class Borrower extends State {
+public class Borrower extends User {
 
-    /* (non-Javadoc)
-     * @see views.IView#action(org.apache.commons.cli.CommandLine)
+    /*
+     * (non-Javadoc)
+     *
+     * @see views.IView#defineOptions()
      */
     @Override
-    public void action( final CommandLine line ) {
+    public List<Command> defineOptions() {
 
-        final boolean action = User.action( line );
-        if( action ) {
-            return;
-        }
+        List<Command> commands = new ArrayList<>();
 
-        if( !line.getArgList( ).isEmpty( )
-                && "borrow".equals( line.getArgList( ).get( 0 ) ) ) {
-            View.setState( new Borrow( ) );
-        } else if( line.hasOption( "help" ) ) {
-            this.printHelp( );
-        }
+        Command command1 = new Command("borrow", new LinkedList<String>(), this, "borrow", "descriptionHere");
+        commands.add(command1);
+        commands.addAll(super.defineOptions());
+
+        return commands;
 
     }
 
-    /* (non-Javadoc)
-     * @see views.IView#setOptions()
-     */
-    @Override
-    public Options setOptions( ) {
-
-        final Options options = new Options( );
-        options.addOption( OptionBuilder.withArgName( "borrow" ).hasArgs( )
-                .withValueSeparator( ).withDescription( "borrow" )
-                .create( "borrow" ) );
-
-        final Options userOptions = User.setOptions( );
-        for( final Option o : ( Collection<Option> ) userOptions.getOptions( ) ) {
-            options.addOption( o );
-        }
-
-        return options;
+    private void borrow(){
+        View.setState(new Borrow());
     }
 }

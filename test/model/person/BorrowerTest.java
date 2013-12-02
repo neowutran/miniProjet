@@ -30,51 +30,41 @@ public class BorrowerTest {
         } catch (IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | NoSuchMethodException
                 | SecurityException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
     @Test
-    public void testEmprunter() throws Exception {
+    public void testBorrow() throws Exception {
 
         Borrower e = new Student("Toto", "123", "pass");
         Feature c = new OperatingSystem("Windows");
-        List<Feature> caracteristiques = new ArrayList<>();
-        caracteristiques.add(c);
-        Equipment m = new Equipment("Tablette",caracteristiques);
-        Equipment m1 = new Equipment("Tablette",caracteristiques);
-        Equipment m2 = new Equipment("Tablette",caracteristiques);
-        Equipment m3 = new Equipment("Tablette",caracteristiques);
-        Equipment m4 = new Equipment("Tablette",caracteristiques);
-        Equipment m5 = new Equipment("Tablette",caracteristiques);
-        Equipment m6 = new Equipment("Tablette",caracteristiques);
-        Equipment m7 = new Equipment("Tablette",caracteristiques);
-        Equipment m8 = new Equipment("Tablette",caracteristiques);
-
-
-        List<Equipment> materiels = new ArrayList<>();
-        materiels.add(m);
-        materiels.add(m1);
-
-        Inventory.getInstance().setEquipments(materiels);
+        List<Feature> features = new ArrayList<>();
+        features.add(c);
+        Equipment m = new Equipment("Tablette",features);
+        Equipment m1 = new Equipment("Tablette",features);
+        Equipment m2 = new Equipment("Tablette",features);
+        Equipment m3 = new Equipment("Tablette",features);
+        Equipment m4 = new Equipment("Tablette",features);
+        Equipment m5 = new Equipment("Tablette",features);
+        Equipment m6 = new Equipment("Tablette",features);
+        Equipment m7 = new Equipment("Tablette",features);
+        Equipment m8 = new Equipment("Tablette",features);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2013,10,3);
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(2013,10,6);
 
-        Borrow retour = null;
-        Borrow retour2 = null;
+        Borrow return1;
+        Borrow return2;
 
-        List<String> materielEmprunt1 = new ArrayList<>();
-        materielEmprunt1.add(m.getId());
-        materielEmprunt1.add(m1.getId());
+        List<String> equipmentBorrow = new ArrayList<>();
+        equipmentBorrow.add(m.getId());
+        equipmentBorrow.add(m1.getId());
         try{
-            retour = Finder.findBorrowById(e.borrow(materielEmprunt1, calendar, calendar2));
-
-            SaveLoad.save("data.json");
-            retour2 = Finder.findBorrowById(e.borrow(materielEmprunt1, calendar, calendar2));
+            return1 = Finder.findBorrowById(e.borrow(equipmentBorrow, calendar, calendar2));
+            return2 = Finder.findBorrowById(e.borrow(equipmentBorrow, calendar, calendar2));
 
         }catch(Exception exception){
 
@@ -84,12 +74,12 @@ public class BorrowerTest {
 
         }
 
-        Administrator gestionnaire = new Administrator("Alain", "1", "pass");
-        retour.setState(State.ACCEPT, gestionnaire.getId());
+        Administrator administrator = new Administrator("Alain", "1", "pass");
+        return1.setState(State.ACCEPT, administrator.getId());
 
         try{
 
-            retour2.setState(State.ACCEPT, gestionnaire.getId());
+            return2.setState(State.ACCEPT, administrator.getId());
             Assert.assertThat(true, CoreMatchers.equalTo(false));
 
         }catch (Exception exception){

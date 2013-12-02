@@ -4,7 +4,8 @@ package model;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
+import model.person.InventoryElement;
 
 import com.google.gson.annotations.Expose;
 
@@ -13,7 +14,7 @@ import config.Config;
 /**
  * The Class Equipment.
  */
-public class Equipment {
+public class Equipment extends InventoryElement {
 
     /** The type. */
     @Expose
@@ -23,13 +24,9 @@ public class Equipment {
     @Expose
     private List<Feature> features;
 
-    /** The id. */
-    @Expose
-    private String        id;
-
     /**
      * Instantiates a new equipment.
-     *
+     * 
      * @param type
      *            the type
      * @param features
@@ -38,7 +35,7 @@ public class Equipment {
      *             the invalid parameter exception
      */
     public Equipment( final String type, final List<Feature> features )
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         this.checkType( type );
         this.checkFeature( features );
@@ -51,9 +48,18 @@ public class Equipment {
 
     }
 
+    @Override
+    protected void checkExistence( final String id )
+            throws MiniProjectException {
+        if( Finder.findEquipmentById( id ) != null ) {
+            throw new InvalidParameterException(
+                    "This equipment already exist!" );
+        }
+    }
+
     /**
      * Check feature.
-     *
+     * 
      * @param features
      *            the features
      * @throws InvalidParameterException
@@ -62,7 +68,7 @@ public class Equipment {
     private void checkFeature( final List<Feature> features )
             throws InvalidParameterException {
 
-        if( ( null == features ) || features.isEmpty( ) ) {
+        if( null == features || features.isEmpty( ) ) {
             return;
         }
         for( final Feature feature : features ) {
@@ -82,7 +88,7 @@ public class Equipment {
 
     /**
      * Check type.
-     *
+     * 
      * @param type
      *            the type
      * @throws InvalidParameterException
@@ -104,7 +110,7 @@ public class Equipment {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -117,7 +123,7 @@ public class Equipment {
 
     /**
      * Gets the features.
-     *
+     * 
      * @return the features
      */
     public List<model.Feature> getFeatures( ) {
@@ -125,34 +131,24 @@ public class Equipment {
         return this.features;
     }
 
-    /**
-     * Gets the id.
-     *
-     * @return the id
-     */
-    public String getId( ) {
-
-        return this.id;
-    }
-
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
     public int hashCode( ) {
 
         int result = this.type.hashCode( );
-        result = ( 31 * result )
+        result = 31 * result
                 + ( this.features != null ? this.features.hashCode( ) : 0 );
-        result = ( 31 * result ) + this.id.hashCode( );
+        result = 31 * result + this.getId( ).hashCode( );
         return result;
     }
 
     /**
      * Sets the features.
-     *
+     * 
      * @param features
      *            the new features
      * @throws InvalidParameterException
@@ -164,39 +160,16 @@ public class Equipment {
         this.checkFeature( features );
     }
 
-    /**
-     * Sets the id.
-     */
-    private void setId( ) {
-
-        do {
-            // Possibilité de boucle "infini" ici. Tres TRES peu probable, et
-            // pour l'interet du projet, flemme de reflechir a un correctif.
-            this.id = UUID.randomUUID( ).toString( );
-        } while( Finder.findEquipmentById( this.id ) != null );
-
-    }
-
-    /**
-     * Sets the id.
-     *
-     * @param id
-     *            the new id
-     */
-    public void setId( final String id ) {
-        this.id = id;
-    }
-
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
 
-        return "Materiel{\n" + "\ttype='" + this.type + "\'\n" + "\tattributs="
-                + this.features + ",\n" + "\tid='" + this.id + "\'\n" + "}\n";
+        return "Equipment :\n" + "\ttype=" + this.type + "\n" + "\tfeatures="
+                + this.features + "\n" + "\tid=" + this.getId( ) + "\n";
     }
 
 }

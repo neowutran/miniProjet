@@ -35,7 +35,16 @@
             "maximum_hours": 2000
         }
     },
-    "data_file":"MiniProject/data.json"
+    "feature":{
+        "OperatingSystem" : "Operating system"
+    },
+    "template":{
+      "features":{
+          "OperatingSystem": "{name} : {value}"
+      }
+    },
+    "data_file":"MiniProject/data.json",
+    "random_counter":1000
 
 
 }

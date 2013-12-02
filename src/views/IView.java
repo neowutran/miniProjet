@@ -4,6 +4,8 @@ package views;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
 
+import java.util.*;
+
 /**
  * The Interface IView.
  */
@@ -15,12 +17,12 @@ public interface IView {
      * @param line
      *            the line
      */
-    void action( CommandLine line );
+  //  void action( String[] line );
 
     /**
      * Sets the options.
      *
      * @return the options
      */
-    Options setOptions( );
+    List<Command> defineOptions();
 }

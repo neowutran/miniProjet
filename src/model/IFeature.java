@@ -11,7 +11,7 @@ public interface IFeature {
      *
      * @return the infos
      */
-    String getInfos( );
+    String getInfo( );
 
     /**
      * Gets the name.

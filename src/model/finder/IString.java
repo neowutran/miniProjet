@@ -8,7 +8,7 @@ public interface IString {
 
     /**
      * Checks if is equals.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if is equals

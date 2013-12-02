@@ -2,12 +2,13 @@
 package model.person;
 
 import java.security.InvalidParameterException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
 
 import model.Finder;
 import model.Inventory;
+import model.MiniProjectException;
 import model.State;
 
 import com.google.gson.annotations.Expose;
@@ -15,7 +16,6 @@ import com.google.gson.internal.LinkedTreeMap;
 
 import config.Config;
 import controllers.MiniProjectController;
-
 
 /**
  * The Class Borrower.
@@ -25,11 +25,7 @@ public abstract class Borrower extends model.Person {
     /**
      * The Class Borrow.
      */
-    public final class Borrow {
-
-        /** The id. */
-        @Expose
-        private String             id;
+    public final class Borrow extends InventoryElement {
 
         /** The equipment id. */
         @Expose
@@ -65,17 +61,10 @@ public abstract class Borrower extends model.Person {
 
         }
 
-        /**
-         * Instantiates a new borrow.
-         *
-         * @param equipments the equipments
-         * @param borrowStart the borrow start
-         * @param borrowEnd the borrow end
-         * @throws Exception the exception
-         */
         private Borrow( final List<String> equipments,
                 final java.util.Calendar borrowStart,
-                final java.util.Calendar borrowEnd ) throws Exception {
+                final java.util.Calendar borrowEnd )
+                throws MiniProjectException {
 
             this.equipmentId = equipments;
             this.borrowerId = Borrower.this.getId( );
@@ -83,6 +72,15 @@ public abstract class Borrower extends model.Person {
             this.borrowEnd = borrowEnd;
             this.setId( );
 
+        }
+
+        @Override
+        protected void checkExistence( final String id )
+                throws MiniProjectException {
+            if( Finder.findBorrowById( id ) != null ) {
+                throw new InvalidParameterException(
+                        "this borrow already exist" );
+            }
         }
 
         /**
@@ -126,16 +124,6 @@ public abstract class Borrower extends model.Person {
         }
 
         /**
-         * Gets the id.
-         *
-         * @return the id
-         */
-        public String getId( ) {
-
-            return this.id;
-        }
-
-        /**
          * Gets the returned.
          *
          * @return the returned
@@ -156,42 +144,12 @@ public abstract class Borrower extends model.Person {
         }
 
         /**
-         * Sets the id.
-         *
-         * @throws Exception the exception
-         */
-        private void setId( ) throws Exception {
-
-            // TODO mettre cette valeur en fichier de config
-            Integer maxCounter = 1000;
-            do {
-
-                if( maxCounter == 0 ) {
-                    throw new Exception(
-                            "The random generator isn't enough random anymore" );
-                }
-                maxCounter--;
-                this.id = UUID.randomUUID( ).toString( );
-
-            } while( Finder.findEquipmentById( this.id ) != null );
-
-        }
-
-        /**
-         * Sets the id.
-         *
-         * @param id the new id
-         */
-        public void setId( final String id ) {
-
-            this.id = id;
-        }
-
-        /**
          * Sets the returned.
          *
-         * @param returned the new returned
-         * @throws InvalidParameterException the invalid parameter exception
+         * @param returned
+         *            the new returned
+         * @throws InvalidParameterException
+         *             the invalid parameter exception
          */
         public void setReturned( final Calendar returned )
                 throws InvalidParameterException {
@@ -204,15 +162,8 @@ public abstract class Borrower extends model.Person {
             this.state = State.RETURNED;
         }
 
-        /**
-         * Sets the state.
-         *
-         * @param state the state
-         * @param administrator the administrator
-         * @throws Exception the exception
-         */
         public void setState( final model.State state,
-                final String administrator ) throws Exception {
+                final String administrator ) throws MiniProjectException {
 
             if( this.state.equals( state ) ) {
                 return;
@@ -221,7 +172,8 @@ public abstract class Borrower extends model.Person {
                     && Finder.isBorrowed( this.getEquipmentId( ),
                             this.getBorrowStart( ), this.getBorrowEnd( ) ) ) {
 
-                throw new Exception( "Le materiel n'est plus disponible" );
+                throw new MiniProjectException(
+                        "Le materiel n'est plus disponible" );
 
             }
 
@@ -229,18 +181,27 @@ public abstract class Borrower extends model.Person {
             this.administratorId = administrator;
         }
 
-        /* (non-Javadoc)
+        /*
+         * (non-Javadoc)
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString( ) {
 
-            return "Emprunt{" + "id='" + this.id + '\'' + ", equipmentId="
-                    + this.equipmentId + ", borrowerId='" + this.borrowerId
-                    + '\'' + ", administratorId='" + this.administratorId
-                    + '\'' + ", state=" + this.state + ", borrowStart="
-                    + this.borrowStart + ", borrowEnd=" + this.borrowEnd
-                    + ", returned=" + this.returned + '}';
+            final SimpleDateFormat format = new SimpleDateFormat(
+                    "yyyy-MM-dd HH:mm" );
+
+            return "Borrow:\n" + "\tequipmentId=" + this.getEquipmentId( )
+                    + "\n" + "\tborrowerId=" + this.getBorrowerId( ) + "\n"
+                    + "\tadministratorId=" + this.administratorId + "\n"
+                    + "\tstate=" + this.state + "\n" + "\tborrowStart="
+                    + format.format( this.borrowStart.getTime( ) ) + "\n"
+                    + "\tborrowEnd="
+                    + format.format( this.borrowEnd.getTime( ) ) + "\n"
+                    + "\treturned=" + this.returned + "\n" + "\tid="
+                    + this.getId( ) + "\n";
+
         }
 
     }
@@ -254,10 +215,14 @@ public abstract class Borrower extends model.Person {
     /**
      * Instantiates a new borrower.
      *
-     * @param name the name
-     * @param id the id
-     * @param type the type
-     * @param password the password
+     * @param name
+     *            the name
+     * @param id
+     *            the id
+     * @param type
+     *            the type
+     * @param password
+     *            the password
      */
     public Borrower( final String name, final String id, final String type,
             final String password ) {
@@ -265,29 +230,31 @@ public abstract class Borrower extends model.Person {
         super( name, id, password );
         this.setType( type );
         this.maximumAdvanceDays = ( ( Double ) ( ( LinkedTreeMap ) ( ( LinkedTreeMap ) Config
-                .getConfiguration().get( Config.BORROWER ) ).get( this
-                .getType() ) ).get( Config.MAXIMUM_ADVANCE_DAY ) ).longValue( );
+                .getConfiguration( ).get( Config.BORROWER ) ).get( this
+                .getType( ) ) ).get( Config.MAXIMUM_ADVANCE_DAY ) ).longValue( );
         this.maximumHours = ( ( Double ) ( ( LinkedTreeMap ) ( ( LinkedTreeMap ) Config
-                .getConfiguration().get( Config.BORROWER ) ).get( this
-                .getType() ) ).get( Config.MAXIMUM_HOUR ) ).longValue( );
+                .getConfiguration( ).get( Config.BORROWER ) ).get( this
+                .getType( ) ) ).get( Config.MAXIMUM_HOUR ) ).longValue( );
 
     }
 
     /**
      * Borrow.
      *
-     * @param equipment the equipment
-     * @param start the start
-     * @param end the end
+     * @param equipment
+     *            the equipment
+     * @param start
+     *            the start
+     * @param end
+     *            the end
      * @return the string
-     * @throws InvalidParameterException the invalid parameter exception
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
             final Calendar end ) throws InvalidParameterException {
 
-        if( start.getTimeInMillis( ) >= end.getTimeInMillis( )
-                || start.getTimeInMillis( ) > Calendar.getInstance( )
-                        .getTimeInMillis( ) ) {
+        if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
             throw new InvalidParameterException( "Date invalide" );
         }
         if( Finder.isBorrowed( equipment, start, end ) ) {
@@ -313,12 +280,12 @@ public abstract class Borrower extends model.Person {
         }
 
         // TODO calcul de durée autorisé
-        Borrow borrow = null;
+        Borrow borrow;
         try {
             borrow = new Borrow( equipment, start, end );
         } catch( final Exception e ) {
             MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
-                    .getStackTrace() ) );
+                    .getStackTrace( ) ) );
             return null;
         }
         Inventory.getInstance( ).addBorrow( borrow );

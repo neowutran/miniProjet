@@ -8,7 +8,7 @@ public interface IInteger {
 
     /**
      * Greater than.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if successful
@@ -17,7 +17,7 @@ public interface IInteger {
 
     /**
      * Greater than or equals.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if successful
@@ -26,7 +26,7 @@ public interface IInteger {
 
     /**
      * Checks if is equals.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if is equals
@@ -35,7 +35,7 @@ public interface IInteger {
 
     /**
      * Lesser than.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if successful
@@ -44,7 +44,7 @@ public interface IInteger {
 
     /**
      * Lesser than or equals.
-     *
+     * 
      * @param object
      *            the object
      * @return true, if successful

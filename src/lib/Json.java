@@ -16,7 +16,7 @@ public final class Json {
 
     /**
      * Load file.
-     *
+     * 
      * @param file
      *            the file
      * @return the map

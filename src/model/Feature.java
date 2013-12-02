@@ -17,7 +17,7 @@ public abstract class Feature implements model.IFeature {
      *
      * @return the value
      */
-    protected Object getValue( ) {
+    protected String getValue( ) {
 
         return this.value;
     }

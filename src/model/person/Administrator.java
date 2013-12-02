@@ -1,7 +1,8 @@
 
 package model.person;
 
-import model.SaveLoad;
+import controllers.*;
+import model.*;
 
 /**
  * The Class Administrator.
@@ -11,9 +12,12 @@ public class Administrator extends model.Person {
     /**
      * Instantiates a new administrator.
      *
-     * @param name the name
-     * @param id the id
-     * @param password the password
+     * @param name
+     *            the name
+     * @param id
+     *            the id
+     * @param password
+     *            the password
      */
     public Administrator( final String name, final String id,
             final String password ) {
@@ -24,8 +28,10 @@ public class Administrator extends model.Person {
     /**
      * Sets the borrow stat.
      *
-     * @param borrow the borrow
-     * @param state the state
+     * @param borrow
+     *            the borrow
+     * @param state
+     *            the state
      * @return true, if successful
      */
     public boolean setBorrowStat( final Borrower.Borrow borrow,
@@ -33,7 +39,9 @@ public class Administrator extends model.Person {
 
         try {
             borrow.setState( state, this.getId( ) );
-        } catch( final Exception e ) {
+        } catch( final MiniProjectException e ) {
+            MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
+                    .getStackTrace( ) ) );
             return false;
         }
 

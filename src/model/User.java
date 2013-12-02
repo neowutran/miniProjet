@@ -63,6 +63,10 @@ public class User {
         return false;
     }
 
+    public void logout(){
+        this.setPersonId(null);
+    }
+
     /**
      * Sets the person id.
      *

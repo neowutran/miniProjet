@@ -13,23 +13,10 @@ import views.etat.Main;
  */
 public class View {
 
-    /** The instance. */
-    private static View  instance = null;
 
     /** The state. */
-    private static State state    = new Main( );
+    private static State state    = new Main();
 
-    /**
-     * Gets the single instance of View.
-     *
-     * @return single instance of View
-     */
-    public static View getInstance( ) {
-        if( View.instance == null ) {
-            View.instance = new View( );
-        }
-        return View.instance;
-    }
 
     /**
      * Gets the state.
@@ -38,7 +25,7 @@ public class View {
      */
     public static State getState( ) {
 
-        return View.state;
+        return state;
     }
 
     /**
@@ -47,29 +34,29 @@ public class View {
      * @param state
      *            the new state
      */
-    public static void setState( final State state ) {
-
+    public static void setState( State state ) {
         View.state = state;
-
     }
+
 
     /**
      * Instantiates a new view.
      */
-    protected View( ) {
-        this.readLine( );
+    public static void launch( ) {
+        System.out.println("Welcome to miniProject version 0.1 (pray for not having a bug)");
+        readLine();
     }
 
     /**
      * Read line.
      */
-    private void readLine( ) {
+    private static void readLine( ) {
 
         while( true ) {
 
             final Scanner scanner = new Scanner( System.in );
             final String line = scanner.nextLine( );
-            View.state.interpreter(line);
+            state.interpreter( line );
 
         }
 

@@ -21,6 +21,8 @@ public final class Config {
     /** The Constant MAXIMUM_HOUR. */
     public static final String                   MAXIMUM_HOUR        = "maximum_hours";
 
+    public static final String                  FEATURE = "feature";
+
     /** The configuration. */
     private static java.util.Map<String, Object> configuration;
 

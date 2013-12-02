@@ -1,160 +1,123 @@
-
 package views.etat;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import model.*;
+import views.*;
+import views.State;
 
-import model.Finder;
-import model.Inventory;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionBuilder;
-import org.apache.commons.cli.Options;
-
-import views.View;
+import java.util.*;
 
 /**
  * The Class User.
  */
-public final class User {
+public abstract class User extends State {
 
-    /**
-     * Action.
-     *
-     * @param line
-     *            the line
-     * @return true, if successful
-     */
-    public static boolean action( final CommandLine line ) {
+    private void logout() {
 
-        if( line.getArgList( ).isEmpty( ) ) {
-            return false;
+        model.User.getInstance().logout();
+        View.setState(new Main());
+        System.out.println("logged out");
+    }
+
+    private void find() {
+
+        View.setState(new Find());
+    }
+
+    private void list_borrow() {
+
+        System.out.println(Inventory.getInstance().getBorrows());
+    }
+
+    private void list_equipment() {
+
+        System.out.println(Inventory.getInstance().getEquipments());
+    }
+
+    @Override
+    public List<Command> defineOptions() {
+
+        List<Command> commands = new ArrayList<>();
+
+        Command command3 = new Command("logout", new LinkedList<String>(), this, "logout", "descriptionHere");
+        Command command4 = new Command("list_borrow", new LinkedList<String>(), this, "list_borrow", "descriptionHere");
+        Command command5 = new Command("list_equipment", new LinkedList<String>(), this, "list_equipment", "descriptionHere");
+
+        List<String> args6 = new LinkedList<>();
+        args6.add("borrowId");
+        Command command6 = new Command("show_borrow", args6, this, "show_borrow", "descriptionHere");
+
+        List<String> args7 = new LinkedList<>();
+        args7.add("equipmentId");
+        Command command7 = new Command("show_equipment", args7, this, "show_equipment", "descriptionHere");
+
+        List<String> args8 = new LinkedList<>();
+        args8.add("personId");
+        Command command8 = new Command("show_person", args8, this, "show_person", "descriptionHere");
+
+        List<String> args9 = new LinkedList<>();
+        args9.add("dd/MM/yyyy start");
+        args9.add("hh:mm start");
+        args9.add("dd/MM/yyyy end");
+        args9.add("hh:mm end");
+        Command command9 = new Command("list_available_equipment", args9, this, "list_available_equipment", "descriptionHere");
+
+        Command command10 = new Command("find", new LinkedList<String>(), this, "find", "descriptionHere");
+
+        commands.add(command3);
+        commands.add(command4);
+        commands.add(command5);
+        commands.add(command6);
+        commands.add(command7);
+        commands.add(command8);
+        commands.add(command9);
+        commands.add(command10);
+
+        commands.addAll(super.defineOptions());
+
+        return commands;
+    }
+
+    private void show_borrow(String id) {
+
+        System.out.println(Finder.findBorrowById(id));
+
+    }
+
+    private void show_equipment(String id) {
+
+        System.out.println(Finder.findEquipmentById(id));
+
+    }
+
+    private void show_person(String id) {
+
+        System.out.println(Finder.findPersonById(id));
+
+    }
+
+    private void list_available_equipment(String startDayMonthYear, String startHourMinute, String endDayMonthYear, String endHourMinute ) {
+
+        final Calendar start = Calendar.getInstance();
+        final Calendar end = Calendar.getInstance();
+
+        final String[] stringStartDayMonthYear = startDayMonthYear.split("/");
+        final String[] stringStartHourMinute = startHourMinute.split(":");
+
+        final String[] stringEndDayMonthYear = endDayMonthYear.split("/");
+        final String[] stringEndHourMinute = endHourMinute.split(":");
+
+        if (stringEndDayMonthYear.length != 3 || stringEndHourMinute.length != 2 || stringStartDayMonthYear.length != 3 || stringStartHourMinute.length != 2) {
+            this.printHelp();
+            return;
         }
-        boolean action = true;
 
-        switch( ( String ) line.getArgList( ).get( 0 ) ) {
-        case "list_borrow":
-            System.out.println( Inventory.getInstance( ).getBorrows( ) );
-            break;
-        case "list_equipment":
-            System.out.println( Inventory.getInstance( ).getEquipments( ) );
-            break;
-        case "show_borrow":
-            if( line.getArgList( ).size( ) != 2 ) {
-                System.out.println( "Usage: show_borrow <id_borrow>" );
-            } else {
-                final String id = ( String ) line.getArgList( ).get( 1 );
-                System.out.println( Finder.findBorrowById( id ) );
-            }
-            break;
-        case "show_equipment":
-            if( line.getArgList( ).size( ) != 2 ) {
-                System.out.println( "Usage: show_equipment <id_equipment>" );
-            } else {
-                final String id = ( String ) line.getArgList( ).get( 1 );
-                System.out.println( Finder.findEquipmentById( id ) );
-            }
-            break;
-        case "show_person":
-            if( line.getArgList( ).size( ) != 2 ) {
-                System.out.println( "Usage: show_person <id_person>" );
-            } else {
-                final String id = ( String ) line.getArgList( ).get( 1 );
-                System.out.println( Finder.findPersonById( id ) );
-            }
-            break;
-        case "find":
-            View.setState( new Find( ) );
-            break;
-        case "list_available_equipment":
+        start.set(Integer.valueOf(stringStartDayMonthYear[2]), Integer.valueOf(stringStartDayMonthYear[1]), Integer.valueOf(stringStartDayMonthYear[0]), Integer.valueOf(stringStartHourMinute[0]), Integer.valueOf(stringStartHourMinute[1]), 0);
 
-            if( line.getArgList( ).size( ) != 3 ) {
-                System.out
-                        .println("Usage: list_available_equipment <calendar> <calendar>");
-            } else {
-                final Calendar start = Calendar.getInstance( );
-                final Calendar end = Calendar.getInstance( );
+        end.set(Integer.valueOf(stringEndDayMonthYear[2]), Integer.valueOf(stringEndDayMonthYear[1]), Integer.valueOf(stringEndDayMonthYear[0]), Integer.valueOf(stringEndHourMinute[0]), Integer.valueOf(stringEndHourMinute[1]), 0);
 
-                final String id = ( String ) line.getArgList( ).get( 1 );
-                System.out.println( Finder.findPersonById( id ) );
-
-                final String stringStart = ( String ) line.getArgList( )
-                        .get(1);
-                final String stringEnd = ( String ) line.getArgList( ).get( 2 );
-
-                final DateFormat formatter = new SimpleDateFormat( "dd/MM/yy" );
-                Date dateStart = null;
-                Date dateEnd = null;
-                try {
-                    dateStart = formatter.parse( stringStart );
-                    dateEnd = formatter.parse( stringEnd );
-                } catch( final ParseException e ) {
-                    e.printStackTrace( );
-                }
-
-                start.setTime( dateStart );
-                end.setTime( dateEnd );
-
-                System.out.println( Finder.findAvailable( start, end ) );
-            }
-
-            break;
-        default:
-            action = false;
-            break;
-        }
-
-        return action;
+        System.out.println(Finder.findAvailable(start, end));
     }
 
-    /**
-     * Sets the options.
-     *
-     * @return the options
-     */
-    public static Options setOptions( ) {
-
-        final Options options = new Options( );
-        options.addOption( OptionBuilder.withLongOpt( "exit" ).create( ) );
-        options.addOption( OptionBuilder.withArgName( "list_borrow" ).hasArgs( )
-                .withValueSeparator().withDescription( "list des emprunts" )
-                .create("list_borrow") );
-        options.addOption( OptionBuilder.withArgName( "list_materiel" )
-                .hasArgs().withValueSeparator( )
-                .withDescription("list du materiel")
-                .create("list_equipment") );
-        options.addOption( OptionBuilder.withArgName( "show_borrow" )
-                .hasArgs(1).withValueSeparator( )
-                .withDescription("affiche un emprunt par son id")
-                .create("show_borrow") );
-        options.addOption( OptionBuilder.withArgName( "show_equipment" )
-                .hasArgs(1).withValueSeparator( )
-                .withDescription("affiche un materiel par son id")
-                .create("show_equipment") );
-        options.addOption( OptionBuilder.withArgName( "show_person" )
-                .hasArgs(1).withValueSeparator( )
-                .withDescription("affiche une person par son id")
-                .create("show_person") );
-        options.addOption( OptionBuilder
-                .withArgName("list_available_equipment")
-                .hasArgs(2)
-                .withValueSeparator()
-                .withDescription("affiche la liste des equipement disponible entre deux dates")
-                .create("list_available_equipment") );
-        final Option help = new Option( "help", "help" );
-        options.addOption( help );
-
-        return options;
-    }
-
-    /**
-     * Instantiates a new user.
-     */
-    private User( ) {
-
-    }
 }
+
+

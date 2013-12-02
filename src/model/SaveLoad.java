@@ -110,13 +110,13 @@ public final class SaveLoad {
 
     /** The Constant DATA. */
     public static final String DATA                      = ( String ) ( ( Map ) config.Config
-                                                                 .getConfiguration() )
-                                                                 .get("data_file");
+                                                                 .getConfiguration( ) )
+                                                                 .get( "data_file" );
 
     /**
      * Gets the state.
-     *
-    * @return the state
+     * 
+     * @return the state
      */
     private static String getState( ) {
 
@@ -133,20 +133,20 @@ public final class SaveLoad {
 
     /**
      * Load.
-     *
+     * 
      * @param file
      *            the file
      * @throws Exception
      *             the exception
      */
-    public static void load( final String file ) throws Exception {
+    public static void load( final String file ) throws MiniProjectException {
 
         final Path path = Paths.get( file );
         final Map data = Json.loadFile( path );
         final List<Map> equipments = ( List<Map> ) ( ( Map ) data
-                .get( SaveLoad.INVENTORY ) ).get(SaveLoad.INVENTORY_EQUIPMENT);
+                .get( SaveLoad.INVENTORY ) ).get( SaveLoad.INVENTORY_EQUIPMENT );
         final List<Map> borrows = ( List<Map> ) ( ( Map ) data
-                .get( SaveLoad.INVENTORY ) ).get(SaveLoad.INVENTORY_BORROW);
+                .get( SaveLoad.INVENTORY ) ).get( SaveLoad.INVENTORY_BORROW );
         final List<Map> persons = ( List<Map> ) data.get( SaveLoad.PERSON );
 
         for( final Map person : persons ) {
@@ -169,7 +169,7 @@ public final class SaveLoad {
                         ( String ) person.get( SaveLoad.PASSWORD ) );
                 break;
             default:
-                throw new Exception( "cannot create this person" );
+                throw new MiniProjectException( "cannot create this person" );
 
             }
 
@@ -189,12 +189,15 @@ public final class SaveLoad {
                 try {
                     final Class featureClass = Class
                             .forName( SaveLoad.PACKAGE_FEATURE + name );
-                    final Feature c = ( Feature ) featureClass.getConstructor(String.class, String.class).newInstance(value, type);
+                    final Feature c = ( Feature ) featureClass.getConstructor(
+                            String.class, String.class ).newInstance( value,
+                            type );
                     listFeatures.add( c );
                 } catch( ClassNotFoundException | InstantiationException
                         | NoSuchMethodException | InvocationTargetException
                         | IllegalAccessException e ) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
+                    MiniProjectController.LOGGER.severe( java.util.Arrays
+                            .toString( e.getStackTrace( ) ) );
 
                 }
 
@@ -273,7 +276,8 @@ public final class SaveLoad {
                     borrowObject.setState( State.valueOf( state ),
                             administrator );
                 } catch( final Exception e ) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
+                    MiniProjectController.LOGGER.severe( java.util.Arrays
+                            .toString( e.getStackTrace( ) ) );
 
                 }
 
@@ -292,7 +296,7 @@ public final class SaveLoad {
 
     /**
      * Save.
-     *
+     * 
      * @param file
      *            the file
      */
@@ -307,7 +311,8 @@ public final class SaveLoad {
 
         } catch( final IOException e ) {
 
-            MiniProjectController.LOGGER.severe( java.util.Arrays.toString(e.getStackTrace()) );
+            MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
+                    .getStackTrace( ) ) );
 
         }
 

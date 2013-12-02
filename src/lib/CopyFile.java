@@ -18,7 +18,7 @@ public final class CopyFile {
 
     /**
      * Copy file.
-     *
+     * 
      * @param sources
      *            the sources
      * @param destination
@@ -40,7 +40,7 @@ public final class CopyFile {
         } catch( final java.io.IOException ex ) {
             MiniProjectController.LOGGER.severe( java.util.Arrays.toString( ex
                     .getStackTrace( ) ) );
-            System.exit( 0 );
+
         }
     }
 

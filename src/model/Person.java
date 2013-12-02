@@ -1,7 +1,6 @@
 
 package model;
 
-
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,8 +179,10 @@ public abstract class Person {
     @Override
     public String toString( ) {
 
-        return "Personne{" + "name='" + this.name + '\'' + ", type='"
-                + this.type + '\'' + ", id='" + this.id + '\'' + '}';
+        return "Person:\n"+
+                "\tname="+this.name+"\n"+
+                "\ttype="+this.type+"\n"+
+                "\tid="+this.id;
     }
 
 }

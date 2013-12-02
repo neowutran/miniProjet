@@ -14,10 +14,9 @@ import model.person.Borrower.Borrow;
  */
 public final class Finder {
 
-
     /**
      * Check size.
-     *
+     * 
      * @param features
      *            the features
      * @param operator
@@ -31,8 +30,8 @@ public final class Finder {
             final List<String> operator, final List<Object> value )
             throws InvalidParameterException {
 
-        if( ( features.size( ) != operator.size( ) )
-                || ( operator.size( ) != value.size( ) ) ) {
+        if( features.size( ) != operator.size( )
+                || operator.size( ) != value.size( ) ) {
             throw new InvalidParameterException( "Not same size" );
         }
 
@@ -40,7 +39,7 @@ public final class Finder {
 
     /**
      * Find actual borrow by borrower.
-     *
+     * 
      * @param borrowerId
      *            the borrower id
      * @return the list
@@ -61,7 +60,7 @@ public final class Finder {
 
     /**
      * Find available.
-     *
+     * 
      * @param start
      *            the start
      * @param end
@@ -80,10 +79,10 @@ public final class Finder {
             for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
 
                 if( borrow.getEquipmentId( ).contains( equipment.getId( ) )
-                        && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                                .getTimeInMillis( ) )
-                        && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                                .getTimeInMillis( ) ) ) {
+                        && borrow.getBorrowStart( ).getTimeInMillis( ) < end
+                                .getTimeInMillis( )
+                        && borrow.getBorrowEnd( ).getTimeInMillis( ) > start
+                                .getTimeInMillis( ) ) {
 
                     available = false;
 
@@ -102,7 +101,7 @@ public final class Finder {
 
     /**
      * Find borrow by borrower.
-     *
+     * 
      * @param borrowerId
      *            the borrower id
      * @return the list
@@ -123,7 +122,7 @@ public final class Finder {
 
     /**
      * Find borrow by id.
-     *
+     * 
      * @param id
      *            the id
      * @return the borrow
@@ -141,7 +140,7 @@ public final class Finder {
 
     /**
      * Find borrow waiting for administrator.
-     *
+     * 
      * @return the list
      */
     public static List<Borrow> findBorrowWaitingForAdministrator( ) {
@@ -156,7 +155,7 @@ public final class Finder {
 
     /**
      * Find equipment by id.
-     *
+     * 
      * @param id
      *            the id
      * @return the equipment
@@ -176,14 +175,14 @@ public final class Finder {
 
     /**
      * Find late borrow.
-     *
+     * 
      * @return the list
      */
     public static List<Borrow> findLateBorrow( ) {
         final List<Borrow> borrows = new ArrayList<>( );
         for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
 
-            if( borrow.getBorrowEnd().getTimeInMillis() < Calendar
+            if( borrow.getBorrowEnd( ).getTimeInMillis( ) < Calendar
                     .getInstance( ).getTimeInMillis( ) ) {
                 borrows.add( borrow );
             }
@@ -194,7 +193,7 @@ public final class Finder {
 
     /**
      * Find person by id.
-     *
+     * 
      * @param id
      *            the id
      * @return the person
@@ -212,7 +211,7 @@ public final class Finder {
 
     /**
      * Checks if is borrowed.
-     *
+     * 
      * @param equipmentsId
      *            the equipments id
      * @param start
@@ -224,14 +223,14 @@ public final class Finder {
     public static boolean isBorrowed( final List<String> equipmentsId,
             final Calendar start, final Calendar end ) {
 
-        for( final Borrow borrow : Inventory.getInstance( ).getBorrows() ) {
+        for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
             for( final String borrowEquipment : borrow.getEquipmentId( ) ) {
                 for( final String materielId : equipmentsId ) {
                     if( borrowEquipment.equals( materielId )
-                            && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                                    .getTimeInMillis( ) )
-                            && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                                    .getTimeInMillis( ) )
+                            && borrow.getBorrowStart( ).getTimeInMillis( ) < end
+                                    .getTimeInMillis( )
+                            && borrow.getBorrowEnd( ).getTimeInMillis( ) > start
+                                    .getTimeInMillis( )
                             && borrow.getState( ).equals( State.ACCEPT ) ) {
                         return true;
                     }
@@ -243,7 +242,7 @@ public final class Finder {
 
     /**
      * Checks if is borrower.
-     *
+     * 
      * @param id
      *            the id
      * @return true, if is borrower

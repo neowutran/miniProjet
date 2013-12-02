@@ -4,6 +4,7 @@
 
 package controllers;
 
+import model.MiniProjectException;
 import model.SaveLoad;
 import views.View;
 
@@ -11,9 +12,6 @@ import views.View;
  * The Class MiniProjectController.
  */
 public class MiniProjectController {
-
-    /** The view. */
-    private final View                           view;
 
     /** The instance. */
     private static MiniProjectController         instance = null;
@@ -42,11 +40,11 @@ public class MiniProjectController {
 
         try {
             SaveLoad.load( SaveLoad.DATA );
-        } catch( final Exception e ) {
+        } catch( final MiniProjectException e ) {
             MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
                     .getStackTrace( ) ) );
         }
-        this.view = View.getInstance( );
+        View.launch();
 
     }
 

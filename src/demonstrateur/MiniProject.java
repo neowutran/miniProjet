@@ -27,8 +27,9 @@ public final class MiniProject {
 
     /**
      * Load config file.
-     *
-     * @param configFile the config file
+     * 
+     * @param configFile
+     *            the config file
      */
     private static void loadConfigFile( final Path configFile ) {
 
@@ -38,8 +39,9 @@ public final class MiniProject {
 
     /**
      * The main method.
-     *
-     * @param args the arguments
+     * 
+     * @param args
+     *            the arguments
      */
     public static void main( final String[ ] args ) {
 
@@ -59,13 +61,13 @@ public final class MiniProject {
         // Copy the default config file into the folder if no config file was
         // found
         if( !new java.io.File( MiniProject.FOLDER + MiniProject.CONFIG )
-                .exists() ) {
+                .exists( ) ) {
 
             CopyFile.copyFile( this.getClass( ).getClassLoader( )
-                    .getResourceAsStream(MiniProject.CONFIG),
+                    .getResourceAsStream( MiniProject.CONFIG ),
                     MiniProject.FOLDER + MiniProject.CONFIG );
             CopyFile.copyFile( this.getClass( ).getClassLoader( )
-                    .getResourceAsStream(MiniProject.DATA),
+                    .getResourceAsStream( MiniProject.DATA ),
                     MiniProject.FOLDER + MiniProject.DATA );
         }
         MiniProject.loadConfigFile( Paths.get( MiniProject.FOLDER,
