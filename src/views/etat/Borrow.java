@@ -1,6 +1,7 @@
 
 package views.etat;
 
+import java.security.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -174,9 +175,13 @@ public class Borrow extends State {
             return;
         }
 
+        try{
         ( ( model.person.Borrower ) Finder.findPersonById( User.getInstance( )
                 .getPersonneId( ) ) ).borrow( this.equipments, this.start,
                 this.end );
+        }catch (InvalidParameterException e){
+            System.out.println(e.getMessage());
+        }
         System.out.println( "Borrowed." );
     }
 }

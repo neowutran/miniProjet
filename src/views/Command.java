@@ -111,14 +111,15 @@ public class Command {
                     method.invoke(this.state, Arrays.copyOfRange(arg, 1, arg.length));
                 } catch (IllegalAccessException | InvocationTargetException e) {
                     MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
-
-                    return;
                 }
+                return;
+
             }
 
-            throw new MiniProjectException("method not found");
 
         }
+        throw new MiniProjectException("method not found");
+
     }
 
     /* (non-Javadoc)
