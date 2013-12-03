@@ -273,10 +273,10 @@ public abstract class Borrower extends model.Person {
             final Calendar end ) throws InvalidParameterException, MiniProjectException {
 
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
-            throw new InvalidParameterException( "Date invalide" );
+            throw new InvalidParameterException( "Invalid date" );
         }
         if( Finder.isBorrowed( equipment, start, end ) ) {
-            throw new InvalidParameterException( "Materiel unavaiable" );
+            throw new InvalidParameterException( "Equipment unavailable" );
         }
 
         final Calendar now = Calendar.getInstance( );
@@ -286,22 +286,20 @@ public abstract class Borrower extends model.Person {
                 && this.maximumAdvanceDays != 0 ) {
 
             throw new InvalidParameterException(
-                    "Vous ne pouvez pas borrow autant a l'avance, maximum: "
-                            + this.maximumAdvanceDays + " jours" );
+                    "You cannot borrow so much in advance" );
         }
 
         final Long maximumTimeDuration = 1000 * 60 * 60 * this.maximumHours;
         if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maximumTimeDuration
                 && this.maximumHours != 0 ) {
-            throw new InvalidParameterException(
-                    "Vous ne pouvez pas borrow pour plus de: "
-                            + this.maximumHours + " heures" );
+            throw new MiniProjectException("You cannot borrow so  long");
+
         }
 
 
         Long maxTimeHours = this.maxTime(equipment);
         if(end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours * 1000 * 60 * 60 * 24){
-            throw new MiniProjectException("Vous ne pouvez pas reserver autant de temps");
+            throw new MiniProjectException("You cannot borrow so  long");
         }
 
 

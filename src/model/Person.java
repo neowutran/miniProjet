@@ -74,7 +74,7 @@ public abstract class Person {
             throws InvalidParameterException {
 
         if( Person.exist( id ) ) {
-            throw new InvalidParameterException( "Cette person existe deja!" );
+            throw new InvalidParameterException( "This person already exist!" );
         }
 
         this.name = name;

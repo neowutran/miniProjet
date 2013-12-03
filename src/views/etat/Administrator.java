@@ -26,7 +26,7 @@ public class Administrator extends User {
             return;
         }
         if( ( ( model.person.Administrator ) Finder.findPersonById( model.User
-                .getInstance( ).getPersonneId( ) ) ).setBorrowStat( borrow,
+                .getInstance( ).getPersonId() ) ).setBorrowStat( borrow,
                 model.State.ACCEPT ) ) {
             System.out.println( "Borrow accepted" );
         } else {
@@ -145,7 +145,7 @@ public class Administrator extends User {
             return;
         }
         ( ( model.person.Administrator ) Finder.findPersonById( model.User
-                .getInstance( ).getPersonneId( ) ) ).setBorrowStat( borrow,
+                .getInstance( ).getPersonId() ) ).setBorrowStat( borrow,
                 model.State.REFUSE );
         System.out.println( "Borrow refused" );
 
@@ -164,7 +164,7 @@ public class Administrator extends User {
             return;
         }
         ( ( model.person.Administrator ) Finder.findPersonById( model.User
-                .getInstance( ).getPersonneId( ) ) ).setBorrowStat( borrow,
+                .getInstance( ).getPersonId() ) ).setBorrowStat( borrow,
                 model.State.RETURNED );
         System.out.println( "Borrow returned" );
 

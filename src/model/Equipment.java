@@ -80,8 +80,7 @@ public class Equipment extends InventoryElement {
             if( !( ( Map ) ( ( Map ) Config.getConfiguration( ).get(
                     Config.EQUIPMENT ) ).get( this.type ) )
                     .containsKey( feature.getName( ) ) ) {
-                throw new InvalidParameterException( feature.getName( )
-                        + " does not exist on " + this.type );
+                throw new InvalidParameterException( "Feature - equipment invalid" );
             }
 
         }
@@ -102,7 +101,7 @@ public class Equipment extends InventoryElement {
         if( !( ( Map ) Config.getConfiguration( ).get( Config.EQUIPMENT ) )
                 .containsKey( type ) ) {
 
-            throw new InvalidParameterException( type + " does not exist" );
+            throw new InvalidParameterException( "This equipment does not exist" );
 
         }
 

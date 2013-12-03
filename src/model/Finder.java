@@ -1,11 +1,13 @@
 
 package model;
 
+import java.lang.reflect.*;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import model.finder.*;
 import model.person.Borrower;
 import model.person.Borrower.Borrow;
 
@@ -14,9 +16,93 @@ import model.person.Borrower.Borrow;
  */
 public final class Finder {
 
-    public static List<Equipment> find(){
+    private static Boolean evaluate(String featureString, String operator, String value, Feature feature ) throws MiniProjectException {
+
+        Integer type = 0;
+        try {
+            Class classFeature = Class.forName("model.feature."+featureString);
+            Class interfaceFeature[] = classFeature.getInterfaces();
+            for (final Class anInterfaceFeature : interfaceFeature) {
+                if (anInterfaceFeature.equals(IString.class) && type != 2) {
+                    type = 1;
+                }
+                if (anInterfaceFeature.equals(IInteger.class)) {
+                    type = 2;
+                }
+            }
+
+            if(type == 0){
+                throw new MiniProjectException("this feature doesn't exist");
+
+            }
+
+            switch(operator){
+                case "=":
+
+                       return (Boolean)feature.getClass().getMethod("isEquals", String.class).invoke(value);
+
+                case ">=":
+
+                    if(type != 2){
+                        throw new MiniProjectException("you can use this operator on this feature");
+                    }
+                    return (Boolean)feature.getClass().getMethod("greaterThanOrEquals", String.class).invoke(value);
+
+                case "<=":
+                    if(type != 2){
+                        throw new MiniProjectException("you can use this operator on this feature");
+                    }
+                    return (Boolean)feature.getClass().getMethod("lesserThanOrEquals", String.class).invoke(value);
+
+                case "<":
+                    if(type != 2){
+                        throw new MiniProjectException("you can use this operator on this feature");
+                    }
+                    return (Boolean)feature.getClass().getMethod("lesserThan", String.class).invoke(value);
+
+                case ">":
+                    if(type != 2){
+                        throw new MiniProjectException("you can use this operator on this feature");
+                    }
+                    return (Boolean)feature.getClass().getMethod("greaterThan", String.class).invoke(value);
+
+            }
+
+
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
+
+    public static List<Equipment> find(List<String> features, List<String> operators, List<String> value) throws MiniProjectException {
+        checkSize(features, operators, value);
         List<Equipment> equipments = new ArrayList<>();
-        //TODO
+        for(Equipment equipment: Inventory.getInstance().getEquipments()){
+
+            boolean good = true;
+            for(int i = 0; i < features.size(); i++){
+
+
+                for(Feature equipmentFeature: equipment.getFeatures()){
+
+                   if(!evaluate(features.get(i),operators.get(i),value.get(i), equipmentFeature)){
+                       good = false;
+                   }
+
+                }
+
+            }
+
+            if(good){
+                equipments.add(equipment);
+            }
+
+
+        }
+
         return equipments;
     }
     /**
@@ -27,8 +113,8 @@ public final class Finder {
      * @param value the value
      * @throws InvalidParameterException the invalid parameter exception
      */
-    private static void checkSize( final List<Feature> features,
-            final List<String> operator, final List<Object> value )
+    private static void checkSize( final List<String> features,
+            final List<String> operator, final List<String> value )
             throws InvalidParameterException {
 
         if( features.size( ) != operator.size( )
@@ -47,7 +133,7 @@ public final class Finder {
     public static List<Borrow> findActualBorrowByBorrower(
             final String borrowerId ) {
         final List<Borrow> borrows = new ArrayList<>( );
-       // System.out.println(Inventory.getInstance().getBorrows());
+
         for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
 
             if( borrow.getBorrowerId( ).equals( borrowerId )

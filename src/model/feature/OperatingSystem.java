@@ -169,8 +169,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
             } else {
 
-                throw new InvalidParameterException( typeMateriel
-                        + " do not exist" );
+                throw new InvalidParameterException( "This equipment does not exist" );
 
             }
 

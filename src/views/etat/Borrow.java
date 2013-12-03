@@ -177,7 +177,7 @@ public class Borrow extends State {
 
         try{
         ( ( model.person.Borrower ) Finder.findPersonById( User.getInstance()
-                .getPersonneId( ) ) ).borrow(this.equipments, this.start, this.end);
+                .getPersonId() ) ).borrow(this.equipments, this.start, this.end);
         }catch (InvalidParameterException | MiniProjectException e){
             System.out.println(e.getMessage());
         }

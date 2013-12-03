@@ -314,7 +314,7 @@ public final class SaveLoad {
 
         } catch( final IOException e ) {
 
-            MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
+            MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
                     .getStackTrace( ) ) );
 
         }

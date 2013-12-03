@@ -36,7 +36,7 @@ public class User {
      *
      * @return the personne id
      */
-    public String getPersonneId( ) {
+    public String getPersonId() {
 
         return this.personId;
     }
