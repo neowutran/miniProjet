@@ -298,12 +298,12 @@ public abstract class Borrower extends model.Person {
                             + this.maximumHours + " heures" );
         }
 
-        /*
+
         Long maxTimeHours = this.maxTime(equipment);
         if(end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours * 1000 * 60 * 60 * 24){
             throw new MiniProjectException("Vous ne pouvez pas reserver autant de temps");
         }
-        */
+
 
         Borrow borrow;
         try {

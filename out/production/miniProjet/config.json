@@ -8,7 +8,7 @@
                 "Linux",
                 "Mac"
             ],
-            "maximum_borrow_time": 1500
+            "maximum_borrow_time": 2000
 
         },
         "phone": {
@@ -18,20 +18,20 @@
                 "Linux",
                 "Mac"
             ],
-            "maximum_borrow_time": 1500
+            "maximum_borrow_time": 2000
         },
         "camera": {
-            "maximum_borrow_time": 1500
+            "maximum_borrow_time": 2000
 
         },
         "headphones": {
-            "maximum_borrow_time": 1500
+            "maximum_borrow_time": 2000
 
         }
     },
     "quantity_time": {
 
-        "1": 0.5
+        "1": 1
 
     },
     "borrower": {

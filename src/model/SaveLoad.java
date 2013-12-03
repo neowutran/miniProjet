@@ -263,8 +263,14 @@ public final class SaveLoad {
             final String state = ( String ) borrow.get( SaveLoad.STATE );
             final Borrower borrower = ( Borrower ) Finder
                     .findPersonById( borrowerId );
-            final Borrow borrowObject = Finder.findBorrowById( borrower.borrow(
+            Borrow borrowObject = null;
+            try{
+            borrowObject = Finder.findBorrowById( borrower.borrow(
                     listEquipment, debut, fin ) );
+            }catch( Exception e){
+                MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
+                        .getStackTrace( ) ) );
+            }
             borrowObject.setId( id );
 
             if( borrow.containsKey( SaveLoad.ADMINISTRATOR_ID ) ) {
