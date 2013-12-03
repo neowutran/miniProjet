@@ -22,13 +22,19 @@ public final class Config {
     public static final String                   MAXIMUM_HOUR        = "maximum_hours";
 
     public static final String                   FEATURE             = "feature";
-
+    public static final String FEATURES = "features";
+    public static final String TEMPLATE = "template";
+    public static final String BORROW = "borrow";
+    public static final String FORMAT = "format";
+public static final String PERSON = "person";
+    public static final String QUANTITY_TIME = "quantity_time";
+    public static final String  MAXIMUM_BORROW_TIME = "maximum_borrow_time";
     /** The configuration. */
     private static java.util.Map<String, Object> configuration;
 
     /**
      * Gets the configuration.
-     * 
+     *
      * @return the configuration
      */
     public static java.util.Map<String, Object> getConfiguration( ) {
@@ -38,7 +44,7 @@ public final class Config {
 
     /**
      * Sets the configuration.
-     * 
+     *
      * @param configuration
      *            the configuration
      */

@@ -3,13 +3,9 @@ package model.person;
 
 import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
-import model.Finder;
-import model.Inventory;
-import model.MiniProjectException;
-import model.State;
+import model.*;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
@@ -205,18 +201,32 @@ public abstract class Borrower extends model.Person {
         @Override
         public String toString( ) {
 
-            final SimpleDateFormat format = new SimpleDateFormat(
-                    "yyyy-MM-dd HH:mm" );
+            String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.BORROW);
+            final SimpleDateFormat format = new SimpleDateFormat((String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.FORMAT));
 
-            return "Borrow:\n" + "\tequipmentId=" + this.getEquipmentId( )
-                    + "\n" + "\tborrowerId=" + this.getBorrowerId( ) + "\n"
-                    + "\tadministratorId=" + this.administratorId + "\n"
-                    + "\tstate=" + this.state + "\n" + "\tborrowStart="
-                    + format.format( this.borrowStart.getTime( ) ) + "\n"
-                    + "\tborrowEnd="
-                    + format.format( this.borrowEnd.getTime( ) ) + "\n"
-                    + "\treturned=" + this.returned + "\n" + "\tid="
-                    + this.getId( ) + "\n";
+            template = template.replaceAll("\\{equipmentId\\}", this.getEquipmentId().toString());
+            template = template.replaceAll("\\{borrowerId\\}", this.getBorrowerId());
+
+            if(this.administratorId != null){
+                template = template.replaceAll("\\{administratorId\\}", this.administratorId);
+            }else{
+                template = template.replaceAll("\\{administratorId\\}", "null");
+            }
+            if(this.returned == null){
+                template = template.replaceAll("\\{returned\\}", "null");
+
+            }else{
+            template = template.replaceAll("\\{returned\\}", this.state.toString());
+            }
+
+            template = template.replaceAll("\\{state\\}", this.state.toString());
+            template = template.replaceAll("\\{borrowStart\\}", format.format(this.borrowStart.getTime()));
+            template = template.replaceAll("\\{borrowEnd\\}", format.format(this.borrowEnd.getTime()));
+            template = template.replaceAll("\\{id\\}", this.getId());
+
+
+            return template;
+
 
         }
 
@@ -260,7 +270,7 @@ public abstract class Borrower extends model.Person {
      * @throws InvalidParameterException the invalid parameter exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
-            final Calendar end ) throws InvalidParameterException {
+            final Calendar end ) throws InvalidParameterException, MiniProjectException {
 
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
             throw new InvalidParameterException( "Date invalide" );
@@ -288,17 +298,58 @@ public abstract class Borrower extends model.Person {
                             + this.maximumHours + " heures" );
         }
 
-        // TODO calcul de durée autorisé
+        /*
+        Long maxTimeHours = this.maxTime(equipment);
+        if(end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours * 1000 * 60 * 60 * 24){
+            throw new MiniProjectException("Vous ne pouvez pas reserver autant de temps");
+        }
+        */
+
         Borrow borrow;
         try {
             borrow = new Borrow( equipment, start, end );
         } catch( final Exception e ) {
-            MiniProjectController.LOGGER.severe( java.util.Arrays.toString( e
+            MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
                     .getStackTrace( ) ) );
             return null;
         }
         Inventory.getInstance( ).addBorrow( borrow );
         return borrow.getId( );
+
+    }
+
+    private Long maxTime(List<String> equipmentsId){
+
+        Long maxTime = null;
+        for(String equipmentId: equipmentsId){
+
+            Equipment equipment = Finder.findEquipmentById(equipmentId);
+
+            Integer quantity = Finder.findQuantityEquipment(equipment);
+            Integer days = ((Double)((Map)((Map)Config.getConfiguration().get(Config.EQUIPMENT)).get(equipment.getType())).get(Config.MAXIMUM_BORROW_TIME)).intValue();
+            Map quantityTime = ((Map)Config.getConfiguration().get(Config.QUANTITY_TIME));
+
+            Integer max = 1;
+            for(String key: (Set<String>)quantityTime.keySet()){
+
+                System.out.println(key);
+                if(Integer.valueOf(key) < quantity){
+                    max = Integer.valueOf(key);
+                }else{
+                    break;
+                }
+
+
+            }
+
+            Double weighting = (Double)((Map)Config.getConfiguration().get(Config.QUANTITY_TIME)).get(max.toString());
+            if(maxTime == null || maxTime > weighting.longValue() * days){
+                maxTime = weighting.longValue() * days;
+            }
+
+        }
+
+        return maxTime;
 
     }
 }

@@ -5,7 +5,7 @@ import java.security.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import model.Finder;
+import model.*;
 import model.User;
 import views.Command;
 import views.State;
@@ -176,10 +176,9 @@ public class Borrow extends State {
         }
 
         try{
-        ( ( model.person.Borrower ) Finder.findPersonById( User.getInstance( )
-                .getPersonneId( ) ) ).borrow( this.equipments, this.start,
-                this.end );
-        }catch (InvalidParameterException e){
+        ( ( model.person.Borrower ) Finder.findPersonById( User.getInstance()
+                .getPersonneId( ) ) ).borrow(this.equipments, this.start, this.end);
+        }catch (InvalidParameterException | MiniProjectException e){
             System.out.println(e.getMessage());
         }
         System.out.println( "Borrowed." );

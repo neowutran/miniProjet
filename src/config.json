@@ -1,50 +1,67 @@
 {
 
-    "equipment":{
-        "tablet":{
-                "OperatingSystem":[
-                    "Windows",
-                    "Android",
-                    "Linux",
-                    "Mac"
-                ]
+    "equipment": {
+        "tablet": {
+            "OperatingSystem": [
+                "Windows",
+                "Android",
+                "Linux",
+                "Mac"
+            ],
+            "maximum_borrow_time": 1500
 
         },
-        "phone":{
-                "OperatingSystem":[
-                    "Windows",
-                    "Android",
-                    "Linux",
-                    "Mac"
-                ]
+        "phone": {
+            "OperatingSystem": [
+                "Windows",
+                "Android",
+                "Linux",
+                "Mac"
+            ],
+            "maximum_borrow_time": 1500
         },
-        "camera":{
+        "camera": {
+            "maximum_borrow_time": 1500
 
         },
-        "headphones":{
+        "headphones": {
+            "maximum_borrow_time": 1500
 
         }
     },
-    "borrower":{
-        "student":{
+    "quantity_time": {
+
+        "1": 0.5
+
+    },
+    "borrower": {
+        "student": {
             "maximum_advance_days": 7,
             "maximum_hours": 1000
         },
-        "teacher":{
+        "teacher": {
             "maximum_advance_days": 0,
             "maximum_hours": 2000
         }
     },
-    "feature":{
-        "OperatingSystem" : "Operating system"
+    "feature": {
+        "OperatingSystem": "Operating system"
     },
-    "template":{
-      "features":{
-          "OperatingSystem": "{name} : {value}"
-      }
+    "template": {
+        "features": {
+            "OperatingSystem": "{name} : {value}"
+        },
+        "borrow": "Borrow:\n\tequipmentId={equipmentId}\n\tborrowerId={borrowerId}\n\tadministratorId={administratorId}\n\tstate={state}\n\tborrowStart={borrowStart}\n\tborrowEnd={borrowEnd}\n\treturned={returned}\n\tid={id}",
+        "format": "dd/MM/yyyy HH:mm",
+        "equipment": "Equipment:\n\ttype={type}\n\tfeatures={features}\n\tid={id}",
+
+        "person": "Person\n\tname={name}\n\ttype={type}\n\tid={id}"
     },
-    "data_file":"MiniProject/data.json",
-    "random_counter":1000
+
+    "data_file": "MiniProject/data.json",
+    "random_counter": 1000
+
+
 
 
 }

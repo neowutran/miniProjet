@@ -186,7 +186,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     @Override
     public String toString( ) {
         String template = ( String ) ( ( Map ) ( ( Map ) Config
-                .getConfiguration( ).get( "template" ) ).get( "features" ) )
+                .getConfiguration( ).get( Config.TEMPLATE ) ).get( Config.FEATURES ) )
                 .get( this.name );
         template = template.replaceAll( "\\{name\\}", this.name );
         template = template.replaceAll( "\\{value\\}", this.getValue( ) );

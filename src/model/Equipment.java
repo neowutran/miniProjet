@@ -2,6 +2,7 @@
 package model;
 
 import java.security.InvalidParameterException;
+import java.text.*;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,11 @@ import config.Config;
  * The Class Equipment.
  */
 public class Equipment extends InventoryElement {
+
+    public String getType() {
+
+        return type;
+    }
 
     /** The type. */
     @Expose
@@ -162,8 +168,13 @@ public class Equipment extends InventoryElement {
     @Override
     public String toString( ) {
 
-        return "Equipment :\n" + "\ttype=" + this.type + "\n" + "\tfeatures="
-                + this.features + "\n" + "\tid=" + this.getId( ) + "\n";
+        String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.EQUIPMENT);
+
+        template = template.replaceAll("\\{type\\}", this.type);
+        template = template.replaceAll("\\{features\\}", this.features.toString());
+        template = template.replaceAll("\\{id\\}", this.getId());
+
+        return template;
     }
 
 }

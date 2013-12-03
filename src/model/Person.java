@@ -2,10 +2,11 @@
 package model;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.*;
+import java.util.*;
 
 import com.google.gson.annotations.Expose;
+import config.*;
 
 /**
  * The Class Person.
@@ -170,8 +171,17 @@ public abstract class Person {
     @Override
     public String toString( ) {
 
-        return "Person:\n" + "\tname=" + this.name + "\n" + "\ttype="
-                + this.type + "\n" + "\tid=" + this.id;
+
+        String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.PERSON);
+
+
+        template = template.replaceAll("\\{name\\}", this.name);
+        template = template.replaceAll("\\{type\\}", this.type);
+
+        template = template.replaceAll("\\{id\\}", this.getId());
+
+        return template;
+
     }
 
 }

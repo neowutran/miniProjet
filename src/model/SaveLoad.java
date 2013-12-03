@@ -254,8 +254,8 @@ public final class SaveLoad {
             final List<String> listEquipment = new ArrayList<>( );
             final List<String> equipmentsBorrow = ( List<String> ) borrow
                     .get( SaveLoad.EQUIPMENT_ID );
-            for( final String materielEmprunt : equipmentsBorrow ) {
-                listEquipment.add( materielEmprunt );
+            for( final String equipmentBorrow : equipmentsBorrow ) {
+                listEquipment.add( equipmentBorrow );
             }
 
             final String borrowerId = ( String ) borrow

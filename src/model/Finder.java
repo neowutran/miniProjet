@@ -14,6 +14,11 @@ import model.person.Borrower.Borrow;
  */
 public final class Finder {
 
+    public static List<Equipment> find(){
+        List<Equipment> equipments = new ArrayList<>();
+        //TODO
+        return equipments;
+    }
     /**
      * Check size.
      *
@@ -42,6 +47,7 @@ public final class Finder {
     public static List<Borrow> findActualBorrowByBorrower(
             final String borrowerId ) {
         final List<Borrow> borrows = new ArrayList<>( );
+       // System.out.println(Inventory.getInstance().getBorrows());
         for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
 
             if( borrow.getBorrowerId( ).equals( borrowerId )
@@ -160,6 +166,20 @@ public final class Finder {
         }
 
         return null;
+
+    }
+
+    public static Integer findQuantityEquipment(final Equipment findEquipment){
+
+        Integer quantity = 0;
+        for(Equipment equipment: Inventory.getInstance().getEquipments()){
+
+            if(equipment.equals(findEquipment)){
+                quantity++;
+            }
+
+        }
+        return quantity;
 
     }
 
