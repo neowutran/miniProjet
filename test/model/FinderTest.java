@@ -8,8 +8,7 @@ import org.junit.*;
 
 import java.lang.reflect.*;
 import java.nio.file.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 public class FinderTest {
 
@@ -41,12 +40,12 @@ public class FinderTest {
 
     @Test
     public void testFindActualBorrowByBorrower() {
-       assertEquals(Finder.findActualBorrowByBorrower("123").size(),1);
+       assertEquals(Finder.findActualBorrowByBorrower("123").size(), 1);
     }
 
     @Test
     public void testFindAvailable() {
-        
+
         GregorianCalendar start = new GregorianCalendar(2013,10,2);
         GregorianCalendar end = new GregorianCalendar(2013,10,7);
         assertEquals(Finder.findAvailable(start, end).size(),0);
@@ -60,7 +59,7 @@ public class FinderTest {
 
     @Test
     public void testFindBorrowById() {
-        
+
         assertNotNull(Finder.findBorrowById("e69f2659-b0c8-4dc3-8d70-63a221fd20c2"));
         //Verifie que la fonction ne prend que l id de l emprunteur et non de l objet
         assertNull(Finder.findBorrowById("ca072236-8f15-486d-93e4-2b21abb831a5"));
@@ -82,6 +81,23 @@ public class FinderTest {
     @Test
     public void testFindLateBorrow() {
         assertEquals(Finder.findLateBorrow().get(0).getId(),123);
+    }
+
+    @Test
+    public void testFind(){
+
+        List<String> features = new LinkedList<>();
+        features.add("OperatingSystem");
+        List<String> operateurs = new LinkedList<>();
+        operateurs.add("=");
+        List<String> values = new LinkedList<>();
+        values.add("Windows");
+        try {
+            //TODO tester qq chose ici
+            System.out.println(Finder.find(null,features,operateurs,values));
+        } catch (MiniProjectException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

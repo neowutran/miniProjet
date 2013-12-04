@@ -39,49 +39,52 @@ public final class Finder {
             switch(operator){
                 case "=":
 
-                       return (Boolean)feature.getClass().getMethod("isEquals", String.class).invoke(value);
+                       return (Boolean)feature.getClass().getMethod("isEquals", String.class).invoke(feature, value);
 
                 case ">=":
 
                     if(type != 2){
                         throw new MiniProjectException("you can use this operator on this feature");
                     }
-                    return (Boolean)feature.getClass().getMethod("greaterThanOrEquals", String.class).invoke(value);
+                    return (Boolean)feature.getClass().getMethod("greaterThanOrEquals", String.class).invoke(feature, value);
 
                 case "<=":
                     if(type != 2){
                         throw new MiniProjectException("you can use this operator on this feature");
                     }
-                    return (Boolean)feature.getClass().getMethod("lesserThanOrEquals", String.class).invoke(value);
+                    return (Boolean)feature.getClass().getMethod("lesserThanOrEquals", String.class).invoke(feature, value);
 
                 case "<":
                     if(type != 2){
                         throw new MiniProjectException("you can use this operator on this feature");
                     }
-                    return (Boolean)feature.getClass().getMethod("lesserThan", String.class).invoke(value);
+                    return (Boolean)feature.getClass().getMethod("lesserThan", String.class).invoke(feature, value);
 
                 case ">":
                     if(type != 2){
                         throw new MiniProjectException("you can use this operator on this feature");
                     }
-                    return (Boolean)feature.getClass().getMethod("greaterThan", String.class).invoke(value);
+                    return (Boolean)feature.getClass().getMethod("greaterThan", String.class).invoke(feature, value);
+                default:
+                    throw new MiniProjectException("this operator doesn't exist");
 
             }
 
 
         } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
+            throw new MiniProjectException(e);
         }
-
-        return false;
 
     }
 
-    public static List<Equipment> find(List<String> features, List<String> operators, List<String> value) throws MiniProjectException {
+    public static List<Equipment> find(String type, List<String> features, List<String> operators, List<String> value) throws MiniProjectException {
         checkSize(features, operators, value);
         List<Equipment> equipments = new ArrayList<>();
         for(Equipment equipment: Inventory.getInstance().getEquipments()){
 
+            if(!equipment.getType().equals(type) && type != null){
+                continue;
+            }
             boolean good = true;
             for(int i = 0; i < features.size(); i++){
 

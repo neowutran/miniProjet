@@ -1,11 +1,14 @@
 
 package views.etat;
 
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.security.*;
+import java.text.*;
+import java.util.*;
 
-import views.Command;
+import model.*;
+import model.User;
+import org.apache.commons.cli.*;
+import views.*;
 import views.State;
 
 /**
@@ -23,18 +26,59 @@ public class Find extends State {
     /** The values. */
     private final List<String> values    = new LinkedList<>( );
 
-    /** The start. */
-    private final Calendar     start     = Calendar.getInstance( );
-
-    /** The end. */
-    private final Calendar     end       = Calendar.getInstance( );
+    private String type;
 
     /**
      * Adds the.
      *
-     * @param line the line
+     * @param id the id
      */
- 
+    private void add( final String feature , final String operator, final String value) {
+        this.features.add(feature);
+        this.operators.add(operator);
+        this.values.add(value);
+        System.out.println( "Condition: "+feature+" "+operator+" "+value+" added" );
+
+    }
+
+    /**
+     * Cancel.
+     */
+    private void cancel( ) {
+        if( Finder.isBorrower(model.User.getInstance().getPersonId())){
+            View.setState(new Borrower());
+
+        }else{
+            View.setState(new Administrator());
+
+        }
+    }
+
+    /**
+     * Show.
+     */
+    private void show( ) {
+
+
+        final String show = "type:" + this.type + "\n"+values;
+        System.out.println( show );
+
+    }
+
+    /**
+     * Validate.
+     */
+    private void validate( ) {
+
+
+        try {
+            List<Equipment> equipments = Finder.find(type, features, operators, values);
+            System.out.println(equipments);
+        } catch (MiniProjectException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     /*
      * (non-Javadoc)
@@ -44,33 +88,37 @@ public class Find extends State {
     @Override
     public List<Command> setCommands() {
 
-        return null;
-        /*
-         * final Options options = new Options();
-         *
-         * options.addOption(OptionBuilder.withArgName("add").hasArgs(3).
-         * withValueSeparator().withDescription("add").create("add"));
-         *
-         * options.addOption(OptionBuilder.withArgName("type").hasArgs(1).
-         * withValueSeparator().withDescription("type").create("type"));
-         *
-         * options.addOption(OptionBuilder.withArgName("start").hasArgs(2).
-         * withValueSeparator().withDescription("start").create("start"));
-         *
-         * options.addOption(OptionBuilder.withArgName("end").hasArgs(2).
-         * withValueSeparator().withDescription("end").create("end"));
-         *
-         * options.addOption(OptionBuilder.withArgName("find").hasArgs(0).
-         * withValueSeparator().withDescription("find").create("find"));
-         *
-         * options.addOption(OptionBuilder.withArgName("cancel").hasArgs(0).
-         * withValueSeparator().withDescription("cancel").create("cancel"));
-         *
-         * options.addOption(OptionBuilder.withArgName("exit").hasArgs(0).
-         * withValueSeparator().withDescription("exit").create("exit"));
-         *
-         * return options;
-         */
+
+        final List<Command> commands = new ArrayList<>( );
+
+        final List<String> args1 = new LinkedList<>( );
+        args1.add("feature");
+        args1.add("operator");
+        args1.add( "value" );
+        final Command command1 = new Command( "add", args1, this, "add",
+                "descriptionHere" );
+
+        final List<String> args2 = new LinkedList<>( );
+        args2.add("type");
+        final Command command2 = new Command( "type", args2, this, "type",
+                "descriptionHere" );
+
+        final Command command5 = new Command( "validate",
+                new LinkedList<String>( ), this, "validate", "descriptionHere" );
+        final Command command6 = new Command( "cancel",
+                new LinkedList<String>( ), this, "cancel", "descriptionHere" );
+        final Command command7 = new Command( "show",
+                new LinkedList<String>( ), this, "show", "descriptionHere" );
+
+        commands.add( command1 );
+        commands.add( command2 );
+        commands.add( command5 );
+        commands.add( command6 );
+        commands.add( command7 );
+        commands.addAll( super.setCommands() );
+
+        return commands;
+
     }
 
 }

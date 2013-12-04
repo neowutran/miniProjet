@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.1.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.10.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.11.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.12.lck" afterPath="" />
@@ -13,6 +14,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.17.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.18.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.19.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.2.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.20.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.21.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.22.lck" afterPath="" />
@@ -23,29 +25,32 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.27.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.28.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.29.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.3.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.30.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.31.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.32.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.33.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.34.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.35.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.4.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.5.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.6.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.7.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.8.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.9.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log.xml.lck" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/miniProjet" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/person/Administrator.java" afterPath="$PROJECT_DIR$/src/model/person/Administrator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/etat/Administrator.java" afterPath="$PROJECT_DIR$/src/views/etat/Administrator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/etat/Borrow.java" afterPath="$PROJECT_DIR$/src/views/etat/Borrow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/person/Borrower.java" afterPath="$PROJECT_DIR$/src/model/person/Borrower.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Equipment.java" afterPath="$PROJECT_DIR$/src/model/Equipment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/etat/Find.java" afterPath="$PROJECT_DIR$/src/views/etat/Find.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Finder.java" afterPath="$PROJECT_DIR$/src/model/Finder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/feature/OperatingSystem.java" afterPath="$PROJECT_DIR$/src/model/feature/OperatingSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Person.java" afterPath="$PROJECT_DIR$/src/model/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.txt" afterPath="$PROJECT_DIR$/README.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/SaveLoad.java" afterPath="$PROJECT_DIR$/src/model/SaveLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/User.java" afterPath="$PROJECT_DIR$/src/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/model/FinderTest.java" afterPath="$PROJECT_DIR$/test/model/FinderTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/finder/IInteger.java" afterPath="$PROJECT_DIR$/src/model/finder/IInteger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MiniProject/data.json" afterPath="$PROJECT_DIR$/MiniProject/data.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml.1" afterPath="$PROJECT_DIR$/log.xml.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml.2" afterPath="$PROJECT_DIR$/log.xml.2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml.3" afterPath="$PROJECT_DIR$/log.xml.3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml.4" afterPath="$PROJECT_DIR$/log.xml.4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml" afterPath="$PROJECT_DIR$/log.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="miniProjet.iws" />
@@ -113,52 +118,25 @@
       <file leaf-file-name="Find.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/etat/Find.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="1386">
+            <state line="62" column="56" selection-start="1274" selection-end="1274" vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="2196">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Finder.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Finder.java">
+      <file leaf-file-name="FinderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/model/FinderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="25" selection-start="484" selection-end="484" vertical-scroll-proportion="0.45436892" vertical-offset="0" max-vertical-offset="6570">
+            <state line="102" column="9" selection-start="3032" selection-end="3032" vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2106">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IString.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/finder/IString.java">
+      <file leaf-file-name="Borrower.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/etat/Borrower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Inventory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Inventory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="1440">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MiniProjectException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/MiniProjectException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="421" max-vertical-offset="936">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Person.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Person.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2916">
+            <state line="30" column="0" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
               <folding />
             </state>
           </provider>
@@ -167,7 +145,52 @@
       <file leaf-file-name="SaveLoad.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="317" column="42" selection-start="12368" selection-end="12368" vertical-scroll-proportion="0.0" vertical-offset="3481" max-vertical-offset="5688">
+            <state line="269" column="33" selection-start="10920" selection-end="10920" vertical-scroll-proportion="0.0" vertical-offset="4842" max-vertical-offset="6048">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/person/borrower/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="522">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Finder.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/Finder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="0" selection-start="3135" selection-end="3135" vertical-scroll-proportion="2.900971" vertical-offset="0" max-vertical-offset="6624">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperatingSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/feature/OperatingSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="171" column="83" selection-start="4684" selection-end="4684" vertical-scroll-proportion="0.0" vertical-offset="2365" max-vertical-offset="3348">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Borrow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/etat/Borrow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="163" column="55" selection-start="4632" selection-end="4869" vertical-scroll-proportion="0.0" vertical-offset="2466" max-vertical-offset="3312">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="25" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1314">
               <folding />
             </state>
           </provider>
@@ -176,25 +199,7 @@
       <file leaf-file-name="IInteger.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/finder/IInteger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="30" selection-start="859" selection-end="877" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="990">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/State.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="6" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" vertical-offset="943" max-vertical-offset="1458">
+            <state line="14" column="31" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="990">
               <folding />
             </state>
           </provider>
@@ -222,7 +227,6 @@
         <option value="$PROJECT_DIR$/MiniProject/data.json" />
         <option value="$PROJECT_DIR$/src/views/etat/User.java" />
         <option value="$PROJECT_DIR$/src/views/etat/Main.java" />
-        <option value="$PROJECT_DIR$/src/views/etat/Find.java" />
         <option value="$PROJECT_DIR$/src/views/etat/Borrower.java" />
         <option value="$PROJECT_DIR$/src/views/etat/Administrator.java" />
         <option value="$PROJECT_DIR$/src/model/State.java" />
@@ -234,7 +238,6 @@
         <option value="$PROJECT_DIR$/src/model/person/borrower/Student.java" />
         <option value="$PROJECT_DIR$/src/model/person/borrower/Teacher.java" />
         <option value="$PROJECT_DIR$/src/model/finder/IString.java" />
-        <option value="$PROJECT_DIR$/src/model/finder/IInteger.java" />
         <option value="$PROJECT_DIR$/src/lib/ArrayUtils.java" />
         <option value="$PROJECT_DIR$/src/views/View.java" />
         <option value="$PROJECT_DIR$/src/views/State.java" />
@@ -243,15 +246,17 @@
         <option value="$PROJECT_DIR$/src/config/Config.java" />
         <option value="$PROJECT_DIR$/src/views/etat/Borrow.java" />
         <option value="$PROJECT_DIR$/MiniProject/config.json" />
-        <option value="$PROJECT_DIR$/test/model/FinderTest.java" />
         <option value="$PROJECT_DIR$/src/config.json" />
-        <option value="$PROJECT_DIR$/src/model/person/Borrower.java" />
         <option value="$PROJECT_DIR$/src/model/Equipment.java" />
         <option value="$PROJECT_DIR$/src/model/Person.java" />
         <option value="$PROJECT_DIR$/src/model/feature/OperatingSystem.java" />
         <option value="$PROJECT_DIR$/src/model/person/Administrator.java" />
         <option value="$PROJECT_DIR$/src/model/SaveLoad.java" />
         <option value="$PROJECT_DIR$/src/model/User.java" />
+        <option value="$PROJECT_DIR$/src/model/finder/IInteger.java" />
+        <option value="$PROJECT_DIR$/src/model/person/Borrower.java" />
+        <option value="$PROJECT_DIR$/test/model/FinderTest.java" />
+        <option value="$PROJECT_DIR$/src/views/etat/Find.java" />
         <option value="$PROJECT_DIR$/src/model/Finder.java" />
       </list>
     </option>
@@ -305,6 +310,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="person" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="miniProjet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="feature" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -842,12 +923,14 @@
       <workItem from="1385942882022" duration="7272000" />
       <workItem from="1386090575997" duration="1656000" />
       <workItem from="1386094506611" duration="19000" />
-      <workItem from="1386094996827" duration="16191000" />
+      <workItem from="1386094996827" duration="17925000" />
+      <workItem from="1386194767514" duration="1737000" />
+      <workItem from="1386196567279" duration="2011000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58401000" />
+    <option name="totallyTimeSpent" value="63883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="-13" width="1700" height="971" extended-state="6" />
@@ -928,6 +1011,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="6" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1566">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1206" />
@@ -996,42 +1086,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/IView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/etat/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="19" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0" vertical-offset="548" max-vertical-offset="1080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/model/person/BorrowerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="23" selection-start="1849" selection-end="1849" vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="1638">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="9" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2682">
           <folding />
         </state>
       </provider>
@@ -1043,47 +1100,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/etat/Borrow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="63" selection-start="5219" selection-end="5219" vertical-scroll-proportion="0.0" vertical-offset="2522" max-vertical-offset="3312">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/config_test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.0" vertical-offset="486" max-vertical-offset="1008">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="270" selection-end="270" vertical-scroll-proportion="8.0" vertical-offset="432" max-vertical-offset="1332">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.0" vertical-offset="486" max-vertical-offset="1008" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/data_test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1332">
-          <folding />
-        </state>
+        <state line="14" column="0" selection-start="293" selection-end="293" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1332" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/model/InventaireTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="9" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="684">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/model/FinderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1746">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,13 +1127,6 @@
     <entry file="file://$PROJECT_DIR$/src/controllers/MiniProjectController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="0" selection-start="1050" selection-end="1288" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="1368">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="14" selection-start="654" selection-end="654" vertical-scroll-proportion="-14.0" vertical-offset="216" max-vertical-offset="1350">
           <folding />
         </state>
       </provider>
@@ -1136,29 +1159,15 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="242.5" y="193.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="243.0" y="193.0" />
           <SelectedNodes />
           <Categories>
             <Category>Methods</Category>
-            <Category>Properties</Category>
             <Category>Inner Classes</Category>
+            <Category>Properties</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/etat/Borrower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/demonstrateur/MiniProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0" vertical-offset="1016" max-vertical-offset="1530">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,29 +1181,6 @@
     <entry file="file://$PROJECT_DIR$/src/lib/ArrayUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/person/Borrower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="295" column="0" selection-start="8829" selection-end="8829" vertical-scroll-proportion="-0.034951456" vertical-offset="5076" max-vertical-offset="6264">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/feature/OperatingSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="83" selection-start="4684" selection-end="4684" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="3348">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/person/borrower/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
           <folding />
         </state>
       </provider>
@@ -1248,30 +1234,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/MiniProjectException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="0" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0" vertical-offset="2401" max-vertical-offset="2916">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="317" column="42" selection-start="12368" selection-end="12368" vertical-scroll-proportion="0.0" vertical-offset="3481" max-vertical-offset="5688">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
           <folding />
         </state>
       </provider>
@@ -1283,30 +1248,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/finder/IInteger.java">
+    <entry file="file://$PROJECT_DIR$/src/model/MiniProjectException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="30" selection-start="859" selection-end="877" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="990">
+        <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demonstrateur/MiniProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0" vertical-offset="1016" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="6" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" vertical-offset="943" max-vertical-offset="1458">
+        <state line="45" column="6" selection-start="725" selection-end="725" vertical-scroll-proportion="-0.3631068" vertical-offset="943" max-vertical-offset="1458">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="19" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0" vertical-offset="548" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/IView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="9" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2682">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/etat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="601" max-vertical-offset="1170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="25" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1314">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/finder/IInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="31" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/person/borrower/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/person/Borrower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="332" column="0" selection-start="10135" selection-end="10135" vertical-scroll-proportion="0.0" vertical-offset="4651" max-vertical-offset="6246">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="33" selection-start="10920" selection-end="10920" vertical-scroll-proportion="0.0" vertical-offset="1998" max-vertical-offset="5688">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/etat/Borrower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/etat/Borrow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="55" selection-start="4632" selection-end="4869" vertical-scroll-proportion="0.0" vertical-offset="2466" max-vertical-offset="3312">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="22" selection-start="270" selection-end="270" vertical-scroll-proportion="-2.0" vertical-offset="162" max-vertical-offset="1332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/model/FinderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="9" selection-start="3032" selection-end="3032" vertical-scroll-proportion="0.0" vertical-offset="1532" max-vertical-offset="2106">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/etat/Find.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="1386">
+        <state line="62" column="56" selection-start="1274" selection-end="1274" vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="2196">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/feature/OperatingSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="83" selection-start="4684" selection-end="4684" vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="3348">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Finder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="25" selection-start="484" selection-end="484" vertical-scroll-proportion="0.45436892" vertical-offset="0" max-vertical-offset="6570">
+        <state line="83" column="0" selection-start="3135" selection-end="3135" vertical-scroll-proportion="2.900971" vertical-offset="0" max-vertical-offset="6624">
           <folding />
         </state>
       </provider>

@@ -330,7 +330,6 @@ public abstract class Borrower extends model.Person {
             Integer max = 1;
             for(String key: (Set<String>)quantityTime.keySet()){
 
-                System.out.println(key);
                 if(Integer.valueOf(key) < quantity){
                     max = Integer.valueOf(key);
                 }else{
