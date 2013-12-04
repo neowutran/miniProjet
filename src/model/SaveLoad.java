@@ -23,8 +23,10 @@ import model.person.borrower.Teacher;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import config.Error;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class SaveLoad.
  */
@@ -167,7 +169,7 @@ public final class SaveLoad {
                         ( String ) person.get( SaveLoad.PASSWORD ) );
                 break;
             default:
-                throw new MiniProjectException( "cannot create this person" );
+                throw new MiniProjectException( Error.CANNOT_CREATE_PERSON );
 
             }
 
@@ -194,8 +196,9 @@ public final class SaveLoad {
                 } catch( ClassNotFoundException | InstantiationException
                         | NoSuchMethodException | InvocationTargetException
                         | IllegalAccessException e ) {
-                    MiniProjectController.LOGGER.severe( java.util.Arrays
-                            .toString( e.getStackTrace( ) ) );
+                    MiniProjectController.LOGGER.severe( "message:"
+                            + e.getMessage( ) + "\ntrace:"
+                            + java.util.Arrays.toString( e.getStackTrace( ) ) );
 
                 }
 
@@ -264,12 +267,13 @@ public final class SaveLoad {
             final Borrower borrower = ( Borrower ) Finder
                     .findPersonById( borrowerId );
             Borrow borrowObject = null;
-            try{
-            borrowObject = Finder.findBorrowById( borrower.borrow(
-                    listEquipment, debut, fin ) );
-            }catch( Exception e){
-                MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
-                        .getStackTrace( ) ) );
+            try {
+                borrowObject = Finder.findBorrowById( borrower.borrow(
+                        listEquipment, debut, fin ) );
+            } catch( final Exception e ) {
+                MiniProjectController.LOGGER.severe( "message:"
+                        + e.getMessage( ) + "\ntrace:"
+                        + java.util.Arrays.toString( e.getStackTrace( ) ) );
             }
             borrowObject.setId( id );
 
@@ -280,8 +284,9 @@ public final class SaveLoad {
                     borrowObject.setState( State.valueOf( state ),
                             administrator );
                 } catch( final Exception e ) {
-                    MiniProjectController.LOGGER.severe( java.util.Arrays
-                            .toString( e.getStackTrace( ) ) );
+                    MiniProjectController.LOGGER.severe( "message:"
+                            + e.getMessage( ) + "\ntrace:"
+                            + java.util.Arrays.toString( e.getStackTrace( ) ) );
 
                 }
 
@@ -314,8 +319,9 @@ public final class SaveLoad {
 
         } catch( final IOException e ) {
 
-            MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
-                    .getStackTrace( ) ) );
+            MiniProjectController.LOGGER.severe( "message:" + e.getMessage( )
+                    + "\ntrace:"
+                    + java.util.Arrays.toString( e.getStackTrace( ) ) );
 
         }
 

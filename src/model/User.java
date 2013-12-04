@@ -1,6 +1,7 @@
 
 package model;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
@@ -32,11 +33,11 @@ public class User {
     }
 
     /**
-     * Gets the personne id.
+     * Gets the person id.
      *
-     * @return the personne id
+     * @return the person id
      */
-    public String getPersonId() {
+    public String getPersonId( ) {
 
         return this.personId;
     }

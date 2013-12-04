@@ -2,7 +2,6 @@
 package model;
 
 import java.security.InvalidParameterException;
-import java.text.*;
 import java.util.List;
 import java.util.Map;
 
@@ -11,16 +10,13 @@ import model.person.InventoryElement;
 import com.google.gson.annotations.Expose;
 
 import config.Config;
+import config.Error;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Equipment.
  */
 public class Equipment extends InventoryElement {
-
-    public String getType() {
-
-        return type;
-    }
 
     /** The type. */
     @Expose
@@ -51,15 +47,16 @@ public class Equipment extends InventoryElement {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see model.person.InventoryElement#checkExistence(java.lang.String)
      */
     @Override
     protected void checkExistence( final String id )
             throws MiniProjectException {
         if( Finder.findEquipmentById( id ) != null ) {
-            throw new InvalidParameterException(
-                    "This equipment already exist!" );
+            throw new InvalidParameterException( Error.EQUIPMENT_ALREADY_EXIST );
         }
     }
 
@@ -80,7 +77,8 @@ public class Equipment extends InventoryElement {
             if( !( ( Map ) ( ( Map ) Config.getConfiguration( ).get(
                     Config.EQUIPMENT ) ).get( this.type ) )
                     .containsKey( feature.getName( ) ) ) {
-                throw new InvalidParameterException( "Feature - equipment invalid" );
+                throw new InvalidParameterException(
+                        Error.FEATURE_EQUIPMENT_INVALID );
             }
 
         }
@@ -101,7 +99,7 @@ public class Equipment extends InventoryElement {
         if( !( ( Map ) Config.getConfiguration( ).get( Config.EQUIPMENT ) )
                 .containsKey( type ) ) {
 
-            throw new InvalidParameterException( "This equipment does not exist" );
+            throw new InvalidParameterException( Error.EQUIPMENT_DO_NOT_EXIST );
 
         }
 
@@ -111,7 +109,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -132,9 +130,19 @@ public class Equipment extends InventoryElement {
         return this.features;
     }
 
+    /**
+     * Gets the type.
+     *
+     * @return the type
+     */
+    public String getType( ) {
+
+        return this.type;
+    }
+
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -161,17 +169,19 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
 
-        String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.EQUIPMENT);
+        String template = ( String ) ( ( Map ) Config.getConfiguration( ).get(
+                Config.TEMPLATE ) ).get( Config.EQUIPMENT );
 
-        template = template.replaceAll("\\{type\\}", this.type);
-        template = template.replaceAll("\\{features\\}", this.features.toString());
-        template = template.replaceAll("\\{id\\}", this.getId());
+        template = template.replaceAll( "\\{type\\}", this.type );
+        template = template.replaceAll( "\\{features\\}",
+                this.features.toString( ) );
+        template = template.replaceAll( "\\{id\\}", this.getId( ) );
 
         return template;
     }

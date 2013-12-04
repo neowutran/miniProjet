@@ -1,6 +1,7 @@
 
 package model;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class MiniProjectException.
  */

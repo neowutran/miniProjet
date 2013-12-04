@@ -5,14 +5,16 @@ import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import config.*;
+import config.Error;
 import model.*;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
 
-import config.Config;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
@@ -151,23 +153,6 @@ public abstract class Borrower extends model.Person {
         }
 
         /**
-         * Sets the returned.
-         *
-         * @param returned the new returned
-         * @throws InvalidParameterException the invalid parameter exception
-         */
-        public void setReturned( final Calendar returned )
-                throws InvalidParameterException {
-
-            if( returned == null ) {
-                throw new InvalidParameterException(
-                        "return date cannot be null" );
-            }
-            this.returned = returned;
-            this.state = State.RETURNED;
-        }
-
-        /**
          * Sets the state.
          *
          * @param state the state
@@ -177,15 +162,23 @@ public abstract class Borrower extends model.Person {
         public void setState( final model.State state,
                 final String administrator ) throws MiniProjectException {
 
+
+
             if( this.state.equals( state ) ) {
                 return;
             }
+
+            if(State.RETURNED.equals(state)){
+                this.returned = Calendar.getInstance();
+                this.state = State.RETURNED;
+            }
+
             if( State.ACCEPT.equals( state )
                     && Finder.isBorrowed( this.getEquipmentId( ),
                             this.getBorrowStart( ), this.getBorrowEnd( ) ) ) {
 
                 throw new MiniProjectException(
-                        "Le materiel n'est plus disponible" );
+                        Error.EQUIPMENT_UNAVAILABLE);
 
             }
 
@@ -268,15 +261,16 @@ public abstract class Borrower extends model.Person {
      * @param end the end
      * @return the string
      * @throws InvalidParameterException the invalid parameter exception
+     * @throws MiniProjectException the mini project exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
             final Calendar end ) throws InvalidParameterException, MiniProjectException {
 
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
-            throw new InvalidParameterException( "Invalid date" );
+            throw new InvalidParameterException(Error.INVALID_DATE );
         }
         if( Finder.isBorrowed( equipment, start, end ) ) {
-            throw new InvalidParameterException( "Equipment unavailable" );
+            throw new InvalidParameterException( Error.EQUIPMENT_UNAVAILABLE );
         }
 
         final Calendar now = Calendar.getInstance( );
@@ -286,20 +280,20 @@ public abstract class Borrower extends model.Person {
                 && this.maximumAdvanceDays != 0 ) {
 
             throw new InvalidParameterException(
-                    "You cannot borrow so much in advance" );
+                   Error.CANNOT_BORROW_ADVANCE );
         }
 
         final Long maximumTimeDuration = 1000 * 60 * 60 * this.maximumHours;
         if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maximumTimeDuration
                 && this.maximumHours != 0 ) {
-            throw new MiniProjectException("You cannot borrow so  long");
+            throw new MiniProjectException(Error.CANNOT_BORROW_SO_LONG);
 
         }
 
 
         Long maxTimeHours = this.maxTime(equipment);
         if(end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours * 1000 * 60 * 60 * 24){
-            throw new MiniProjectException("You cannot borrow so  long");
+            throw new MiniProjectException(Error.CANNOT_BORROW_SO_LONG);
         }
 
 
@@ -316,6 +310,12 @@ public abstract class Borrower extends model.Person {
 
     }
 
+    /**
+     * Max time.
+     *
+     * @param equipmentsId the equipments id
+     * @return the long
+     */
     private Long maxTime(List<String> equipmentsId){
 
         Long maxTime = null;

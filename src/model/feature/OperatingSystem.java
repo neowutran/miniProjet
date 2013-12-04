@@ -8,26 +8,25 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import config.*;
+import config.Error;
 import model.Feature;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
 
-import config.Config;
-
-
+// TODO: Auto-generated Javadoc
 /**
  * The Class OperatingSystem.
  */
 public class OperatingSystem extends Feature implements model.finder.IString {
 
-    // Cet attribut est chargé a l'aide d'un fichier de configuration JSON
     /** The acceptable value. */
     private List<String> acceptableValue;
 
     /** The name. */
     @Expose
-    private final String name = "OperatingSystem";
+    private String name = "OperatingSystem";
 
     /**
      * Instantiates a new operating system.
@@ -37,7 +36,6 @@ public class OperatingSystem extends Feature implements model.finder.IString {
      */
     public OperatingSystem( final String os ) throws InvalidParameterException {
 
-        // Definition de acceptableValue
         this.setAcceptableValue( null );
         this.checkOS( os );
 
@@ -67,7 +65,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     private void checkOS( final String os ) throws InvalidParameterException {
 
         if( !this.acceptableValue.contains( os ) ) {
-            throw new InvalidParameterException( "Your OS does not exist" );
+            throw new InvalidParameterException(Error.OS_DO_NOT_EXIST);
         } else {
             this.setValue( os );
         }
@@ -84,16 +82,6 @@ public class OperatingSystem extends Feature implements model.finder.IString {
         return this.getClass( ).getName( ).equals( obj.getClass( ).getName( ) )
                 && this.getValue( ).equals(
                         ( ( OperatingSystem ) obj ).getValue( ) );
-    }
-
-    /* (non-Javadoc)
-     * @see model.IFeature#getInfo()
-     */
-    @Override
-    public String getInfo( ) {
-
-        return ( String ) ( ( Map ) Config.getConfiguration( ).get(
-                Config.FEATURE ) ).get( this.name );
     }
 
     /*
@@ -169,7 +157,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
             } else {
 
-                throw new InvalidParameterException( "This equipment does not exist" );
+                throw new InvalidParameterException( Error.EQUIPMENT_DO_NOT_EXIST );
 
             }
 

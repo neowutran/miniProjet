@@ -3,13 +3,14 @@ package model.person;
 
 import java.util.UUID;
 
+import config.*;
+import config.Error;
 import model.Finder;
 import model.MiniProjectException;
 
 import com.google.gson.annotations.Expose;
 
-import config.Config;
-
+// TODO: Auto-generated Javadoc
 /**
  * The Class InventoryElement.
  */
@@ -27,7 +28,7 @@ public abstract class InventoryElement {
      */
     protected void checkExistence( final String id )
             throws MiniProjectException {
-        throw new MiniProjectException( "Unimplemented" );
+        throw new MiniProjectException( Error.UNIMPLEMENTED );
     }
 
     /**
@@ -48,12 +49,11 @@ public abstract class InventoryElement {
     protected void setId( ) throws MiniProjectException {
 
         Integer maxCounter = ( ( Double ) Config.getConfiguration( ).get(
-                "random_counter" ) ).intValue( );
+                Config.RANDOM_COUNTER ) ).intValue( );
         do {
 
             if( maxCounter == 0 ) {
-                throw new MiniProjectException(
-                        "The random generator isn't enough random anymore" );
+                throw new MiniProjectException(Error.RANDOM_ERROR );
             }
             maxCounter--;
             this.id = UUID.randomUUID( ).toString( );

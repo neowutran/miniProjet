@@ -2,12 +2,16 @@
 package model;
 
 import java.security.InvalidParameterException;
-import java.text.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.annotations.Expose;
-import config.*;
 
+import config.Config;
+import config.Error;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class Person.
  */
@@ -74,7 +78,7 @@ public abstract class Person {
             throws InvalidParameterException {
 
         if( Person.exist( id ) ) {
-            throw new InvalidParameterException( "This person already exist!" );
+            throw new InvalidParameterException( Error.PERSON_ALREADY_EXIST );
         }
 
         this.name = name;
@@ -165,20 +169,19 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
 
+        String template = ( String ) ( ( Map ) Config.getConfiguration( ).get(
+                Config.TEMPLATE ) ).get( Config.PERSON );
 
-        String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.PERSON);
+        template = template.replaceAll( "\\{name\\}", this.name );
+        template = template.replaceAll( "\\{type\\}", this.type );
 
-
-        template = template.replaceAll("\\{name\\}", this.name);
-        template = template.replaceAll("\\{type\\}", this.type);
-
-        template = template.replaceAll("\\{id\\}", this.getId());
+        template = template.replaceAll( "\\{id\\}", this.getId( ) );
 
         return template;
 
