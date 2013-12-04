@@ -1,9 +1,9 @@
- 
+
 =======================================================================================================================
 Polytech Nice / SI3 / Module POO2 / 2013-2014
 =======================================================================================================================
 
-Frosh
+MiniProjet
 
 Auteur : Martini Didier & Jean Philippe Kha
 Responsable : Jean Philippe Kha
@@ -18,18 +18,18 @@ Executer le programme:
   Lors de la premiere execution un dossier "MiniProject" contenant le fichier de configuration est crée
 
 =======================================================================================================================
-Sources: 
+Sources:
 =======================================================================================================================
 
   Les sources sont dans le dossier "_SRC"
   Les tests sont dans le dossier "_TUN"
   Le point de lancement est la classe "MiniProject.java" du package "demonstrateur"
-  
+
 =======================================================================================================================
 Utilisation:
 =======================================================================================================================
 
-- La commande "help" affiche l'aide. Elle affiche les commandes disponibles en 
+- La commande "help" affiche l'aide. Elle affiche les commandes disponibles en
 fonction du contexte
 
 - La commande "exit" quitte le programme
