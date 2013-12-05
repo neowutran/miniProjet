@@ -7,16 +7,16 @@ import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
 
 public class InventoryTest {
-  
-    @Before
-    public void setUp() throws Exception {
+
+    @BeforeClass
+    public static void onlyOnce() {
+
         try {
             final Method m = MiniProject.class.getDeclaredMethod("loadConfigFile",
                     Path.class);
@@ -37,6 +37,7 @@ public class InventoryTest {
                     .getStackTrace( ) ) );
         }
     }
+
 
     @Test
     public void testAddBorrow() {
