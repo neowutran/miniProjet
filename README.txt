@@ -8,7 +8,7 @@ MiniProjet
 Auteur : Martini Didier & Jean Philippe Kha
 Responsable : Jean Philippe Kha
 Groupe : SI3 Groupe 2
-Readme : Version : 1.0.0 (Dernière révision 04/12/2013 02:00)
+Readme : Version : 1.0.0 (Dernière révision 06/12/2013 02:00)
 
 =======================================================================================================================
 Executer le programme:
@@ -33,6 +33,8 @@ Utilisation:
 fonction du contexte
 
 - La commande "exit" quitte le programme
+
+- Les identifiants de connexion sont disponible en clair(pas taper) dans le fichier data.json
 
 =======================================================================================================================
 Infos complementaires

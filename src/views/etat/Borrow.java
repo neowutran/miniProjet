@@ -61,14 +61,14 @@ public class Borrow extends State {
                 "descriptionHere" );
 
         final List<String> args3 = new LinkedList<>( );
-        args3.add( "dd/MM/yyyy start" );
-        args3.add( "hh/mm start" );
+        args3.add( "dd/MM/yyyy" );
+        args3.add( "hh/mm" );
         final Command command3 = new Command( "start", args3, this, "setStart",
                 "descriptionHere" );
 
         final List<String> args4 = new LinkedList<>( );
-        args4.add( "dd/MM/yyyy end" );
-        args4.add( "hh/mm end" );
+        args4.add( "dd/MM/yyyy" );
+        args4.add( "hh/mm" );
         final Command command4 = new Command( "end", args4, this, "setEnd",
                 "descriptionHere" );
 
