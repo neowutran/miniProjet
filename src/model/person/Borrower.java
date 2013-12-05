@@ -268,6 +268,44 @@ public class Borrower extends model.Person {
     }
 
     /**
+     * SaveLoad Borrow.
+     * 
+     * @param equipment
+     *            the equipment
+     * @param start
+     *            the start
+     * @param end
+     *            the end
+     * @return the string
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
+     * @throws MiniProjectException
+     *             the mini project exception
+     */
+    public String saveLoadBorrow( final List<String> equipment,
+            final Calendar start, final Calendar end )
+            throws InvalidParameterException, MiniProjectException {
+        if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
+            throw new InvalidParameterException( Error.INVALID_DATE );
+        }
+        if( Finder.isBorrowed( equipment, start, end ) ) {
+            throw new InvalidParameterException( Error.EQUIPMENT_UNAVAILABLE );
+        }
+
+        Borrow borrow;
+        try {
+            borrow = new Borrow( equipment, start, end );
+        } catch( final Exception e ) {
+            MiniProjectController.LOGGER.severe( "message:" + e.getMessage( )
+                    + "\ntrace:"
+                    + java.util.Arrays.toString( e.getStackTrace( ) ) );
+            return null;
+        }
+        Inventory.getInstance( ).addBorrow( borrow );
+        return borrow.getId( );
+    }
+
+    /**
      * Borrow.
      * 
      * @param equipment

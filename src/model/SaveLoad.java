@@ -114,7 +114,7 @@ public final class SaveLoad {
 
     /**
      * Gets the state.
-     *
+     * 
      * @return the state
      */
     private static String getState( ) {
@@ -132,9 +132,11 @@ public final class SaveLoad {
 
     /**
      * Load.
-     *
-     * @param file the file
-     * @throws MiniProjectException the mini project exception
+     * 
+     * @param file
+     *            the file
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     public static void load( final String file ) throws MiniProjectException {
 
@@ -267,7 +269,7 @@ public final class SaveLoad {
                     .findPersonById( borrowerId );
             Borrow borrowObject = null;
             try {
-                borrowObject = Finder.findBorrowById( borrower.borrow(
+                borrowObject = Finder.findBorrowById( borrower.saveLoadBorrow(
                         listEquipment, debut, fin ) );
             } catch( final Exception e ) {
                 MiniProjectController.LOGGER.severe( "message:"
@@ -304,8 +306,9 @@ public final class SaveLoad {
 
     /**
      * Save.
-     *
-     * @param file the file
+     * 
+     * @param file
+     *            the file
      */
     public static void save( final String file ) {
 
