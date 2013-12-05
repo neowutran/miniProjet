@@ -369,6 +369,7 @@ public final class Finder {
     public static boolean isBorrowed( final List<String> equipmentsId,
             final Calendar start, final Calendar end ) {
 
+        
         for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
             for( final String borrowEquipment : borrow.getEquipmentId( ) ) {
                 for( final String materielId : equipmentsId ) {
