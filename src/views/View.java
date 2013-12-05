@@ -42,6 +42,8 @@ public class View {
     public static void launch( ) {
         System.out
                 .println( "Welcome to miniProject version 0.1 (pray for not having a bug)" );
+        View.getState( ).printHelp( );
+
         View.readLine( );
     }
 
