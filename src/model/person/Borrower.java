@@ -3,21 +3,29 @@ package model.person;
 
 import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import config.*;
-import config.Error;
-import model.*;
+import model.Equipment;
+import model.Finder;
+import model.Inventory;
+import model.MiniProjectException;
+import model.State;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
 
+import config.Config;
+import config.Error;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
-public abstract class Borrower extends model.Person {
+public class Borrower extends model.Person {
 
     /**
      * The Class Borrow.
@@ -79,7 +87,9 @@ public abstract class Borrower extends model.Person {
 
         }
 
-        /* (non-Javadoc)
+        /*
+         * (non-Javadoc)
+         * 
          * @see model.person.InventoryElement#checkExistence(java.lang.String)
          */
         @Override
@@ -132,16 +142,6 @@ public abstract class Borrower extends model.Person {
         }
 
         /**
-         * Gets the returned.
-         *
-         * @return the returned
-         */
-        public Calendar getReturned( ) {
-
-            return this.returned;
-        }
-
-        /**
          * Gets the state.
          *
          * @return the state
@@ -161,14 +161,12 @@ public abstract class Borrower extends model.Person {
         public void setState( final model.State state,
                 final String administrator ) throws MiniProjectException {
 
-
-
             if( this.state.equals( state ) ) {
                 return;
             }
 
-            if(State.RETURNED.equals(state)){
-                this.returned = Calendar.getInstance();
+            if( State.RETURNED.equals( state ) ) {
+                this.returned = Calendar.getInstance( );
                 this.state = State.RETURNED;
             }
 
@@ -176,8 +174,7 @@ public abstract class Borrower extends model.Person {
                     && Finder.isBorrowed( this.getEquipmentId( ),
                             this.getBorrowStart( ), this.getBorrowEnd( ) ) ) {
 
-                throw new MiniProjectException(
-                        Error.EQUIPMENT_UNAVAILABLE);
+                throw new MiniProjectException( Error.EQUIPMENT_UNAVAILABLE );
 
             }
 
@@ -187,38 +184,47 @@ public abstract class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString( ) {
 
-            String template = (String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.BORROW);
-            final SimpleDateFormat format = new SimpleDateFormat((String) ((Map) Config.getConfiguration().get(Config.TEMPLATE)).get(Config.FORMAT));
+            String template = ( String ) ( ( Map ) Config.getConfiguration( )
+                    .get( Config.TEMPLATE ) ).get( Config.BORROW );
+            final SimpleDateFormat format = new SimpleDateFormat(
+                    ( String ) ( ( Map ) Config.getConfiguration( ).get(
+                            Config.TEMPLATE ) ).get( Config.FORMAT ) );
 
-            template = template.replaceAll("\\{equipmentId\\}", this.getEquipmentId().toString());
-            template = template.replaceAll("\\{borrowerId\\}", this.getBorrowerId());
+            template = template.replaceAll( "\\{equipmentId\\}", this
+                    .getEquipmentId( ).toString( ) );
+            template = template.replaceAll( "\\{borrowerId\\}",
+                    this.getBorrowerId( ) );
 
-            if(this.administratorId != null){
-                template = template.replaceAll("\\{administratorId\\}", this.administratorId);
-            }else{
-                template = template.replaceAll("\\{administratorId\\}", "null");
+            if( this.administratorId != null ) {
+                template = template.replaceAll( "\\{administratorId\\}",
+                        this.administratorId );
+            } else {
+                template = template
+                        .replaceAll( "\\{administratorId\\}", "null" );
             }
-            if(this.returned == null){
-                template = template.replaceAll("\\{returned\\}", "null");
+            if( this.returned == null ) {
+                template = template.replaceAll( "\\{returned\\}", "null" );
 
-            }else{
-            template = template.replaceAll("\\{returned\\}", this.state.toString());
+            } else {
+                template = template.replaceAll( "\\{returned\\}",
+                        this.state.toString( ) );
             }
 
-            template = template.replaceAll("\\{state\\}", this.state.toString());
-            template = template.replaceAll("\\{borrowStart\\}", format.format(this.borrowStart.getTime()));
-            template = template.replaceAll("\\{borrowEnd\\}", format.format(this.borrowEnd.getTime()));
-            template = template.replaceAll("\\{id\\}", this.getId());
-
+            template = template.replaceAll( "\\{state\\}",
+                    this.state.toString( ) );
+            template = template.replaceAll( "\\{borrowStart\\}",
+                    format.format( this.borrowStart.getTime( ) ) );
+            template = template.replaceAll( "\\{borrowEnd\\}",
+                    format.format( this.borrowEnd.getTime( ) ) );
+            template = template.replaceAll( "\\{id\\}", this.getId( ) );
 
             return template;
-
 
         }
 
@@ -263,10 +269,11 @@ public abstract class Borrower extends model.Person {
      * @throws MiniProjectException the mini project exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
-            final Calendar end ) throws InvalidParameterException, MiniProjectException {
+            final Calendar end ) throws InvalidParameterException,
+            MiniProjectException {
 
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
-            throw new InvalidParameterException(Error.INVALID_DATE );
+            throw new InvalidParameterException( Error.INVALID_DATE );
         }
         if( Finder.isBorrowed( equipment, start, end ) ) {
             throw new InvalidParameterException( Error.EQUIPMENT_UNAVAILABLE );
@@ -278,30 +285,29 @@ public abstract class Borrower extends model.Person {
         if( start.getTimeInMillis( ) - now.getTimeInMillis( ) > maximumAdvance
                 && this.maximumAdvanceDays != 0 ) {
 
-            throw new InvalidParameterException(
-                   Error.CANNOT_BORROW_ADVANCE );
+            throw new InvalidParameterException( Error.CANNOT_BORROW_ADVANCE );
         }
 
         final Long maximumTimeDuration = 1000 * 60 * 60 * this.maximumHours;
         if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maximumTimeDuration
                 && this.maximumHours != 0 ) {
-            throw new MiniProjectException(Error.CANNOT_BORROW_SO_LONG);
+            throw new MiniProjectException( Error.CANNOT_BORROW_SO_LONG );
 
         }
 
-
-        Long maxTimeHours = this.maxTime(equipment);
-        if(end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours * 1000 * 60 * 60 * 24){
-            throw new MiniProjectException(Error.CANNOT_BORROW_SO_LONG);
+        final Long maxTimeHours = this.maxTime( equipment );
+        if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours
+                * 1000 * 60 * 60 * 24 ) {
+            throw new MiniProjectException( Error.CANNOT_BORROW_SO_LONG );
         }
-
 
         Borrow borrow;
         try {
             borrow = new Borrow( equipment, start, end );
         } catch( final Exception e ) {
-            MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
-                    .getStackTrace( ) ) );
+            MiniProjectController.LOGGER.severe( "message:" + e.getMessage( )
+                    + "\ntrace:"
+                    + java.util.Arrays.toString( e.getStackTrace( ) ) );
             return null;
         }
         Inventory.getInstance( ).addBorrow( borrow );
@@ -315,32 +321,37 @@ public abstract class Borrower extends model.Person {
      * @param equipmentsId the equipments id
      * @return the long
      */
-    private Long maxTime(List<String> equipmentsId){
+    private Long maxTime( final List<String> equipmentsId ) {
 
         Long maxTime = null;
-        for(String equipmentId: equipmentsId){
+        for( final String equipmentId : equipmentsId ) {
 
-            Equipment equipment = Finder.findEquipmentById(equipmentId);
+            final Equipment equipment = Finder.findEquipmentById( equipmentId );
 
-            Integer quantity = Finder.findQuantityEquipment(equipment);
-            Integer days = ((Double)((Map)((Map)Config.getConfiguration().get(Config.EQUIPMENT)).get(equipment.getType())).get(Config.MAXIMUM_BORROW_TIME)).intValue();
-            Map quantityTime = ((Map)Config.getConfiguration().get(Config.QUANTITY_TIME));
+            final Integer quantity = Finder.findQuantityEquipment( equipment );
+            final Integer days = ( ( Double ) ( ( Map ) ( ( Map ) Config
+                    .getConfiguration( ).get( Config.EQUIPMENT ) )
+                    .get( equipment.getType( ) ) )
+                    .get( Config.MAXIMUM_BORROW_TIME ) ).intValue( );
+            final Map quantityTime = ( Map ) Config.getConfiguration( ).get(
+                    Config.QUANTITY_TIME );
 
             Integer max = 1;
-            for(String key: (Set<String>)quantityTime.keySet()){
+            for( final String key : ( Set<String> ) quantityTime.keySet( ) ) {
 
-                if(Integer.valueOf(key) < quantity){
-                    max = Integer.valueOf(key);
-                }else{
+                if( Integer.valueOf( key ) < quantity ) {
+                    max = Integer.valueOf( key );
+                } else {
                     break;
                 }
 
-
             }
 
-            Double weighting = (Double)((Map)Config.getConfiguration().get(Config.QUANTITY_TIME)).get(max.toString());
-            if(maxTime == null || maxTime > weighting.longValue() * days){
-                maxTime = weighting.longValue() * days;
+            final Double weighting = ( Double ) ( ( Map ) Config
+                    .getConfiguration( ).get( Config.QUANTITY_TIME ) ).get( max
+                    .toString( ) );
+            if( maxTime == null || maxTime > weighting.longValue( ) * days ) {
+                maxTime = weighting.longValue( ) * days;
             }
 
         }

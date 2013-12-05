@@ -73,7 +73,8 @@
         "13": "Invalid date",
         "14": "Equipment unavailable",
         "15": "You cannot borrow so much in advance",
-        "16": "Your OS does not exist"
+        "16": "Your OS does not exist",
+        "17": "method not found"
 
 
     }

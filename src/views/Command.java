@@ -1,52 +1,49 @@
+
 package views;
 
-import controllers.*;
-import lib.*;
-import model.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.lang.reflect.*;
-import java.util.*;
+import lib.ArrayUtils;
+import model.MiniProjectException;
+import config.Error;
+import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Command.
  */
 public class Command {
 
-    /**
-     * The name.
-     */
+    /** The name. */
     private final String name;
 
-    /**
-     * The args.
-     */
-    private List<String> args = new LinkedList<>();
+    /** The args. */
+    private List<String> args = new LinkedList<>( );
 
-    /**
-     * The description.
-     */
+    /** The description. */
     private final String description;
 
-    /**
-     * The state.
-     */
-    private final State state;
+    /** The state. */
+    private final State  state;
 
-    /**
-     * The method.
-     */
+    /** The method. */
     private final String method;
 
     /**
      * Instantiates a new command.
      *
-     * @param name        the name
-     * @param args        the args
-     * @param state       the state
-     * @param method      the method
+     * @param name the name
+     * @param args the args
+     * @param state the state
+     * @param method the method
      * @param description the description
      */
-    public Command(final String name, final List<String> args, final State state, final String method, final String description) {
+    public Command( final String name, final List<String> args,
+            final State state, final String method, final String description ) {
 
         this.name = name;
         this.args = args;
@@ -61,7 +58,7 @@ public class Command {
      *
      * @return the name
      */
-    public String getName() {
+    public String getName( ) {
 
         return this.name;
     }
@@ -70,66 +67,69 @@ public class Command {
      * Invoke.
      *
      * @param arg the arg
-     *
      * @throws MiniProjectException the mini project exception
      */
-    public void invoke(final String[] arg) throws MiniProjectException {
+    public void invoke( final String[ ] arg ) throws MiniProjectException {
 
-        if (arg.length - 1 != this.args.size()) {
+        if( arg.length - 1 != this.args.size( ) ) {
 
-            this.state.printHelp();
+            this.state.printHelp( );
             return;
         }
 
-        final Method[] methods = ArrayUtils.concatenate(this.state.getClass().getDeclaredMethods(), this.state.getClass().getMethods());
+        final Method[ ] methods = ArrayUtils.concatenate( this.state.getClass( )
+                .getDeclaredMethods( ), this.state.getClass( ).getMethods( ) );
 
-        for (final Method method : methods) {
+        for( final Method method : methods ) {
 
-            if (!method.getName().equals(this.method)) {
+            if( !method.getName( ).equals( this.method ) ) {
                 continue;
             }
 
-            final Class[] parameters = method.getParameterTypes();
-            if (parameters.length != this.args.size()) {
+            final Class[ ] parameters = method.getParameterTypes( );
+            if( parameters.length != this.args.size( ) ) {
                 continue;
             }
 
             Boolean goodMethod = true;
 
-            for (final Class parameter : parameters) {
+            for( final Class parameter : parameters ) {
 
-                if (!parameter.equals(String.class)) {
+                if( !parameter.equals( String.class ) ) {
                     goodMethod = false;
                     break;
                 }
             }
 
-            if (goodMethod) {
+            if( goodMethod ) {
 
-                method.setAccessible(true);
+                method.setAccessible( true );
                 try {
-                    method.invoke(this.state, Arrays.copyOfRange(arg, 1, arg.length));
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
+                    method.invoke( this.state,
+                            Arrays.copyOfRange( arg, 1, arg.length ) );
+                } catch( IllegalAccessException | InvocationTargetException e ) {
+                    MiniProjectController.LOGGER.severe( java.util.Arrays
+                            .toString( e.getStackTrace( ) ) );
                 }
                 return;
 
             }
 
-
         }
-        throw new MiniProjectException("method not found");
+        throw new MiniProjectException( Error.METHOD_NOT_FOUND );
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() {
+    public String toString( ) {
 
         String show = "- " + this.name + " : " + this.name;
-        for (final String arg : this.args) {
+        for( final String arg : this.args ) {
             show += " " + arg;
         }
         show += "\n";

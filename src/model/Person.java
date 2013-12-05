@@ -11,6 +11,7 @@ import com.google.gson.annotations.Expose;
 import config.Config;
 import config.Error;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Person.
  */
@@ -168,7 +169,7 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

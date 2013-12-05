@@ -1,16 +1,21 @@
 
 package views.etat;
 
-import java.security.*;
+import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
-import model.*;
+import model.Finder;
+import model.MiniProjectException;
 import model.User;
 import views.Command;
 import views.State;
 import views.View;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Borrow.
  */
@@ -43,55 +48,6 @@ public class Borrow extends State {
         View.setState( new Borrower( ) );
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see views.IView#setCommands()
-     */
-    @Override
-    public List<Command> setCommands() {
-
-        final List<Command> commands = new ArrayList<>( );
-
-        final List<String> args1 = new LinkedList<>( );
-        args1.add( "equipmentId" );
-        final Command command1 = new Command( "add", args1, this, "add",
-                "descriptionHere" );
-        final Command command2 = new Command( "remove", args1, this, "add",
-                "descriptionHere" );
-
-        final List<String> args3 = new LinkedList<>( );
-        args3.add( "dd/MM/yyyy" );
-        args3.add( "hh/mm" );
-        final Command command3 = new Command( "start", args3, this, "setStart",
-                "descriptionHere" );
-
-        final List<String> args4 = new LinkedList<>( );
-        args4.add( "dd/MM/yyyy" );
-        args4.add( "hh/mm" );
-        final Command command4 = new Command( "end", args4, this, "setEnd",
-                "descriptionHere" );
-
-        final Command command5 = new Command( "validate",
-                new LinkedList<String>( ), this, "validate", "descriptionHere" );
-        final Command command6 = new Command( "cancel",
-                new LinkedList<String>( ), this, "cancel", "descriptionHere" );
-        final Command command7 = new Command( "show",
-                new LinkedList<String>( ), this, "show", "descriptionHere" );
-
-        commands.add( command1 );
-        commands.add( command2 );
-        commands.add( command3 );
-        commands.add( command4 );
-        commands.add( command5 );
-        commands.add( command6 );
-        commands.add( command7 );
-        commands.addAll( super.setCommands() );
-
-        return commands;
-
-    }
-
     /**
      * Removes the.
      *
@@ -101,6 +57,58 @@ public class Borrow extends State {
 
         this.equipments.remove( id );
         System.out.println( "Equipment " + id + " removed" );
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see views.IView#setCommands()
+     */
+    @Override
+    public List<Command> setCommands( ) {
+
+        final List<Command> commands = new ArrayList<>( );
+
+        final List<String> args1 = new LinkedList<>( );
+        args1.add( "equipmentId" );
+        final Command command1 = new Command( "add", args1, this, "add",
+                "Ajoute un equipement a la liste de la demande d'emprunt" );
+        final Command command2 = new Command( "remove", args1, this, "add",
+                "Supprime un equipement de la liste de la demande d'emprunt" );
+
+        final List<String> args3 = new LinkedList<>( );
+        args3.add( "dd/MM/yyyy" );
+        args3.add( "hh/mm" );
+        final Command command3 = new Command( "start", args3, this, "setStart",
+                "Defini le debut de la demande d'emprunt" );
+
+        final List<String> args4 = new LinkedList<>( );
+        args4.add( "dd/MM/yyyy" );
+        args4.add( "hh/mm" );
+        final Command command4 = new Command( "end", args4, this, "setEnd",
+                "Defini la fin de la demande d'emprunt" );
+
+        final Command command5 = new Command( "validate",
+                new LinkedList<String>( ), this, "validate",
+                "Confirme la demande d'emprunt" );
+        final Command command6 = new Command( "cancel",
+                new LinkedList<String>( ), this, "cancel",
+                "Annule la demande d'emprunt" );
+        final Command command7 = new Command( "show",
+                new LinkedList<String>( ), this, "show",
+                "Affiche la demande d'emprunt" );
+
+        commands.add( command1 );
+        commands.add( command2 );
+        commands.add( command3 );
+        commands.add( command4 );
+        commands.add( command5 );
+        commands.add( command6 );
+        commands.add( command7 );
+        commands.addAll( super.setCommands( ) );
+
+        return commands;
 
     }
 
@@ -120,7 +128,7 @@ public class Borrow extends State {
         }
 
         this.end.set( Integer.valueOf( dayMonthYear[ 2 ] ),
-                Integer.valueOf( dayMonthYear[ 1 ])-1,
+                Integer.valueOf( dayMonthYear[ 1 ] ) - 1,
                 Integer.valueOf( dayMonthYear[ 0 ] ),
                 Integer.valueOf( hourMinute[ 0 ] ),
                 Integer.valueOf( hourMinute[ 1 ] ), 0 );
@@ -145,11 +153,11 @@ public class Borrow extends State {
         }
 
         this.start.set( Integer.valueOf( dayMonthYear[ 2 ] ),
-                Integer.valueOf( dayMonthYear[ 1 ] )-1,
+                Integer.valueOf( dayMonthYear[ 1 ] ) - 1,
                 Integer.valueOf( dayMonthYear[ 0 ] ),
                 Integer.valueOf( hourMinute[ 0 ] ),
                 Integer.valueOf( hourMinute[ 1 ] ), 0 );
-        System.out.println("start date set");
+        System.out.println( "start date set" );
 
     }
 
@@ -175,12 +183,14 @@ public class Borrow extends State {
             return;
         }
 
-        try{
-        ( ( model.person.Borrower ) Finder.findPersonById( User.getInstance()
-                .getPersonId() ) ).borrow(this.equipments, this.start, this.end);
-        }catch (InvalidParameterException | MiniProjectException e){
-            System.out.println(e.getMessage());
+        try {
+            ( ( model.person.Borrower ) Finder.findPersonById( User
+                    .getInstance( ).getPersonId( ) ) ).borrow( this.equipments,
+                    this.start, this.end );
+        } catch( InvalidParameterException | MiniProjectException e ) {
+            System.out.println( e.getMessage( ) );
         }
         System.out.println( "Borrowed." );
+        this.cancel( );
     }
 }

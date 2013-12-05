@@ -7,7 +7,5 @@
 	</contentEntry>
 	<levels>
 		<level name="JUnit" value="project"/>
-		<level name="google-gson" value="project"/>
-		<level name="commons-cli-1.2" value="project"/>
 	</levels>
 </component>

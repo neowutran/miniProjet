@@ -12,67 +12,11 @@ import views.Command;
 import views.State;
 import views.View;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
 public abstract class User extends State {
-
-    /* (non-Javadoc)
-     * @see views.State#setCommands()
-     */
-    @Override
-    public List<Command> setCommands() {
-
-        final List<Command> commands = new ArrayList<>( );
-
-        final Command command3 = new Command( "logout",
-                new LinkedList<String>( ), this, "logout", "descriptionHere" );
-        final Command command4 = new Command( "list_borrow",
-                new LinkedList<String>( ), this, "list_borrow",
-                "descriptionHere" );
-        final Command command5 = new Command( "list_equipment",
-                new LinkedList<String>( ), this, "list_equipment",
-                "descriptionHere" );
-
-        final List<String> args6 = new LinkedList<>( );
-        args6.add( "borrowId" );
-        final Command command6 = new Command( "show_borrow", args6, this,
-                "show_borrow", "descriptionHere" );
-
-        final List<String> args7 = new LinkedList<>( );
-        args7.add( "equipmentId" );
-        final Command command7 = new Command( "show_equipment", args7, this,
-                "show_equipment", "descriptionHere" );
-
-        final List<String> args8 = new LinkedList<>( );
-        args8.add( "personId" );
-        final Command command8 = new Command( "show_person", args8, this,
-                "show_person", "descriptionHere" );
-
-        final List<String> args9 = new LinkedList<>( );
-        args9.add( "dd/MM/yyyy start" );
-        args9.add( "hh:mm start" );
-        args9.add( "dd/MM/yyyy end" );
-        args9.add( "hh:mm end" );
-        final Command command9 = new Command( "list_available_equipment",
-                args9, this, "list_available_equipment", "descriptionHere" );
-
-        final Command command10 = new Command( "find",
-                new LinkedList<String>( ), this, "find", "descriptionHere" );
-
-        commands.add( command3 );
-        commands.add( command4 );
-        commands.add( command5 );
-        commands.add( command6 );
-        commands.add( command7 );
-        commands.add( command8 );
-        commands.add( command9 );
-        commands.add( command10 );
-
-        commands.addAll( super.setCommands() );
-
-        return commands;
-    }
 
     /**
      * Find.
@@ -112,13 +56,13 @@ public abstract class User extends State {
         }
 
         start.set( Integer.valueOf( stringStartDayMonthYear[ 2 ] ),
-                Integer.valueOf( stringStartDayMonthYear[ 1 ] ) -1,
+                Integer.valueOf( stringStartDayMonthYear[ 1 ] ) - 1,
                 Integer.valueOf( stringStartDayMonthYear[ 0 ] ),
                 Integer.valueOf( stringStartHourMinute[ 0 ] ),
                 Integer.valueOf( stringStartHourMinute[ 1 ] ), 0 );
 
         end.set( Integer.valueOf( stringEndDayMonthYear[ 2 ] ),
-                Integer.valueOf( stringEndDayMonthYear[ 1 ] ) -1,
+                Integer.valueOf( stringEndDayMonthYear[ 1 ] ) - 1,
                 Integer.valueOf( stringEndDayMonthYear[ 0 ] ),
                 Integer.valueOf( stringEndHourMinute[ 0 ] ),
                 Integer.valueOf( stringEndHourMinute[ 1 ] ), 0 );
@@ -150,6 +94,67 @@ public abstract class User extends State {
         model.User.getInstance( ).logout( );
         View.setState( new Main( ) );
         System.out.println( "logged out" );
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see views.State#setCommands()
+     */
+    @Override
+    public List<Command> setCommands( ) {
+
+        final List<Command> commands = new ArrayList<>( );
+
+        final Command command3 = new Command( "logout",
+                new LinkedList<String>( ), this, "logout", "Obvious" );
+        final Command command4 = new Command( "list_borrow",
+                new LinkedList<String>( ), this, "list_borrow",
+                "Affiche la liste des emprunts" );
+        final Command command5 = new Command( "list_equipment",
+                new LinkedList<String>( ), this, "list_equipment",
+                "Affiche la liste des equipements" );
+
+        final List<String> args6 = new LinkedList<>( );
+        args6.add( "borrowId" );
+        final Command command6 = new Command( "show_borrow", args6, this,
+                "show_borrow", "Affiche un emprunt" );
+
+        final List<String> args7 = new LinkedList<>( );
+        args7.add( "equipmentId" );
+        final Command command7 = new Command( "show_equipment", args7, this,
+                "show_equipment", "Affiche un equipement" );
+
+        final List<String> args8 = new LinkedList<>( );
+        args8.add( "personId" );
+        final Command command8 = new Command( "show_person", args8, this,
+                "show_person", "Affiche les informations sur une personne" );
+
+        final List<String> args9 = new LinkedList<>( );
+        args9.add( "dd/MM/yyyy" );
+        args9.add( "hh:mm" );
+        args9.add( "dd/MM/yyyy" );
+        args9.add( "hh:mm" );
+        final Command command9 = new Command( "list_available_equipment",
+                args9, this, "list_available_equipment",
+                "Affiche les equipement actuellement disponible à l'emprunt" );
+
+        final Command command10 = new Command( "find",
+                new LinkedList<String>( ), this, "find",
+                "Rentre en mode de recherche avancé" );
+
+        commands.add( command3 );
+        commands.add( command4 );
+        commands.add( command5 );
+        commands.add( command6 );
+        commands.add( command7 );
+        commands.add( command8 );
+        commands.add( command9 );
+        commands.add( command10 );
+
+        commands.addAll( super.setCommands( ) );
+
+        return commands;
     }
 
     /**

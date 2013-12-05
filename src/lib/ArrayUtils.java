@@ -3,9 +3,6 @@ package lib;
 
 import java.lang.reflect.Array;
 
-/**
- * Created by draragar on 02/12/13.
- */
 public class ArrayUtils {
 
     public static <T> T[ ] concatenate( final T[ ] A, final T[ ] B ) {
@@ -21,5 +18,6 @@ public class ArrayUtils {
         return C;
     }
 
-    private ArrayUtils(){}
+    private ArrayUtils( ) {
+    }
 }

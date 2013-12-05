@@ -4,6 +4,7 @@
 
 package config;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Config.
  */
@@ -20,9 +21,6 @@ public final class Config {
 
     /** The Constant MAXIMUM_HOUR. */
     public static final String                   MAXIMUM_HOUR        = "maximum_hours";
-
-    /** The Constant FEATURE. */
-    public static final String                   FEATURE             = "feature";
 
     /** The Constant FEATURES. */
     public static final String                   FEATURES            = "features";

@@ -5,6 +5,7 @@ import model.MiniProjectException;
 import model.SaveLoad;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Administrator.
  */
@@ -36,8 +37,9 @@ public class Administrator extends model.Person {
         try {
             borrow.setState( state, this.getId( ) );
         } catch( final MiniProjectException e ) {
-            MiniProjectController.LOGGER.severe( "message:"+e.getMessage()+"\ntrace:"+ java.util.Arrays.toString( e
-                    .getStackTrace( ) ) );
+            MiniProjectController.LOGGER.severe( "message:" + e.getMessage( )
+                    + "\ntrace:"
+                    + java.util.Arrays.toString( e.getStackTrace( ) ) );
             return false;
         }
 

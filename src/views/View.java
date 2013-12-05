@@ -8,13 +8,24 @@ import java.util.Scanner;
 
 import views.etat.Main;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class View.
  */
 public class View {
 
     /** The state. */
-    private static State state = new Main( );
+    private static State   state = new Main( );
+
+    /** The exit. */
+    private static Boolean exit  = false;
+
+    /**
+     * Exit.
+     */
+    public static void exit( ) {
+        View.exit = true;
+    }
 
     /**
      * Gets the state.
@@ -40,7 +51,7 @@ public class View {
      */
     private static void readLine( ) {
 
-        while( true ) {
+        while( !View.exit ) {
 
             final Scanner scanner = new Scanner( System.in );
             final String line = scanner.nextLine( );
@@ -59,5 +70,9 @@ public class View {
         View.state = state;
     }
 
-    private View(){}
+    /**
+     * Instantiates a new view.
+     */
+    private View( ) {
+    }
 }

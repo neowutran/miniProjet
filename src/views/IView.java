@@ -3,15 +3,16 @@ package views;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IView.
  */
 public interface IView {
 
     /**
-     * Sets the options.
+     * Sets the commands.
      *
-     * @return the options
+     * @return the list
      */
-    List<Command> setCommands();
+    List<Command> setCommands( );
 }

@@ -1,6 +1,7 @@
 
 package model.finder;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IString.
  */

@@ -8,13 +8,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import config.*;
-import config.Error;
 import model.Feature;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
 
+import config.Config;
+import config.Error;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class OperatingSystem.
  */
@@ -25,7 +27,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /** The name. */
     @Expose
-    private String name = "OperatingSystem";
+    private String       name = "OperatingSystem";
 
     /**
      * Instantiates a new operating system.
@@ -64,7 +66,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
     private void checkOS( final String os ) throws InvalidParameterException {
 
         if( !this.acceptableValue.contains( os ) ) {
-            throw new InvalidParameterException(Error.OS_DO_NOT_EXIST);
+            throw new InvalidParameterException( Error.OS_DO_NOT_EXIST );
         } else {
             this.setValue( os );
         }
@@ -72,7 +74,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -85,7 +87,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see model.IFeature#getName()
      */
     @Override
@@ -96,7 +98,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -109,7 +111,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see model.finder.IString#equals(model.finder.IString)
      */
     @Override
@@ -156,7 +158,8 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
             } else {
 
-                throw new InvalidParameterException( Error.EQUIPMENT_DO_NOT_EXIST );
+                throw new InvalidParameterException(
+                        Error.EQUIPMENT_DO_NOT_EXIST );
 
             }
 
@@ -166,14 +169,14 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString( ) {
         String template = ( String ) ( ( Map ) ( ( Map ) Config
-                .getConfiguration( ).get( Config.TEMPLATE ) ).get( Config.FEATURES ) )
-                .get( this.name );
+                .getConfiguration( ).get( Config.TEMPLATE ) )
+                .get( Config.FEATURES ) ).get( this.name );
         template = template.replaceAll( "\\{name\\}", this.name );
         template = template.replaceAll( "\\{value\\}", this.getValue( ) );
 

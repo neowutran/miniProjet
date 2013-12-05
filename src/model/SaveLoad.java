@@ -17,8 +17,6 @@ import lib.Json;
 import model.person.Administrator;
 import model.person.Borrower;
 import model.person.Borrower.Borrow;
-import model.person.borrower.Student;
-import model.person.borrower.Teacher;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,6 +24,7 @@ import com.google.gson.GsonBuilder;
 import config.Error;
 import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class SaveLoad.
  */
@@ -153,13 +152,15 @@ public final class SaveLoad {
             final String type = ( String ) person.get( SaveLoad.TYPE );
             switch( type ) {
             case PERSON_TYPE_STUDENT:
-                new Student( ( String ) person.get( SaveLoad.NAME ),
+                new Borrower( ( String ) person.get( SaveLoad.NAME ),
                         ( String ) person.get( SaveLoad.ID ),
+                        SaveLoad.PERSON_TYPE_STUDENT,
                         ( String ) person.get( SaveLoad.PASSWORD ) );
                 break;
             case PERSON_TYPE_TEACHER:
-                new Teacher( ( String ) person.get( SaveLoad.NAME ),
+                new Borrower( ( String ) person.get( SaveLoad.NAME ),
                         ( String ) person.get( SaveLoad.ID ),
+                        SaveLoad.PERSON_TYPE_TEACHER,
                         ( String ) person.get( SaveLoad.PASSWORD ) );
                 break;
             case PERSON_TYPE_ADMINISTRATOR:

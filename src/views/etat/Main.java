@@ -10,33 +10,11 @@ import views.Command;
 import views.State;
 import views.View;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Main.
  */
 public class Main extends State {
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see views.IView#setCommands()
-     */
-    @Override
-    public List<Command> setCommands() {
-
-        final List<Command> commands = new ArrayList<>( );
-
-        final List<String> args1 = new LinkedList<>( );
-        args1.add( "id" );
-        args1.add( "password" );
-        final Command command1 = new Command( "login", args1, this, "login",
-                "descriptionHere" );
-
-        commands.add( command1 );
-        commands.addAll( super.setCommands() );
-
-        return commands;
-
-    }
 
     /**
      * Login.
@@ -51,16 +29,41 @@ public class Main extends State {
             System.out.println( "Welcome "
                     + Finder.findPersonById( id ).getName( ) );
             if( Finder.isBorrower( id ) ) {
+                System.out.println( "Interface borrower" );
                 View.setState( new Borrower( ) );
             } else {
+                System.out.println( "Interface administrator" );
                 View.setState( new Administrator( ) );
             }
 
         } else {
 
-            System.out.println( "Mauvais utilisateur ou mot de passe" );
+            System.out.println( "Wrong username or password" );
 
         }
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see views.IView#setCommands()
+     */
+    @Override
+    public List<Command> setCommands( ) {
+
+        final List<Command> commands = new ArrayList<>( );
+
+        final List<String> args1 = new LinkedList<>( );
+        args1.add( "id" );
+        args1.add( "password" );
+        final Command command1 = new Command( "login", args1, this, "login",
+                "Se connecte a l'interface.\n\t Exemple d'utilisation:\n\t login 123 pass " );
+
+        commands.add( command1 );
+        commands.addAll( super.setCommands( ) );
+
+        return commands;
 
     }
 }

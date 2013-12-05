@@ -9,10 +9,10 @@ import java.util.List;
 
 import model.finder.IInteger;
 import model.finder.IString;
-import model.person.Borrower;
 import model.person.Borrower.Borrow;
 import config.Error;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Finder.
  */
@@ -55,7 +55,7 @@ public final class Finder {
         try {
             final Class classFeature = Class.forName( "model.feature."
                     + featureString );
-            final Class[] interfaceFeature = classFeature.getInterfaces( );
+            final Class[ ] interfaceFeature = classFeature.getInterfaces( );
             for( final Class anInterfaceFeature : interfaceFeature ) {
                 if( anInterfaceFeature.equals( IString.class ) && type != 2 ) {
                     type = 1;
@@ -368,7 +368,6 @@ public final class Finder {
     public static boolean isBorrowed( final List<String> equipmentsId,
             final Calendar start, final Calendar end ) {
 
-        
         for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
             for( final String borrowEquipment : borrow.getEquipmentId( ) ) {
                 for( final String materielId : equipmentsId ) {
@@ -400,7 +399,8 @@ public final class Finder {
         if( person == null ) {
             throw new InvalidParameterException( Error.INVALID_ID );
         }
-        return person.getClass( ).getSuperclass( ).equals( Borrower.class );
+        return person.getType( ).equals( SaveLoad.PERSON_TYPE_STUDENT )
+                || person.getType( ).equals( SaveLoad.PERSON_TYPE_TEACHER );
 
     }
 

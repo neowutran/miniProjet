@@ -3,13 +3,15 @@ package model.person;
 
 import java.util.UUID;
 
-import config.*;
-import config.Error;
 import model.Finder;
 import model.MiniProjectException;
 
 import com.google.gson.annotations.Expose;
 
+import config.Config;
+import config.Error;
+
+// TODO: Auto-generated Javadoc
 /**
  * The Class InventoryElement.
  */
@@ -52,7 +54,7 @@ public abstract class InventoryElement {
         do {
 
             if( maxCounter == 0 ) {
-                throw new MiniProjectException(Error.RANDOM_ERROR );
+                throw new MiniProjectException( Error.RANDOM_ERROR );
             }
             maxCounter--;
             this.id = UUID.randomUUID( ).toString( );

@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import controllers.*;
 import model.MiniProjectException;
 import model.SaveLoad;
+import controllers.MiniProjectController;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class State.
  */
@@ -24,14 +25,15 @@ public abstract class State implements IView {
         if( line == null || line.length == 0 ) {
             return;
         }
-        for( final Command command : this.setCommands() ) {
+        for( final Command command : this.setCommands( ) ) {
 
             if( command.getName( ).equals( line[ 0 ] ) ) {
 
                 try {
                     command.invoke( line );
                 } catch( final MiniProjectException e ) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e.getStackTrace()));
+                    MiniProjectController.LOGGER.severe( java.util.Arrays
+                            .toString( e.getStackTrace( ) ) );
                 }
 
                 return;
@@ -39,31 +41,9 @@ public abstract class State implements IView {
 
         }
 
-        if(! "".equals(line[ 0 ]) ) {
+        if( !"".equals( line[ 0 ] ) ) {
             this.printHelp( );
         }
-
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see views.IView#setCommands()
-     */
-    @Override
-    public List<Command> setCommands() {
-
-        final List<Command> commands = new ArrayList<>( );
-
-        final Command command1 = new Command( "exit",
-                new LinkedList<String>( ), this, "exit", "descriptionHere" );
-        final Command command2 = new Command( "help",
-                new LinkedList<String>( ), this, "printHelp", "descriptionHere" );
-
-        commands.add( command1 );
-        commands.add( command2 );
-
-        return commands;
 
     }
 
@@ -73,7 +53,7 @@ public abstract class State implements IView {
     public void exit( ) {
 
         SaveLoad.save( );
-        System.exit( 0 );
+        View.exit( );
     }
 
     /**
@@ -93,10 +73,32 @@ public abstract class State implements IView {
     public void printHelp( ) {
 
         System.out.println( "===== HELP ======\n" );
-        for( final Command command : this.setCommands() ) {
+        for( final Command command : this.setCommands( ) ) {
             System.out.println( command );
         }
         System.out.println( "=================\n" );
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see views.IView#setCommands()
+     */
+    @Override
+    public List<Command> setCommands( ) {
+
+        final List<Command> commands = new ArrayList<>( );
+
+        final Command command1 = new Command( "exit",
+                new LinkedList<String>( ), this, "exit", "Quitte l'application" );
+        final Command command2 = new Command( "help",
+                new LinkedList<String>( ), this, "printHelp", "Affiche l'aide" );
+
+        commands.add( command1 );
+        commands.add( command2 );
+
+        return commands;
+
     }
 
 }
