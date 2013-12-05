@@ -9,6 +9,9 @@ import org.junit.*;
 import java.lang.reflect.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class FinderTest {
 
@@ -54,7 +57,7 @@ public class FinderTest {
 
     @Test
     public void testFindBorrowByBorrower() {
-        assertEquals(Finder.findBorrowByBorrower("123"),1);
+        assertEquals(Finder.findBorrowByBorrower("123").size(),1);
     }
 
     @Test
@@ -72,15 +75,12 @@ public class FinderTest {
 
     @Test
     public void testFindEquipmentById() {
-        //Equipement disponible
-        assertNotNull(Finder.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5"));
-        //Equipement indisponible
-        assertNull(Finder.findBorrowById("ca072236-8f15-486d-93e4-2b21abb831a5"));
+        assertEquals(Finder.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5").getType(),"tablet");
     }
 
     @Test
     public void testFindLateBorrow() {
-        assertEquals(Finder.findLateBorrow().get(0).getId(),123);
+        assertEquals(Finder.findLateBorrow().get(0).getId(),"e69f2659-b0c8-4dc3-8d70-63a221fd20c2");
     }
 
     @Test
@@ -94,7 +94,7 @@ public class FinderTest {
         values.add("Windows");
         try {
             //TODO tester qq chose ici
-            System.out.println(Finder.find(null,features,operateurs,values));
+            assertEquals(Finder.find(null,features,operateurs,values).size(),2);
         } catch (MiniProjectException e) {
             e.printStackTrace();
         }
@@ -102,17 +102,24 @@ public class FinderTest {
 
     @Test
     public void testFindPersonById() {
-      //  fail("Not yet implemented");
+        assertEquals(Finder.findPersonById("123").getId(),"123");
+        assertEquals(Finder.findPersonById("123").getName(),"Toto");
+        assertEquals(Finder.findPersonById("123").getType(),"student");
     }
 
     @Test
     public void testIsBorrowed() {
-     //   fail("Not yet implemented");
+        ArrayList<String> equipmentsId = new ArrayList();
+        equipmentsId.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+        equipmentsId.add("95984d07-575a-49d1-a6cd-d964c9a38ffe");
+        assertEquals(Finder.isBorrowed(equipmentsId, new GregorianCalendar(2013,10,2), new GregorianCalendar(2013,10,7)),false);
     }
 
     @Test
     public void testIsBorrower() {
-     //   fail("Not yet implemented");
+        assertEquals(Finder.isBorrower("123"),true);
+        assertEquals(Finder.isBorrower("9000"),false);
+        
     }
 
 }
