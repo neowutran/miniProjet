@@ -284,7 +284,7 @@ public class Borrower extends model.Person {
      */
     public String saveLoadBorrow( final List<String> equipment,
             final Calendar start, final Calendar end )
-            throws InvalidParameterException, MiniProjectException {
+            throws InvalidParameterException {
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
             throw new InvalidParameterException( Error.INVALID_DATE );
         }
