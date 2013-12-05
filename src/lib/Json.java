@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Json.
  */
@@ -17,8 +16,9 @@ public final class Json {
 
     /**
      * Load file.
-     *
-     * @param file the file
+     * 
+     * @param file
+     *            the file
      * @return the map
      */
     public static Map loadFile( final Path file ) {

@@ -19,18 +19,22 @@ public final class Finder {
 
     /**
      * Check size.
-     *
-     * @param features the features
-     * @param operator the operator
-     * @param value the value
-     * @throws InvalidParameterException the invalid parameter exception
+     * 
+     * @param features
+     *            the features
+     * @param operator
+     *            the operator
+     * @param value
+     *            the value
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
      */
     private static void checkSize( final List<String> features,
             final List<String> operator, final List<String> value )
             throws InvalidParameterException {
 
-        if( features.size( ) != operator.size( )
-                || operator.size( ) != value.size( ) ) {
+        if( ( features.size( ) != operator.size( ) )
+                || ( operator.size( ) != value.size( ) ) ) {
             throw new InvalidParameterException( Error.NOT_SAME_SIZE );
         }
 
@@ -38,13 +42,18 @@ public final class Finder {
 
     /**
      * Evaluate.
-     *
-     * @param featureString the feature string
-     * @param operator the operator
-     * @param value the value
-     * @param feature the feature
+     * 
+     * @param featureString
+     *            the feature string
+     * @param operator
+     *            the operator
+     * @param value
+     *            the value
+     * @param feature
+     *            the feature
      * @return the boolean
-     * @throws MiniProjectException the mini project exception
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     private static Boolean evaluate( final String featureString,
             final String operator, final String value, final Feature feature )
@@ -56,7 +65,7 @@ public final class Finder {
                     + featureString );
             final Class[ ] interfaceFeature = classFeature.getInterfaces( );
             for( final Class anInterfaceFeature : interfaceFeature ) {
-                if( anInterfaceFeature.equals( IString.class ) && type != 2 ) {
+                if( anInterfaceFeature.equals( IString.class ) && ( type != 2 ) ) {
                     type = 1;
                 }
                 if( anInterfaceFeature.equals( IInteger.class ) ) {
@@ -126,13 +135,18 @@ public final class Finder {
 
     /**
      * Find.
-     *
-     * @param type the type
-     * @param features the features
-     * @param operators the operators
-     * @param value the value
+     * 
+     * @param type
+     *            the type
+     * @param features
+     *            the features
+     * @param operators
+     *            the operators
+     * @param value
+     *            the value
      * @return the list
-     * @throws MiniProjectException the mini project exception
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     public static List<Equipment> find( final String type,
             final List<String> features, final List<String> operators,
@@ -142,7 +156,7 @@ public final class Finder {
         for( final Equipment equipment : Inventory.getInstance( )
                 .getEquipments( ) ) {
 
-            if( !equipment.getType( ).equals( type ) && type != null ) {
+            if( !equipment.getType( ).equals( type ) && ( type != null ) ) {
                 continue;
             }
             boolean good = true;
@@ -171,8 +185,9 @@ public final class Finder {
 
     /**
      * Find actual borrow by borrower.
-     *
-     * @param borrowerId the borrower id
+     * 
+     * @param borrowerId
+     *            the borrower id
      * @return the list
      */
     public static List<Borrow> findActualBorrowByBorrower(
@@ -192,9 +207,11 @@ public final class Finder {
 
     /**
      * Find available.
-     *
-     * @param start the start
-     * @param end the end
+     * 
+     * @param start
+     *            the start
+     * @param end
+     *            the end
      * @return the list
      */
     public static List<Equipment> findAvailable( final Calendar start,
@@ -209,10 +226,10 @@ public final class Finder {
             for( final Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
 
                 if( borrow.getEquipmentId( ).contains( equipment.getId( ) )
-                        && borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                                .getTimeInMillis( )
-                        && borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                                .getTimeInMillis( ) ) {
+                        && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
+                                .getTimeInMillis( ) )
+                        && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
+                                .getTimeInMillis( ) ) ) {
 
                     available = false;
 
@@ -231,8 +248,9 @@ public final class Finder {
 
     /**
      * Find borrow by borrower.
-     *
-     * @param borrowerId the borrower id
+     * 
+     * @param borrowerId
+     *            the borrower id
      * @return the list
      */
     public static List<Borrow> findBorrowByBorrower( final String borrowerId ) {
@@ -251,8 +269,9 @@ public final class Finder {
 
     /**
      * Find borrow by id.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      * @return the borrow
      */
     public static Borrow findBorrowById( final String id ) {
@@ -268,7 +287,7 @@ public final class Finder {
 
     /**
      * Find borrow waiting for administrator.
-     *
+     * 
      * @return the list
      */
     public static List<Borrow> findBorrowWaitingForAdministrator( ) {
@@ -283,8 +302,9 @@ public final class Finder {
 
     /**
      * Find equipment by id.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      * @return the equipment
      */
     public static Equipment findEquipmentById( final String id ) {
@@ -302,7 +322,7 @@ public final class Finder {
 
     /**
      * Find late borrow.
-     *
+     * 
      * @return the list
      */
     public static List<Borrow> findLateBorrow( ) {
@@ -320,8 +340,9 @@ public final class Finder {
 
     /**
      * Find person by id.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      * @return the person
      */
     public static Person findPersonById( final String id ) {
@@ -337,8 +358,9 @@ public final class Finder {
 
     /**
      * Find quantity equipment.
-     *
-     * @param findEquipment the find equipment
+     * 
+     * @param findEquipment
+     *            the find equipment
      * @return the integer
      */
     public static Integer findQuantityEquipment( final Equipment findEquipment ) {
@@ -358,10 +380,13 @@ public final class Finder {
 
     /**
      * Checks if is borrowed.
-     *
-     * @param equipmentsId the equipments id
-     * @param start the start
-     * @param end the end
+     * 
+     * @param equipmentsId
+     *            the equipments id
+     * @param start
+     *            the start
+     * @param end
+     *            the end
      * @return true, if is borrowed
      */
     public static boolean isBorrowed( final List<String> equipmentsId,
@@ -371,10 +396,10 @@ public final class Finder {
             for( final String borrowEquipment : borrow.getEquipmentId( ) ) {
                 for( final String materielId : equipmentsId ) {
                     if( borrowEquipment.equals( materielId )
-                            && borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                                    .getTimeInMillis( )
-                            && borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                                    .getTimeInMillis( )
+                            && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
+                                    .getTimeInMillis( ) )
+                            && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
+                                    .getTimeInMillis( ) )
                             && borrow.getState( ).equals( State.ACCEPT ) ) {
                         return true;
                     }
@@ -386,10 +411,12 @@ public final class Finder {
 
     /**
      * Checks if is borrower.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      * @return true, if is borrower
-     * @throws InvalidParameterException the invalid parameter exception
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
      */
     public static boolean isBorrower( final String id )
             throws InvalidParameterException {

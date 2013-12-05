@@ -8,7 +8,6 @@ import java.io.InputStream;
 
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CopyFile.
  */
@@ -19,9 +18,11 @@ public final class CopyFile {
 
     /**
      * Copy file.
-     *
-     * @param sources the sources
-     * @param destination the destination
+     * 
+     * @param sources
+     *            the sources
+     * @param destination
+     *            the destination
      */
     public static void copyFile( final InputStream sources,
             final String destination ) {
