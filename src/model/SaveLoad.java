@@ -26,7 +26,6 @@ import com.google.gson.GsonBuilder;
 import config.Error;
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SaveLoad.
  */

@@ -3,7 +3,6 @@ package model.person.borrower;
 
 import model.SaveLoad;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Teacher.
  */

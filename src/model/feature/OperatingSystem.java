@@ -15,7 +15,6 @@ import model.Feature;
 import com.google.gson.annotations.Expose;
 import com.google.gson.internal.LinkedTreeMap;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class OperatingSystem.
  */

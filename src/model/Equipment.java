@@ -12,7 +12,6 @@ import com.google.gson.annotations.Expose;
 import config.Config;
 import config.Error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Equipment.
  */
@@ -49,7 +48,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see model.person.InventoryElement#checkExistence(java.lang.String)
      */
     @Override
@@ -109,7 +108,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -142,7 +141,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -169,7 +168,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
