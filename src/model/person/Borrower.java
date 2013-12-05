@@ -14,7 +14,6 @@ import com.google.gson.internal.LinkedTreeMap;
 
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */

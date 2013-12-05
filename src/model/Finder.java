@@ -13,7 +13,6 @@ import model.person.Borrower;
 import model.person.Borrower.Borrow;
 import config.Error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Finder.
  */
@@ -56,7 +55,7 @@ public final class Finder {
         try {
             final Class classFeature = Class.forName( "model.feature."
                     + featureString );
-            final Class interfaceFeature[] = classFeature.getInterfaces( );
+            final Class[] interfaceFeature = classFeature.getInterfaces( );
             for( final Class anInterfaceFeature : interfaceFeature ) {
                 if( anInterfaceFeature.equals( IString.class ) && type != 2 ) {
                     type = 1;
