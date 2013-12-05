@@ -114,8 +114,9 @@ public class Command {
                     method.invoke( this.state, Arrays.copyOfRange(
                             ( Object[ ] ) arg, 1, arg.length ) );
                 } catch( IllegalAccessException | InvocationTargetException e ) {
-                    MiniProjectController.LOGGER.severe( java.util.Arrays
-                            .toString( e.getStackTrace( ) ) );
+                    MiniProjectController.LOGGER.severe( "message:"
+                            + e.getMessage( ) + "\ntrace:"
+                            + java.util.Arrays.toString( e.getStackTrace( ) ) );
                 }
                 return;
 

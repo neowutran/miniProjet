@@ -16,12 +16,13 @@ public abstract class State implements IView {
 
     /**
      * Action.
-     *
-     * @param line the line
+     * 
+     * @param line
+     *            the line
      */
     public void action( final String[ ] line ) {
 
-        if( line == null || line.length == 0 ) {
+        if( ( line == null ) || ( line.length == 0 ) ) {
             return;
         }
         for( final Command command : this.setCommands( ) ) {
@@ -31,8 +32,9 @@ public abstract class State implements IView {
                 try {
                     command.invoke( line );
                 } catch( final MiniProjectException e ) {
-                    MiniProjectController.LOGGER.severe( java.util.Arrays
-                            .toString(e.getStackTrace()) );
+                    MiniProjectController.LOGGER.severe( "message:"
+                            + e.getMessage( ) + "\ntrace:"
+                            + java.util.Arrays.toString( e.getStackTrace( ) ) );
                 }
 
                 return;
@@ -57,12 +59,13 @@ public abstract class State implements IView {
 
     /**
      * Interpreter.
-     *
-     * @param line the line
+     * 
+     * @param line
+     *            the line
      */
     public void interpreter( final String line ) {
 
-        this.action(line.split(" "));
+        this.action( line.split( " " ) );
 
     }
 
@@ -71,7 +74,7 @@ public abstract class State implements IView {
      */
     public void printHelp( ) {
 
-        System.out.println("===== HELP ======\n");
+        System.out.println( "===== HELP ======\n" );
         for( final Command command : this.setCommands( ) ) {
             System.out.println( command );
         }

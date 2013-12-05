@@ -138,9 +138,12 @@ public abstract class User extends State {
         args9.add( "hh:mm" );
         args9.add( "dd/MM/yyyy" );
         args9.add( "hh:mm" );
-        final Command command9 = new Command( "listAvailableEquipment", args9,
-                this, "listAvailableEquipment",
-                "Affiche les equipement actuellement disponible à l'emprunt" );
+        final Command command9 = new Command(
+                "listAvailableEquipment",
+                args9,
+                this,
+                "listAvailableEquipment",
+                "Affiche les equipement actuellement disponible à l'emprunt (les dates a donnes sont 'debut' puis 'fin' de l'emprunt" );
 
         final Command command10 = new Command( "find",
                 new LinkedList<String>( ), this, "find",

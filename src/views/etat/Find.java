@@ -136,11 +136,11 @@ public class Find extends State {
             final List<Equipment> equipments = Finder.find( this.type,
                     this.features, this.operators, this.values );
             System.out.println( equipments );
+            this.cancel( );
         } catch( final MiniProjectException e ) {
             System.out.println( e.getMessage( ) );
         }
 
-        this.cancel( );
     }
 
 }

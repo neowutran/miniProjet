@@ -198,10 +198,11 @@ public class Borrow extends State {
             ( ( model.person.Borrower ) Finder.findPersonById( User
                     .getInstance( ).getPersonId( ) ) ).borrow( this.equipments,
                     this.start, this.end );
+            System.out.println( "Borrowed." );
+            this.cancel( );
         } catch( InvalidParameterException | MiniProjectException e ) {
             System.out.println( e.getMessage( ) );
         }
-        System.out.println( "Borrowed." );
-        this.cancel( );
+
     }
 }
