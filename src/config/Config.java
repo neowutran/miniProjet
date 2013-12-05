@@ -4,7 +4,6 @@
 
 package config;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Config.
  */

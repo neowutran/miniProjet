@@ -9,7 +9,6 @@ import model.MiniProjectException;
 import model.SaveLoad;
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class State.
  */
@@ -33,7 +32,7 @@ public abstract class State implements IView {
                     command.invoke( line );
                 } catch( final MiniProjectException e ) {
                     MiniProjectController.LOGGER.severe( java.util.Arrays
-                            .toString( e.getStackTrace( ) ) );
+                            .toString(e.getStackTrace()) );
                 }
 
                 return;
@@ -63,7 +62,7 @@ public abstract class State implements IView {
      */
     public void interpreter( final String line ) {
 
-        this.action( line.split( " " ) );
+        this.action(line.split(" "));
 
     }
 
@@ -72,7 +71,7 @@ public abstract class State implements IView {
      */
     public void printHelp( ) {
 
-        System.out.println( "===== HELP ======\n" );
+        System.out.println("===== HELP ======\n");
         for( final Command command : this.setCommands( ) ) {
             System.out.println( command );
         }
@@ -82,7 +81,7 @@ public abstract class State implements IView {
     /*
      * (non-Javadoc)
      * 
-     * @see views.IView#setCommands()
+     * see views.IView#setCommands()
      */
     @Override
     public List<Command> setCommands( ) {

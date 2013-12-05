@@ -8,7 +8,6 @@ import java.util.List;
 import views.Command;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
@@ -17,6 +16,7 @@ public class Borrower extends User {
     /**
      * Borrow.
      */
+    @SuppressWarnings( "unused" )
     private void borrow( ) {
         View.setState( new Borrow( ) );
     }

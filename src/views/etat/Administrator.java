@@ -8,7 +8,6 @@ import java.util.List;
 import model.Finder;
 import views.Command;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Administrator.
  */
@@ -16,9 +15,11 @@ public class Administrator extends User {
 
     /**
      * Accept.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void accept( final String id ) {
 
         final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );
@@ -37,9 +38,11 @@ public class Administrator extends User {
 
     /**
      * Find actual borrow by borrower.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void findActualBorrowByBorrower( final String id ) {
 
         System.out.println( Finder.findActualBorrowByBorrower( id ) );
@@ -48,9 +51,11 @@ public class Administrator extends User {
 
     /**
      * Find borrow by borrower.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void findBorrowByBorrower( final String id ) {
 
         System.out.println( Finder.findBorrowByBorrower( id ) );
@@ -59,9 +64,11 @@ public class Administrator extends User {
 
     /**
      * Find borrow by id.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void findBorrowById( final String id ) {
 
         System.out.println( Finder.findBorrowByBorrower( id ) );
@@ -71,6 +78,7 @@ public class Administrator extends User {
     /**
      * Find borrow waiting for administrator.
      */
+    @SuppressWarnings( "unused" )
     private void findBorrowWaitingForAdministrator( ) {
         System.out.println( Finder.findBorrowWaitingForAdministrator( ) );
     }
@@ -78,6 +86,7 @@ public class Administrator extends User {
     /**
      * Find late borrow.
      */
+    @SuppressWarnings( "unused" )
     private void findLateBorrow( ) {
         System.out.println( Finder.findLateBorrow( ) );
 
@@ -85,9 +94,11 @@ public class Administrator extends User {
 
     /**
      * Refuse.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void refuse( final String id ) {
 
         final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );
@@ -104,9 +115,11 @@ public class Administrator extends User {
 
     /**
      * Returned.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void returned( final String id ) {
 
         final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );

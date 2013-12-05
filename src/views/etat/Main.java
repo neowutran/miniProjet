@@ -10,7 +10,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Main.
  */
@@ -18,10 +17,13 @@ public class Main extends State {
 
     /**
      * Login.
-     *
-     * @param id the id
-     * @param password the password
+     * 
+     * @param id
+     *            the id
+     * @param password
+     *            the password
      */
+    @SuppressWarnings( "unused" )
     private void login( final String id, final String password ) {
 
         if( model.User.getInstance( ).login( id, password ) ) {

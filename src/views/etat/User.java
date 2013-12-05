@@ -12,7 +12,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
@@ -28,13 +27,17 @@ public abstract class User extends State {
 
     /**
      * List_available_equipment.
-     *
-     * @param startDayMonthYear the start day month year
-     * @param startHourMinute the start hour minute
-     * @param endDayMonthYear the end day month year
-     * @param endHourMinute the end hour minute
+     * 
+     * @param startDayMonthYear
+     *            the start day month year
+     * @param startHourMinute
+     *            the start hour minute
+     * @param endDayMonthYear
+     *            the end day month year
+     * @param endHourMinute
+     *            the end hour minute
      */
-    public void list_available_equipment( final String startDayMonthYear,
+    public void listAvailableEquipment( final String startDayMonthYear,
             final String startHourMinute, final String endDayMonthYear,
             final String endHourMinute ) {
 
@@ -47,10 +50,10 @@ public abstract class User extends State {
         final String[ ] stringEndDayMonthYear = endDayMonthYear.split( "/" );
         final String[ ] stringEndHourMinute = endHourMinute.split( ":" );
 
-        if( stringEndDayMonthYear.length != 3
-                || stringEndHourMinute.length != 2
-                || stringStartDayMonthYear.length != 3
-                || stringStartHourMinute.length != 2 ) {
+        if( ( stringEndDayMonthYear.length != 3 )
+                || ( stringEndHourMinute.length != 2 )
+                || ( stringStartDayMonthYear.length != 3 )
+                || ( stringStartHourMinute.length != 2 ) ) {
             this.printHelp( );
             return;
         }
@@ -73,7 +76,7 @@ public abstract class User extends State {
     /**
      * List_borrow.
      */
-    public void list_borrow( ) {
+    public void listBorrow( ) {
 
         System.out.println( Inventory.getInstance( ).getBorrows( ) );
     }
@@ -81,7 +84,7 @@ public abstract class User extends State {
     /**
      * List_equipment.
      */
-    public void list_equipment( ) {
+    public void listEquipment( ) {
 
         System.out.println( Inventory.getInstance( ).getEquipments( ) );
     }
@@ -108,35 +111,35 @@ public abstract class User extends State {
 
         final Command command3 = new Command( "logout",
                 new LinkedList<String>( ), this, "logout", "Obvious" );
-        final Command command4 = new Command( "list_borrow",
-                new LinkedList<String>( ), this, "list_borrow",
+        final Command command4 = new Command( "listBorrow",
+                new LinkedList<String>( ), this, "listBorrow",
                 "Affiche la liste des emprunts" );
-        final Command command5 = new Command( "list_equipment",
-                new LinkedList<String>( ), this, "list_equipment",
+        final Command command5 = new Command( "listEquipment",
+                new LinkedList<String>( ), this, "listEquipment",
                 "Affiche la liste des equipements" );
 
         final List<String> args6 = new LinkedList<>( );
         args6.add( "borrowId" );
-        final Command command6 = new Command( "show_borrow", args6, this,
-                "show_borrow", "Affiche un emprunt" );
+        final Command command6 = new Command( "showBorrow", args6, this,
+                "showBorrow", "Affiche un emprunt" );
 
         final List<String> args7 = new LinkedList<>( );
         args7.add( "equipmentId" );
-        final Command command7 = new Command( "show_equipment", args7, this,
-                "show_equipment", "Affiche un equipement" );
+        final Command command7 = new Command( "showEquipment", args7, this,
+                "showEquipment", "Affiche un equipement" );
 
         final List<String> args8 = new LinkedList<>( );
         args8.add( "personId" );
-        final Command command8 = new Command( "show_person", args8, this,
-                "show_person", "Affiche les informations sur une personne" );
+        final Command command8 = new Command( "showPerson", args8, this,
+                "showPerson", "Affiche les informations sur une personne" );
 
         final List<String> args9 = new LinkedList<>( );
         args9.add( "dd/MM/yyyy" );
         args9.add( "hh:mm" );
         args9.add( "dd/MM/yyyy" );
         args9.add( "hh:mm" );
-        final Command command9 = new Command( "list_available_equipment",
-                args9, this, "list_available_equipment",
+        final Command command9 = new Command( "listAvailableEquipment", args9,
+                this, "listAvailableEquipment",
                 "Affiche les equipement actuellement disponible à l'emprunt" );
 
         final Command command10 = new Command( "find",
@@ -159,10 +162,11 @@ public abstract class User extends State {
 
     /**
      * Show_borrow.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
-    public void show_borrow( final String id ) {
+    public void showBorrow( final String id ) {
 
         System.out.println( Finder.findBorrowById( id ) );
 
@@ -170,10 +174,11 @@ public abstract class User extends State {
 
     /**
      * Show_equipment.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
-    public void show_equipment( final String id ) {
+    public void showEquipment( final String id ) {
 
         System.out.println( Finder.findEquipmentById( id ) );
 
@@ -181,10 +186,11 @@ public abstract class User extends State {
 
     /**
      * Show_person.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
-    public void show_person( final String id ) {
+    public void showPerson( final String id ) {
 
         System.out.println( Finder.findPersonById( id ) );
 

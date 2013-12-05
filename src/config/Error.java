@@ -3,7 +3,6 @@ package config;
 
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Error.
  */
@@ -104,7 +103,7 @@ public final class Error {
                                                                  .getConfiguration( )
                                                                  .get( "error" ) )
                                                                  .get( "16" );
-    
+
     /** The Constant METHOD_NOT_FOUND. */
     public final static String METHOD_NOT_FOUND          = ( String ) ( ( Map ) Config
                                                                  .getConfiguration( )

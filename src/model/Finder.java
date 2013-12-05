@@ -12,7 +12,6 @@ import model.finder.IString;
 import model.person.Borrower.Borrow;
 import config.Error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Finder.
  */

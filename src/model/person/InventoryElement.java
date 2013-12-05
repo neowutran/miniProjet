@@ -11,7 +11,6 @@ import com.google.gson.annotations.Expose;
 import config.Config;
 import config.Error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class InventoryElement.
  */

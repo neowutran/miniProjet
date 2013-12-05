@@ -15,13 +15,11 @@ import model.MiniProjectException;
 import model.State;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.internal.LinkedTreeMap;
 
 import config.Config;
 import config.Error;
 import controllers.MiniProjectController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrower.
  */
@@ -68,11 +66,15 @@ public class Borrower extends model.Person {
 
         /**
          * Instantiates a new borrow.
-         *
-         * @param equipments the equipments
-         * @param borrowStart the borrow start
-         * @param borrowEnd the borrow end
-         * @throws MiniProjectException the mini project exception
+         * 
+         * @param equipments
+         *            the equipments
+         * @param borrowStart
+         *            the borrow start
+         * @param borrowEnd
+         *            the borrow end
+         * @throws MiniProjectException
+         *             the mini project exception
          */
         private Borrow( final List<String> equipments,
                 final java.util.Calendar borrowStart,
@@ -103,7 +105,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow end.
-         *
+         * 
          * @return the borrow end
          */
         public java.util.Calendar getBorrowEnd( ) {
@@ -113,7 +115,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrower id.
-         *
+         * 
          * @return the borrower id
          */
         public String getBorrowerId( ) {
@@ -123,7 +125,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow start.
-         *
+         * 
          * @return the borrow start
          */
         public java.util.Calendar getBorrowStart( ) {
@@ -133,7 +135,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the equipment id.
-         *
+         * 
          * @return the equipment id
          */
         public List<String> getEquipmentId( ) {
@@ -143,7 +145,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the state.
-         *
+         * 
          * @return the state
          */
         public model.State getState( ) {
@@ -153,10 +155,13 @@ public class Borrower extends model.Person {
 
         /**
          * Sets the state.
-         *
-         * @param state the state
-         * @param administrator the administrator
-         * @throws MiniProjectException the mini project exception
+         * 
+         * @param state
+         *            the state
+         * @param administrator
+         *            the administrator
+         * @throws MiniProjectException
+         *             the mini project exception
          */
         public void setState( final model.State state,
                 final String administrator ) throws MiniProjectException {
@@ -238,21 +243,25 @@ public class Borrower extends model.Person {
 
     /**
      * Instantiates a new borrower.
-     *
-     * @param name the name
-     * @param id the id
-     * @param type the type
-     * @param password the password
+     * 
+     * @param name
+     *            the name
+     * @param id
+     *            the id
+     * @param type
+     *            the type
+     * @param password
+     *            the password
      */
     public Borrower( final String name, final String id, final String type,
             final String password ) {
 
         super( name, id, password );
         this.setType( type );
-        this.maximumAdvanceDays = ( ( Double ) ( ( LinkedTreeMap ) ( ( LinkedTreeMap ) Config
+        this.maximumAdvanceDays = ( ( Double ) ( ( Map ) ( ( Map ) Config
                 .getConfiguration( ).get( Config.BORROWER ) ).get( this
                 .getType( ) ) ).get( Config.MAXIMUM_ADVANCE_DAY ) ).longValue( );
-        this.maximumHours = ( ( Double ) ( ( LinkedTreeMap ) ( ( LinkedTreeMap ) Config
+        this.maximumHours = ( ( Double ) ( ( Map ) ( ( Map ) Config
                 .getConfiguration( ).get( Config.BORROWER ) ).get( this
                 .getType( ) ) ).get( Config.MAXIMUM_HOUR ) ).longValue( );
 
@@ -260,13 +269,18 @@ public class Borrower extends model.Person {
 
     /**
      * Borrow.
-     *
-     * @param equipment the equipment
-     * @param start the start
-     * @param end the end
+     * 
+     * @param equipment
+     *            the equipment
+     * @param start
+     *            the start
+     * @param end
+     *            the end
      * @return the string
-     * @throws InvalidParameterException the invalid parameter exception
-     * @throws MiniProjectException the mini project exception
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     public String borrow( final List<String> equipment, final Calendar start,
             final Calendar end ) throws InvalidParameterException,
@@ -282,22 +296,21 @@ public class Borrower extends model.Person {
         final Calendar now = Calendar.getInstance( );
         final Long maximumAdvance = 1000 * 60 * 60 * 24
                 * this.maximumAdvanceDays;
-        if( start.getTimeInMillis( ) - now.getTimeInMillis( ) > maximumAdvance
-                && this.maximumAdvanceDays != 0 ) {
+        if( ( ( start.getTimeInMillis( ) - now.getTimeInMillis( ) ) > maximumAdvance )
+                && ( this.maximumAdvanceDays != 0 ) ) {
 
             throw new InvalidParameterException( Error.CANNOT_BORROW_ADVANCE );
         }
 
         final Long maximumTimeDuration = 1000 * 60 * 60 * this.maximumHours;
-        if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maximumTimeDuration
-                && this.maximumHours != 0 ) {
+        if( ( ( end.getTimeInMillis( ) - start.getTimeInMillis( ) ) > maximumTimeDuration )
+                && ( this.maximumHours != 0 ) ) {
             throw new MiniProjectException( Error.CANNOT_BORROW_SO_LONG );
 
         }
 
         final Long maxTimeHours = this.maxTime( equipment );
-        if( end.getTimeInMillis( ) - start.getTimeInMillis( ) > maxTimeHours
-                * 1000 * 60 * 60 * 24 ) {
+        if( ( end.getTimeInMillis( ) - start.getTimeInMillis( ) ) > ( maxTimeHours * 1000 * 60 * 60 * 24 ) ) {
             throw new MiniProjectException( Error.CANNOT_BORROW_SO_LONG );
         }
 
@@ -317,8 +330,9 @@ public class Borrower extends model.Person {
 
     /**
      * Max time.
-     *
-     * @param equipmentsId the equipments id
+     * 
+     * @param equipmentsId
+     *            the equipments id
      * @return the long
      */
     private Long maxTime( final List<String> equipmentsId ) {
@@ -350,7 +364,8 @@ public class Borrower extends model.Person {
             final Double weighting = ( Double ) ( ( Map ) Config
                     .getConfiguration( ).get( Config.QUANTITY_TIME ) ).get( max
                     .toString( ) );
-            if( maxTime == null || maxTime > weighting.longValue( ) * days ) {
+            if( ( maxTime == null )
+                    || ( maxTime > ( weighting.longValue( ) * days ) ) ) {
                 maxTime = weighting.longValue( ) * days;
             }
 

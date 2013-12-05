@@ -3,8 +3,20 @@ package lib;
 
 import java.lang.reflect.Array;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ArrayUtils.
+ */
 public class ArrayUtils {
 
+    /**
+     * Concatenate.
+     *
+     * @param <T> the generic type
+     * @param A the a
+     * @param B the b
+     * @return the t[]
+     */
     public static <T> T[ ] concatenate( final T[ ] A, final T[ ] B ) {
         final int aLen = A.length;
         final int bLen = B.length;
@@ -18,6 +30,9 @@ public class ArrayUtils {
         return C;
     }
 
+    /**
+     * Instantiates a new array utils.
+     */
     private ArrayUtils( ) {
     }
 }

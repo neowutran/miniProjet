@@ -15,7 +15,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Borrow.
  */
@@ -32,9 +31,11 @@ public class Borrow extends State {
 
     /**
      * Adds the.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void add( final String id ) {
         this.equipments.add( id );
         System.out.println( "Equipment " + id + " added" );
@@ -50,9 +51,11 @@ public class Borrow extends State {
 
     /**
      * Removes the.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      */
+    @SuppressWarnings( "unused" )
     private void remove( final String id ) {
 
         this.equipments.remove( id );
@@ -114,16 +117,19 @@ public class Borrow extends State {
 
     /**
      * Sets the end.
-     *
-     * @param stringDayMonthYear the string day month year
-     * @param stringHourMinute the string hour minute
+     * 
+     * @param stringDayMonthYear
+     *            the string day month year
+     * @param stringHourMinute
+     *            the string hour minute
      */
+    @SuppressWarnings( "unused" )
     private void setEnd( final String stringDayMonthYear,
             final String stringHourMinute ) {
 
         final String[ ] dayMonthYear = stringDayMonthYear.split( "/" );
         final String[ ] hourMinute = stringHourMinute.split( ":" );
-        if( dayMonthYear.length != 3 || hourMinute.length != 2 ) {
+        if( ( dayMonthYear.length != 3 ) || ( hourMinute.length != 2 ) ) {
             this.printHelp( );
         }
 
@@ -139,16 +145,19 @@ public class Borrow extends State {
 
     /**
      * Sets the start.
-     *
-     * @param stringDayMonthYear the string day month year
-     * @param stringHourMinute the string hour minute
+     * 
+     * @param stringDayMonthYear
+     *            the string day month year
+     * @param stringHourMinute
+     *            the string hour minute
      */
+    @SuppressWarnings( "unused" )
     private void setStart( final String stringDayMonthYear,
             final String stringHourMinute ) {
 
         final String[ ] dayMonthYear = stringDayMonthYear.split( "/" );
         final String[ ] hourMinute = stringHourMinute.split( ":" );
-        if( dayMonthYear.length != 3 || hourMinute.length != 2 ) {
+        if( ( dayMonthYear.length != 3 ) || ( hourMinute.length != 2 ) ) {
             this.printHelp( );
         }
 
@@ -164,6 +173,7 @@ public class Borrow extends State {
     /**
      * Show.
      */
+    @SuppressWarnings( "unused" )
     private void show( ) {
         final SimpleDateFormat format = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm" );
@@ -177,6 +187,7 @@ public class Borrow extends State {
     /**
      * Validate.
      */
+    @SuppressWarnings( "unused" )
     private void validate( ) {
         if( Finder.isBorrowed( this.equipments, this.start, this.end ) ) {
             System.out.println( "Equipment unavailable" );

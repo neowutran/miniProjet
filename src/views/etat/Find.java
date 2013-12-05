@@ -12,7 +12,6 @@ import views.Command;
 import views.State;
 import views.View;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Find.
  */
@@ -33,11 +32,15 @@ public class Find extends State {
 
     /**
      * Adds the.
-     *
-     * @param feature the feature
-     * @param operator the operator
-     * @param value the value
+     * 
+     * @param feature
+     *            the feature
+     * @param operator
+     *            the operator
+     * @param value
+     *            the value
      */
+    @SuppressWarnings( "unused" )
     private void add( final String feature, final String operator,
             final String value ) {
         this.features.add( feature );
@@ -113,6 +116,7 @@ public class Find extends State {
     /**
      * Show.
      */
+    @SuppressWarnings( "unused" )
     private void show( ) {
 
         final String show = "type:" + this.type + "\n" + "features:"
@@ -125,6 +129,7 @@ public class Find extends State {
     /**
      * Validate.
      */
+    @SuppressWarnings( "unused" )
     private void validate( ) {
 
         try {

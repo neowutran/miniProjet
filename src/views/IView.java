@@ -3,7 +3,6 @@ package views;
 
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface IView.
  */
