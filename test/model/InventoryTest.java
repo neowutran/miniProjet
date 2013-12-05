@@ -7,6 +7,9 @@ import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import model.person.Borrower;
+import model.person.Borrower.Borrow;
+
 import org.junit.*;
 
 import controllers.MiniProjectController;
@@ -41,17 +44,21 @@ public class InventoryTest {
 
     @Test
     public void testAddBorrow() {
-        fail("Not yet implemented");
+       
+      Inventory.getInstance().addBorrow(null);
     }
 
     @Test
     public void testGetBorrows() {
-        System.out.println(Inventory.getInstance().getBorrows().size());
+        assertEquals(Inventory.getInstance().getBorrows().get(0).getBorrowerId(),"123");
     }
 
     @Test
     public void testGetEquipments() {
-        fail("Not yet implemented");
+        assertEquals(Inventory.getInstance().getEquipments().size(),3);
+        assertEquals(Inventory.getInstance().getEquipments().get(0).getType(),"tablet");
+        assertEquals(Inventory.getInstance().getEquipments().get(1).getType(),"tablet");
+        assertEquals(Inventory.getInstance().getEquipments().get(2).getType(),"phone");
     }
 
 }

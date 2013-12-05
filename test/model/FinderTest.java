@@ -51,8 +51,8 @@ public class FinderTest {
 
         GregorianCalendar start = new GregorianCalendar(2013,10,2);
         GregorianCalendar end = new GregorianCalendar(2013,10,7);
-        assertEquals(Finder.findAvailable(start, end).size(),0);
-        assertEquals(Finder.findAvailable(new GregorianCalendar(2013,12,2),new GregorianCalendar(2013,12,4)).size(),2);
+        assertEquals(Finder.findAvailable(start, end).size(),1);
+        assertEquals(Finder.findAvailable(new GregorianCalendar(2013,12,2),new GregorianCalendar(2013,12,4)).size(),3);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class FinderTest {
         List<String> values = new LinkedList<>();
         values.add("Windows");
         try {
-            //TODO tester qq chose ici
+            //TODO tester 
             assertEquals(Finder.find(null,features,operateurs,values).size(),2);
         } catch (MiniProjectException e) {
             e.printStackTrace();
