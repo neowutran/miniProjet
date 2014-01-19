@@ -50,7 +50,7 @@ public class User {
      */
     public boolean login( final String id, final String password ) {
 
-        final Person person = Finder.findPersonById( id );
+        final Person person = Inventory.findPersonById( id );
         if( person == null ) {
             return false;
         }

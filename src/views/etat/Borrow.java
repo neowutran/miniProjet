@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Finder;
+import model.Inventory;
 import model.MiniProjectException;
 import model.User;
 import views.Command;
@@ -31,7 +31,7 @@ public class Borrow extends State {
 
     /**
      * Adds the.
-     * 
+     *
      * @param id
      *            the id
      */
@@ -51,7 +51,7 @@ public class Borrow extends State {
 
     /**
      * Removes the.
-     * 
+     *
      * @param id
      *            the id
      */
@@ -65,7 +65,7 @@ public class Borrow extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override
@@ -117,7 +117,7 @@ public class Borrow extends State {
 
     /**
      * Sets the end.
-     * 
+     *
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -145,7 +145,7 @@ public class Borrow extends State {
 
     /**
      * Sets the start.
-     * 
+     *
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -189,13 +189,13 @@ public class Borrow extends State {
      */
     @SuppressWarnings( "unused" )
     private void validate( ) {
-        if( Finder.isBorrowed( this.equipments, this.start, this.end ) ) {
+        if( Inventory.isBorrowed(this.equipments, this.start, this.end) ) {
             System.out.println( "Equipment unavailable" );
             return;
         }
 
         try {
-            ( ( model.person.Borrower ) Finder.findPersonById( User
+            ( ( model.person.Borrower ) Inventory.findPersonById( User
                     .getInstance( ).getPersonId( ) ) ).borrow( this.equipments,
                     this.start, this.end );
             System.out.println( "Borrowed." );

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Finder;
+import model.Inventory;
 import views.Command;
 
 /**
@@ -15,20 +15,20 @@ public class Administrator extends User {
 
     /**
      * Accept.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void accept( final String id ) {
 
-        final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );
+        final model.person.Borrower.Borrow borrow = Inventory.findBorrowById( id );
         if( borrow == null ) {
             this.printHelp( );
             return;
         }
-        if( ( ( model.person.Administrator ) Finder.findPersonById( model.User
-                .getInstance( ).getPersonId( ) ) ).setBorrowStat( borrow,
+        if( ( ( model.person.Administrator ) Inventory.findPersonById(model.User
+                .getInstance().getPersonId()) ).setBorrowStat( borrow,
                 model.State.ACCEPT ) ) {
             System.out.println( "Borrow accepted" );
         } else {
@@ -38,40 +38,40 @@ public class Administrator extends User {
 
     /**
      * Find actual borrow by borrower.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void findActualBorrowByBorrower( final String id ) {
 
-        System.out.println( Finder.findActualBorrowByBorrower( id ) );
+        System.out.println( Inventory.findActualBorrowByBorrower( id ) );
 
     }
 
     /**
      * Find borrow by borrower.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void findBorrowByBorrower( final String id ) {
 
-        System.out.println( Finder.findBorrowByBorrower( id ) );
+        System.out.println( Inventory.findBorrowByBorrower( id ) );
 
     }
 
     /**
      * Find borrow by id.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void findBorrowById( final String id ) {
 
-        System.out.println( Finder.findBorrowByBorrower( id ) );
+        System.out.println( Inventory.findBorrowByBorrower( id ) );
 
     }
 
@@ -80,7 +80,7 @@ public class Administrator extends User {
      */
     @SuppressWarnings( "unused" )
     private void findBorrowWaitingForAdministrator( ) {
-        System.out.println( Finder.findBorrowWaitingForAdministrator( ) );
+        System.out.println( Inventory.findBorrowWaitingForAdministrator( ) );
     }
 
     /**
@@ -88,25 +88,25 @@ public class Administrator extends User {
      */
     @SuppressWarnings( "unused" )
     private void findLateBorrow( ) {
-        System.out.println( Finder.findLateBorrow( ) );
+        System.out.println( Inventory.findLateBorrow( ) );
 
     }
 
     /**
      * Refuse.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void refuse( final String id ) {
 
-        final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );
+        final model.person.Borrower.Borrow borrow = Inventory.findBorrowById( id );
         if( borrow == null ) {
             this.printHelp( );
             return;
         }
-        ( ( model.person.Administrator ) Finder.findPersonById( model.User
+        ( ( model.person.Administrator ) Inventory.findPersonById( model.User
                 .getInstance( ).getPersonId( ) ) ).setBorrowStat( borrow,
                 model.State.REFUSE );
         System.out.println( "Borrow refused" );
@@ -115,19 +115,19 @@ public class Administrator extends User {
 
     /**
      * Returned.
-     * 
+     *
      * @param id
      *            the id
      */
     @SuppressWarnings( "unused" )
     private void returned( final String id ) {
 
-        final model.person.Borrower.Borrow borrow = Finder.findBorrowById( id );
+        final model.person.Borrower.Borrow borrow = Inventory.findBorrowById( id );
         if( borrow == null ) {
             this.printHelp( );
             return;
         }
-        ( ( model.person.Administrator ) Finder.findPersonById( model.User
+        ( ( model.person.Administrator ) Inventory.findPersonById( model.User
                 .getInstance( ).getPersonId( ) ) ).setBorrowStat( borrow,
                 model.State.RETURNED );
         System.out.println( "Borrow returned" );
@@ -136,7 +136,7 @@ public class Administrator extends User {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override

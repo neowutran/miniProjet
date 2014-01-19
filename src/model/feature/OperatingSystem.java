@@ -149,7 +149,7 @@ public class OperatingSystem extends Feature implements model.finder.IString {
 
         } else {
 
-            if( ( ( LinkedTreeMap ) Config.getConfiguration( ).get(
+            if( ( ( Map ) Config.getConfiguration( ).get(
                     Config.EQUIPMENT ) ).containsKey( typeMateriel ) ) {
                 this.acceptableValue = ( List ) ( ( LinkedTreeMap ) ( ( LinkedTreeMap ) Config
                         .getConfiguration( ).get( Config.EQUIPMENT ) )

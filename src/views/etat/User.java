@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Finder;
 import model.Inventory;
 import views.Command;
 import views.State;
@@ -27,7 +26,7 @@ public abstract class User extends State {
 
     /**
      * List_available_equipment.
-     * 
+     *
      * @param startDayMonthYear
      *            the start day month year
      * @param startHourMinute
@@ -70,7 +69,7 @@ public abstract class User extends State {
                 Integer.valueOf( stringEndHourMinute[ 0 ] ),
                 Integer.valueOf( stringEndHourMinute[ 1 ] ), 0 );
 
-        System.out.println( Finder.findAvailable( start, end ) );
+        System.out.println( Inventory.findAvailable( start, end ) );
     }
 
     /**
@@ -101,7 +100,7 @@ public abstract class User extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.State#setCommands()
      */
     @Override
@@ -165,37 +164,37 @@ public abstract class User extends State {
 
     /**
      * Show_borrow.
-     * 
+     *
      * @param id
      *            the id
      */
     public void showBorrow( final String id ) {
 
-        System.out.println( Finder.findBorrowById( id ) );
+        System.out.println( Inventory.findBorrowById( id ) );
 
     }
 
     /**
      * Show_equipment.
-     * 
+     *
      * @param id
      *            the id
      */
     public void showEquipment( final String id ) {
 
-        System.out.println( Finder.findEquipmentById( id ) );
+        System.out.println( Inventory.findEquipmentById( id ) );
 
     }
 
     /**
      * Show_person.
-     * 
+     *
      * @param id
      *            the id
      */
     public void showPerson( final String id ) {
 
-        System.out.println( Finder.findPersonById( id ) );
+        System.out.println( Inventory.findPersonById( id ) );
 
     }
 

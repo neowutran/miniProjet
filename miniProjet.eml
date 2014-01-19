@@ -7,5 +7,6 @@
 	</contentEntry>
 	<levels>
 		<level name="JUnit" value="project"/>
+		<level name="google-gson-2.21" value="project"/>
 	</levels>
 </component>

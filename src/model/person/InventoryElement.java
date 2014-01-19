@@ -3,7 +3,7 @@ package model.person;
 
 import java.util.UUID;
 
-import model.Finder;
+import model.Inventory;
 import model.MiniProjectException;
 
 import com.google.gson.annotations.Expose;
@@ -58,7 +58,7 @@ public abstract class InventoryElement {
             maxCounter--;
             this.id = UUID.randomUUID( ).toString( );
 
-        } while( Finder.findEquipmentById( this.id ) != null );
+        } while( Inventory.findEquipmentById(this.id) != null );
 
     }
 

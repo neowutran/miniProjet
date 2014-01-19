@@ -54,7 +54,7 @@ public class Equipment extends InventoryElement {
     @Override
     protected void checkExistence( final String id )
             throws MiniProjectException {
-        if( Finder.findEquipmentById( id ) != null ) {
+        if( Inventory.findEquipmentById( id ) != null ) {
             throw new InvalidParameterException( Error.EQUIPMENT_ALREADY_EXIST );
         }
     }

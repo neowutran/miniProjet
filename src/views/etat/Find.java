@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Equipment;
-import model.Finder;
+import model.Inventory;
 import model.MiniProjectException;
 import views.Command;
 import views.State;
@@ -32,7 +32,7 @@ public class Find extends State {
 
     /**
      * Adds the.
-     * 
+     *
      * @param feature
      *            the feature
      * @param operator
@@ -55,7 +55,7 @@ public class Find extends State {
      * Cancel.
      */
     private void cancel( ) {
-        if( Finder.isBorrower( model.User.getInstance( ).getPersonId( ) ) ) {
+        if( Inventory.isBorrower(model.User.getInstance().getPersonId()) ) {
             System.out.println( "back to the borrower interface" );
             View.setState( new Borrower( ) );
 
@@ -68,7 +68,7 @@ public class Find extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override
@@ -133,7 +133,7 @@ public class Find extends State {
     private void validate( ) {
 
         try {
-            final List<Equipment> equipments = Finder.find( this.type,
+            final List<Equipment> equipments = Inventory.find( this.type,
                     this.features, this.operators, this.values );
             System.out.println( equipments );
             this.cancel( );

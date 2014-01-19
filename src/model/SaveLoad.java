@@ -115,7 +115,7 @@ public final class SaveLoad {
 
     /**
      * Gets the state.
-     * 
+     *
      * @return the state
      */
     private static String getState( ) {
@@ -133,7 +133,7 @@ public final class SaveLoad {
 
     /**
      * Load.
-     * 
+     *
      * @param file
      *            the file
      * @throws MiniProjectException
@@ -266,11 +266,11 @@ public final class SaveLoad {
             final String borrowerId = ( String ) borrow
                     .get( SaveLoad.BORROWER_ID );
             final String state = ( String ) borrow.get( SaveLoad.STATE );
-            final Borrower borrower = ( Borrower ) Finder
+            final Borrower borrower = ( Borrower ) Inventory
                     .findPersonById( borrowerId );
             Borrow borrowObject = null;
             try {
-                borrowObject = Finder.findBorrowById( borrower.saveLoadBorrow(
+                borrowObject = Inventory.findBorrowById( borrower.saveLoadBorrow(
                         listEquipment, debut, fin ) );
             } catch( final InvalidParameterException e ) {
                 MiniProjectController.LOGGER.severe( "message:"
@@ -307,7 +307,7 @@ public final class SaveLoad {
 
     /**
      * Save.
-     * 
+     *
      * @param file
      *            the file
      */

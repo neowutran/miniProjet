@@ -43,7 +43,7 @@ public class FinderTest {
 
     @Test
     public void testFindActualBorrowByBorrower() {
-       assertEquals(Finder.findActualBorrowByBorrower("123").size(), 1);
+       assertEquals(Inventory.findActualBorrowByBorrower("123").size(), 1);
     }
 
     @Test
@@ -51,36 +51,36 @@ public class FinderTest {
 
         GregorianCalendar start = new GregorianCalendar(2013,10,2);
         GregorianCalendar end = new GregorianCalendar(2013,10,7);
-        assertEquals(Finder.findAvailable(start, end).size(),1);
-        assertEquals(Finder.findAvailable(new GregorianCalendar(2013,12,2),new GregorianCalendar(2013,12,4)).size(),3);
+        assertEquals(Inventory.findAvailable(start, end).size(),1);
+        assertEquals(Inventory.findAvailable(new GregorianCalendar(2013,12,2),new GregorianCalendar(2013,12,4)).size(),3);
     }
 
     @Test
     public void testFindBorrowByBorrower() {
-        assertEquals(Finder.findBorrowByBorrower("123").size(),1);
+        assertEquals(Inventory.findBorrowByBorrower("123").size(),1);
     }
 
     @Test
     public void testFindBorrowById() {
 
-        assertNotNull(Finder.findBorrowById("e69f2659-b0c8-4dc3-8d70-63a221fd20c2"));
+        assertNotNull(Inventory.findBorrowById("e69f2659-b0c8-4dc3-8d70-63a221fd20c2"));
         //Verifie que la fonction ne prend que l id de l emprunteur et non de l objet
-        assertNull(Finder.findBorrowById("ca072236-8f15-486d-93e4-2b21abb831a5"));
+        assertNull(Inventory.findBorrowById("ca072236-8f15-486d-93e4-2b21abb831a5"));
     }
 
     @Test
     public void testFindBorrowWaitingForAdministrator() {
-      assertEquals(Finder.findBorrowWaitingForAdministrator().size(),1);
+      assertEquals(Inventory.findBorrowWaitingForAdministrator().size(),1);
     }
 
     @Test
     public void testFindEquipmentById() {
-        assertEquals(Finder.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5").getType(),"tablet");
+        assertEquals(Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5").getType(),"tablet");
     }
 
     @Test
     public void testFindLateBorrow() {
-        assertEquals(Finder.findLateBorrow().get(0).getId(),"e69f2659-b0c8-4dc3-8d70-63a221fd20c2");
+        assertEquals(Inventory.findLateBorrow().get(0).getId(),"e69f2659-b0c8-4dc3-8d70-63a221fd20c2");
     }
 
     @Test
@@ -93,8 +93,8 @@ public class FinderTest {
         List<String> values = new LinkedList<>();
         values.add("Windows");
         try {
-            //TODO tester 
-            assertEquals(Finder.find(null,features,operateurs,values).size(),2);
+            //TODO tester
+            assertEquals(Inventory.find(null,features,operateurs,values).size(),2);
         } catch (MiniProjectException e) {
             e.printStackTrace();
         }
@@ -102,9 +102,9 @@ public class FinderTest {
 
     @Test
     public void testFindPersonById() {
-        assertEquals(Finder.findPersonById("123").getId(),"123");
-        assertEquals(Finder.findPersonById("123").getName(),"Toto");
-        assertEquals(Finder.findPersonById("123").getType(),"student");
+        assertEquals(Inventory.findPersonById("123").getId(),"123");
+        assertEquals(Inventory.findPersonById("123").getName(),"Toto");
+        assertEquals(Inventory.findPersonById("123").getType(),"student");
     }
 
     @Test
@@ -112,14 +112,14 @@ public class FinderTest {
         ArrayList<String> equipmentsId = new ArrayList();
         equipmentsId.add("ca072236-8f15-486d-93e4-2b21abb831a5");
         equipmentsId.add("95984d07-575a-49d1-a6cd-d964c9a38ffe");
-        assertEquals(Finder.isBorrowed(equipmentsId, new GregorianCalendar(2013,10,2), new GregorianCalendar(2013,10,7)),false);
+        assertEquals(Inventory.isBorrowed(equipmentsId, new GregorianCalendar(2013,10,2), new GregorianCalendar(2013,10,7)),false);
     }
 
     @Test
     public void testIsBorrower() {
-        assertEquals(Finder.isBorrower("123"),true);
-        assertEquals(Finder.isBorrower("9000"),false);
-        
+        assertEquals(Inventory.isBorrower("123"),true);
+        assertEquals(Inventory.isBorrower("9000"),false);
+
     }
 
 }

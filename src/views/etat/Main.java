@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Finder;
+import model.Inventory;
 import views.Command;
 import views.State;
 import views.View;
@@ -17,7 +17,7 @@ public class Main extends State {
 
     /**
      * Login.
-     * 
+     *
      * @param id
      *            the id
      * @param password
@@ -28,9 +28,9 @@ public class Main extends State {
 
         if( model.User.getInstance( ).login( id, password ) ) {
 
-            System.out.println( "Welcome "
-                    + Finder.findPersonById( id ).getName( ) );
-            if( Finder.isBorrower( id ) ) {
+            System.out.println("Welcome "
+                    + Inventory.findPersonById(id).getName());
+            if( Inventory.isBorrower( id ) ) {
                 System.out.println( "Interface borrower" );
                 View.setState( new Borrower( ) );
             } else {
@@ -48,7 +48,7 @@ public class Main extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override

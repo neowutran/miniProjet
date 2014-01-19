@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import model.Equipment;
-import model.Finder;
 import model.Inventory;
 import model.MiniProjectException;
 import model.State;
@@ -66,7 +65,7 @@ public class Borrower extends model.Person {
 
         /**
          * Instantiates a new borrow.
-         * 
+         *
          * @param equipments
          *            the equipments
          * @param borrowStart
@@ -91,13 +90,13 @@ public class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see model.person.InventoryElement#checkExistence(java.lang.String)
          */
         @Override
         protected void checkExistence( final String id )
                 throws MiniProjectException {
-            if( Finder.findBorrowById( id ) != null ) {
+            if( Inventory.findBorrowById( id ) != null ) {
                 throw new InvalidParameterException(
                         "this borrow already exist" );
             }
@@ -105,7 +104,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow end.
-         * 
+         *
          * @return the borrow end
          */
         public java.util.Calendar getBorrowEnd( ) {
@@ -115,7 +114,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrower id.
-         * 
+         *
          * @return the borrower id
          */
         public String getBorrowerId( ) {
@@ -125,7 +124,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow start.
-         * 
+         *
          * @return the borrow start
          */
         public java.util.Calendar getBorrowStart( ) {
@@ -135,7 +134,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the equipment id.
-         * 
+         *
          * @return the equipment id
          */
         public List<String> getEquipmentId( ) {
@@ -145,7 +144,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the state.
-         * 
+         *
          * @return the state
          */
         public model.State getState( ) {
@@ -155,7 +154,7 @@ public class Borrower extends model.Person {
 
         /**
          * Sets the state.
-         * 
+         *
          * @param state
          *            the state
          * @param administrator
@@ -176,7 +175,7 @@ public class Borrower extends model.Person {
             }
 
             if( State.ACCEPT.equals( state )
-                    && Finder.isBorrowed( this.getEquipmentId( ),
+                    && Inventory.isBorrowed( this.getEquipmentId( ),
                             this.getBorrowStart( ), this.getBorrowEnd( ) ) ) {
 
                 throw new MiniProjectException( Error.EQUIPMENT_UNAVAILABLE );
@@ -189,7 +188,7 @@ public class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
@@ -243,7 +242,7 @@ public class Borrower extends model.Person {
 
     /**
      * Instantiates a new borrower.
-     * 
+     *
      * @param name
      *            the name
      * @param id
@@ -269,7 +268,7 @@ public class Borrower extends model.Person {
 
     /**
      * SaveLoad Borrow.
-     * 
+     *
      * @param equipment
      *            the equipment
      * @param start
@@ -288,7 +287,7 @@ public class Borrower extends model.Person {
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
             throw new InvalidParameterException( Error.INVALID_DATE );
         }
-        if( Finder.isBorrowed( equipment, start, end ) ) {
+        if( Inventory.isBorrowed( equipment, start, end ) ) {
             throw new InvalidParameterException( Error.EQUIPMENT_UNAVAILABLE );
         }
 
@@ -307,7 +306,7 @@ public class Borrower extends model.Person {
 
     /**
      * Borrow.
-     * 
+     *
      * @param equipment
      *            the equipment
      * @param start
@@ -327,7 +326,7 @@ public class Borrower extends model.Person {
         if( start.getTimeInMillis( ) >= end.getTimeInMillis( ) ) {
             throw new InvalidParameterException( Error.INVALID_DATE );
         }
-        if( Finder.isBorrowed( equipment, start, end ) ) {
+        if( Inventory.isBorrowed( equipment, start, end ) ) {
             throw new InvalidParameterException( Error.EQUIPMENT_UNAVAILABLE );
         }
 
@@ -368,7 +367,7 @@ public class Borrower extends model.Person {
 
     /**
      * Max time.
-     * 
+     *
      * @param equipmentsId
      *            the equipments id
      * @return the long
@@ -378,9 +377,11 @@ public class Borrower extends model.Person {
         Long maxTime = null;
         for( final String equipmentId : equipmentsId ) {
 
-            final Equipment equipment = Finder.findEquipmentById( equipmentId );
+            final Equipment equipment = Inventory.findEquipmentById( equipmentId );
 
-            final Integer quantity = Finder.findQuantityEquipment( equipment );
+
+
+            final Integer quantity = Inventory.findQuantityEquipment( equipment );
             final Integer days = ( ( Double ) ( ( Map ) ( ( Map ) Config
                     .getConfiguration( ).get( Config.EQUIPMENT ) )
                     .get( equipment.getType( ) ) )
